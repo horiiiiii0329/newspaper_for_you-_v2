@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 85px;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+
+  p:nth-child(2) {
+    border-bottom: solid 1px black;
+    padding-left: 10px;
+  }
+
+  h1 {
+    padding-left: 10px;
+  }
+
+  p:nth-child(1) {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+}

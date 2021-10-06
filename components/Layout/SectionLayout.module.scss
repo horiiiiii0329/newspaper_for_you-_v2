@@ -1,0 +1,10 @@
+.wrapper {
+  position: absolute;
+  display: flex;
+  left: 0;
+  top: 0;
+  min-height: 100%;
+  width: calc(100vw - 4 * 80px);
+  padding-top: 0;
+  transform: translateX(100%);
+}

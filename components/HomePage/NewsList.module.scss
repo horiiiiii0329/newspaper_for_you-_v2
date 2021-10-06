@@ -1,0 +1,14 @@
+.item__title {
+  border-bottom: solid 1px black;
+  overflow-y: scroll;
+  height: calc(80vh - 59px);
+
+  div {
+    border-bottom: solid 1px black;
+    padding: 15px 10px;
+
+    :nth-child(2) {
+      font-size: 10px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  border-bottom: solid 1px black;
+  padding: 0 10px;
+}
+
+.button__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: solid 1px black;
+
+  a {
+    display: block;
+    text-align: center;
+    border-right: solid 1px black;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}

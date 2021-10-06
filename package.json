@@ -1,0 +1,44 @@
+{
+  "name": "newspaper_for_you",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.4",
+    "@supabase/supabase-js": "^1.22.6",
+    "@supabase/ui": "^0.34.4",
+    "cheerio": "^1.0.0-rc.10",
+    "datejs": "^1.0.0-rc3",
+    "easymde": "^2.15.0",
+    "lodash.debounce": "^4.0.8",
+    "moment": "^2.29.1",
+    "next": "11.1.2",
+    "node-sass": "^6.0.1",
+    "puppeteer": "^10.4.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-markdown": "^7.0.1",
+    "react-simplemde-editor": "^5.0.1",
+    "sass": "^1.39.0",
+    "swr": "^1.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "babel-loader": "^8.2.2",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "sass-loader": "10.0.0"
+  }
+}

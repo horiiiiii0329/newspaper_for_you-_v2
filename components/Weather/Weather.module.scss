@@ -1,0 +1,29 @@
+.weather__weekly {
+  .weather__weekly__list {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    align-items: center;
+
+    li {
+      align-self: center;
+      p {
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      .weather__temp {
+        .weather__temp__high {
+          font-weight: 400;
+        }
+        .weather__temp__low {
+          font-weight: 100;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.weather__weekly__list__icon {
+  font-size: 70px;
+}
