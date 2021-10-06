@@ -97,6 +97,7 @@ export default function Home({
             sankeiData={sankeiData}
             mainichiData={mainichiData}
             nihonData={nihonData}
+            user={user}
           />
         </section>
         <section

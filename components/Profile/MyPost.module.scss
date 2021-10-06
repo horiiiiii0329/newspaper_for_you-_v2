@@ -16,7 +16,16 @@
     cursor: pointer;
   }
 
+  a:hover {
+    background-color: black;
+    color: white;
+  }
+
   button {
     cursor: pointer;
+  }
+  button:hover {
+    background-color: black;
+    color: white;
   }
 }

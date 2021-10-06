@@ -2,15 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 0 0 20px;
   border-bottom: solid 1px black;
 
   button {
     display: block;
     border-left: solid 1px black;
     height: 100%;
-    padding-left: 8px;
+
+    padding: 10px 20px;
     font-weight: 600;
     cursor: pointer;
+  }
+
+  button:hover {
+    background-color: black;
+    color: white;
   }
 }

@@ -4,11 +4,10 @@ import Weather from "../Weather/Weather";
 import moment from "moment";
 import Spinner from "../UI/Spinner";
 import NewsList from "./NewsList";
-import { toggleClass } from "cheerio/lib/api/attributes";
 
 function HomePage({
+  user,
   weatherNews,
-  newsArticle,
   asahiData,
   yomiuriData,
   sankeiData,
@@ -31,14 +30,6 @@ function HomePage({
   const [rightOpen, setRightOpen] = useState(true);
   const [rightPickedNews, setRightPickedNews] = useState("新聞紙を選ぶ");
   const [rightPickedNewsData, setRightPickedNewsData] = useState([]);
-
-  const newsHeadline = [
-    ...asahiData,
-    ...yomiuriData,
-    ...sankeiData,
-    ...mainichiData,
-    ...nihonData,
-  ];
 
   useEffect(() => {
     setInterval(() => setDateState(moment().format()), 1000);
@@ -90,7 +81,11 @@ function HomePage({
             )}
           </div>
 
-          <div>{!leftOpen && <NewsList asahiData={leftPickedNewsData} />}</div>
+          <div>
+            {!leftOpen && (
+              <NewsList newsData={leftPickedNewsData} user={user} />
+            )}
+          </div>
         </div>
         <div className={styles.main_right}>
           <h3
@@ -130,7 +125,9 @@ function HomePage({
             </div>
           )}
           <div>
-            {!rightOpen && <NewsList asahiData={rightPickedNewsData} />}
+            {!rightOpen && (
+              <NewsList newsData={rightPickedNewsData} user={user} />
+            )}
           </div>
         </div>
       </div>
