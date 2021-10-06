@@ -40,40 +40,12 @@ function HomePage({
     ...nihonData,
   ];
 
-  function handleOnClick(item) {}
-
-  // useEffect(() => {
-  //   const delayDebounceFn = setTimeout(() => {
-  //     if (searchTerm) {
-  //       setLoading(true);
-  //       fetch(
-  //         `https://newsapi.org/v2/everything?q=${searchTerm}&sortBy=popularity&apiKey=4d54bfed526d4c3cb6f11ca35ba80191`
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setSearchedData(data?.articles);
-  //           setLoading(false);
-  //         });
-  //     } else {
-  //       return;
-  //     }
-  //   }, 2000);
-  //   return () => clearTimeout(delayDebounceFn);
-  // }, [searchTerm]);
-
   useEffect(() => {
     setInterval(() => setDateState(moment().format()), 1000);
   }, []);
 
   return (
     <>
-      {/* <div className={styles.top}>
-        <input
-          className={styles.input}
-          placeholder="知りたいキーワードを入れる..."
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div> */}
       <div className={styles.main}>
         <div className={styles.main_left}>
           <div>
