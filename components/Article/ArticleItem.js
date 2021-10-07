@@ -18,27 +18,33 @@ function ArticleItem({ newsArticle }) {
       .filter("user_id", "eq", user.id);
     setPosts(data);
   }
+
+  console.log(posts);
+
   async function deletePost(id) {
     await supabase.from("posts").delete().match({ id });
     fetchPosts();
   }
 
   return (
-    <>
-      {posts.map((item, index) => {
-        return (
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={index}
-          >
-            <p>{item.headline}</p>
-            <p>{item.time}</p>
-          </a>
-        );
-      })}
-    </>
+    <div className={styles.wrapper}>
+      <div className={styles.articleitem}>
+        {posts.map((item, index) => {
+          return (
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
+            >
+              <p>{item.headline}</p>
+              <p>{item.insertat.slice(0, 10)}</p>
+            </a>
+          );
+        })}
+      </div>
+      <div></div>
+    </div>
   );
 }
 
