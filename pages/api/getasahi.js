@@ -23,7 +23,7 @@ export default function getYomiuri(req, res) {
         const href = hrefOfAllNews[i].href;
         const time = timeOfAllNews[i].textContent;
 
-        topNews.push({ title, href, time });
+        topNews.push({ title, href, time, company: "朝日新聞" });
       }
       return topNews;
     });
