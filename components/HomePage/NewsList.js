@@ -5,13 +5,13 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { supabase } from "../../api";
 
-const initialState = { company: "", headline: "", link: "" };
+const initialState = { company: "", headline: "", link: "", time: "" };
 
 function NewsList({ newsData }) {
   const [sending, setIsSending] = useState("");
   const [status, setStatus] = useState("");
   const [savedData, setSavedData] = useState(initialState);
-  const { company, headline, link } = savedData;
+  const { company, headline, link, time } = savedData;
   const [iconColor, setIconColor] = useState({
     color: "black",
     size: "15px",
@@ -25,7 +25,7 @@ function NewsList({ newsData }) {
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("save")
-      .insert([{ company, headline, user_id: user.id, link }])
+      .insert([{ company, headline, user_id: user.id, link, time }])
       .single();
   }
 
@@ -42,9 +42,10 @@ function NewsList({ newsData }) {
               <p
                 onClick={() => {
                   setSavedData({
-                    company: "",
+                    company: item.company,
                     headline: item.title,
                     link: item.href,
+                    time: item.time,
                   });
                   savePost();
                 }}

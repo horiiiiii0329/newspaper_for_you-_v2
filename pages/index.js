@@ -120,7 +120,7 @@ export default function Home({
               setActiveContentFour(false);
             }}
           >
-            <SectionHeader title="パブリックな記事" number="01" />
+            <SectionHeader title="クリップした記事" number="01" />
           </div>
           <div className={activeContentOne ? styles.content : styles.opacity}>
             <Article newsArticle={newsArticle} />

@@ -1,37 +1,40 @@
 import Image from "next/image";
-import moment from "moment";
 import styles from "./ArticleItem.module.scss";
+import { useState, useEffect } from "react";
+import { supabase } from "../../api";
 
 function ArticleItem({ newsArticle }) {
-  console.log(newsArticle);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  async function fetchPosts() {
+    const user = supabase.auth.user();
+    const { data } = await supabase
+      .from("save")
+      .select("*")
+      .filter("user_id", "eq", user.id);
+    setPosts(data);
+  }
+  async function deletePost(id) {
+    await supabase.from("posts").delete().match({ id });
+    fetchPosts();
+  }
+
   return (
     <>
-      {newsArticle.map((article, index) => {
-        const time = moment(article.publishedAt || moment.now())
-          .fromNow()
-          .slice(0, 1);
+      {posts.map((item, index) => {
         return (
-          <a href={article.url} key={index} target="blank">
-            <article className={styles.article__main}>
-              <div className={styles.article_container__image}>
-                {article.urlToImage && (
-                  <img
-                    key={index}
-                    src={article.urlToImage}
-                    className={styles.article__img}
-                    alt={`${article.title} image`}
-                  />
-                )}
-              </div>
-              <div className={styles.article__title}>
-                <p>{article.title}</p>
-                <p>{article.description}</p>
-                <p>
-                  {time}
-                  時間前
-                </p>
-              </div>
-            </article>
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={index}
+          >
+            <p>{item.headline}</p>
+            <p>{item.time}</p>
           </a>
         );
       })}
