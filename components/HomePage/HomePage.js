@@ -132,35 +132,6 @@ function HomePage({
         </div>
       </div>
 
-      {/* {searchedData && searchTerm ? (
-        <div className={styles.middle}>
-          {searchedData.map((article, index) => (
-            <span key={index}>
-              {article.title} <span className={styles.hashtag}>/</span>
-            </span>
-          ))}
-        </div>
-      ) : (
-        <div className={styles.middle}>
-          {newsArticle.map((article, index) => (
-            <span key={index}>
-              {article.title} <span className={styles.hashtag}>/</span>
-            </span>
-          ))}
-        </div>
-      )} */}
-      {/* <ul className={styles.title}>
-        {newsHeadline.map((item, index) => {
-          return (
-            <li key={index}>
-              <a href={item.href} target="_blank" rel="noopener noreferrer">
-                {item.title}
-              </a>
-            </li>
-          );
-        })}
-      </ul> */}
-
       <div className={styles.bottom}>
         <div className={styles.bottom_right}>
           <Weather weatherNews={weatherNews} />
