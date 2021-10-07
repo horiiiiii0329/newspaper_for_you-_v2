@@ -8,10 +8,16 @@ import { supabase } from "../../api";
 const initialState = { company: "", headline: "", link: "" };
 
 function NewsList({ newsData }) {
-  const [sending, setIsSending] = useState("pending");
+  const [sending, setIsSending] = useState("");
   const [status, setStatus] = useState("");
   const [savedData, setSavedData] = useState(initialState);
   const { company, headline, link } = savedData;
+  const [iconColor, setIconColor] = useState({
+    color: "black",
+    size: "15px",
+    cursor: "pointer",
+  });
+
   const user = supabase.auth.user();
   console.log(savedData);
 
@@ -43,9 +49,7 @@ function NewsList({ newsData }) {
                   savePost();
                 }}
               >
-                <IconContext.Provider
-                  value={{ color: "black", size: "15px", cursor: "pointer" }}
-                >
+                <IconContext.Provider value={iconColor}>
                   <AiOutlineSave />
                 </IconContext.Provider>
               </p>
