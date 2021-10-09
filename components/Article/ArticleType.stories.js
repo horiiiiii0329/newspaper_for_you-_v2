@@ -1,13 +1,13 @@
 import React from "react";
 
-import Article from "./Article";
+import Type from "./Type";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: "Components/Article",
-  component: Article,
+  title: "Components/Type",
+  component: Type,
 };
 
-const Template = () => <Article />;
+const Template = () => <Type />;
 
 export const Default = Template.bind({});

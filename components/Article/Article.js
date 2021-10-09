@@ -8,12 +8,8 @@ function Article({ newsArticle }) {
 
   return (
     <div className={styles.wrapper}>
-      <div>
-        <ArticleItem newsArticle={newsArticle} />
-      </div>
-      <div>
-        <ArticleType />
-      </div>
+      <ArticleItem newsArticle={newsArticle} />
+      <ArticleType />
     </div>
   );
 }

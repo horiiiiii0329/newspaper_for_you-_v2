@@ -1,10 +1,4 @@
 .wrapper {
   display: flex;
   height: 100vh;
-  :first-child {
-    flex: 1;
-  }
-  :last-child {
-    flex: 1;
-  }
 }

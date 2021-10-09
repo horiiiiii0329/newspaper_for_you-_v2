@@ -1,4 +1,5 @@
 import styles from "./ArticleType.module.scss";
+import ArticleTypeItem from "./ArticleTypeItem";
 
 function ArticleType() {
   return (
@@ -6,7 +7,9 @@ function ArticleType() {
       <div className={styles.title}>
         <h3>スクラップブック</h3>
       </div>
-      <div className={styles.categories}></div>
+      <div className={styles.categories}>
+        <ArticleTypeItem />
+      </div>
     </div>
   );
 }
