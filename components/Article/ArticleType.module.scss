@@ -1,0 +1,19 @@
+.wrapper {
+  .title {
+    position: relative;
+    height: 15vh;
+    border-bottom: solid 1px black;
+
+    h3 {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      font-weight: 700;
+    }
+  }
+
+  .categories {
+    height: 84vh;
+    overflow-y: scroll;
+  }
+}
