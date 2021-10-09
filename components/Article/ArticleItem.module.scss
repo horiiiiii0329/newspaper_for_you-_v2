@@ -1,9 +1,9 @@
 .wrapper {
-  display: flex;
   flex-wrap: wrap;
 
   .articleitem {
     flex: 1;
     border-right: solid 1px black;
+    border-bottom: solid 1px black;
   }
 }

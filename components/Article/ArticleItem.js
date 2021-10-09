@@ -24,8 +24,6 @@ function ArticleItem({ newsArticle }) {
     setPosts(data);
   }
 
-  console.log(posts);
-
   async function deletePost(id) {
     await supabase.from("posts").delete().match({ id });
     fetchPosts();
@@ -33,22 +31,16 @@ function ArticleItem({ newsArticle }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.articleitem}>
-        {posts.map((item, index) => {
-          return (
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
+      {posts.map((item, index) => {
+        return (
+          <div className={styles.articleitem} key={index}>
+            <a href={item.link} target="_blank" rel="noopener noreferrer">
               <p>{item.headline}</p>
               <p>{item.insertat.slice(0, 10)}</p>
             </a>
-          );
-        })}
-      </div>
-      <div></div>
+          </div>
+        );
+      })}
     </div>
   );
 }
