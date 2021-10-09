@@ -8,6 +8,11 @@ function ArticleItem({ newsArticle }) {
 
   useEffect(() => {
     fetchPosts();
+    const mySubscription = supabase
+      .from("save")
+      .on("*", () => fetchPosts())
+      .subscribe();
+    return () => supabase.removeSubscription(mySubscription);
   }, []);
 
   async function fetchPosts() {

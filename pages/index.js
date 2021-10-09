@@ -13,7 +13,6 @@ import AuthUser from "../components/Profile/AuthUser";
 import ProfileCard from "../components/Profile/ProfileCard";
 import MyPosts from "../components/Profile/MyPost";
 import MyPost from "../components/Profile/MyPost";
-import useSWR from "swr";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -35,6 +34,13 @@ export default function Home({
     "not-authenticated"
   );
   const [login, setLogin] = useState(false);
+
+  const mySubscription = supabase
+    .from("*")
+    .on("*", (payload) => {
+      console.log("Change received!", payload);
+    })
+    .subscribe();
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(

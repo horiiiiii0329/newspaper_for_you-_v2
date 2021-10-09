@@ -19,13 +19,12 @@ function NewsList({ newsData }) {
   });
 
   const user = supabase.auth.user();
-  console.log(savedData);
 
   async function savePost() {
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("save")
-      .insert([{ company, headline, user_id: user.id, link, time }])
+      .insert([{ company, headline, user_id: user?.id, link, time }])
       .single();
   }
 
