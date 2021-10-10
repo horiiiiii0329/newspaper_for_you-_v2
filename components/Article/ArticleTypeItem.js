@@ -2,11 +2,30 @@ import { BsPlus } from "react-icons/bs";
 import styles from "./ArticleTypeItem.module.scss";
 import { IconContext } from "react-icons";
 import { supabase } from "../../api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
 function ArticleTypeItem() {
   const [title, setTitle] = useState({ title: "" });
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchList();
+    const mySubscription = supabase
+      .from("save-scrap-title")
+      .on("*", () => fetchList())
+      .subscribe();
+    return () => supabase.removeSubscription(mySubscription);
+  }, []);
+
+  async function fetchList() {
+    const user = supabase.auth.user();
+    const { data } = await supabase
+      .from("save-scrap-title")
+      .select("*")
+      .filter("user_id", "eq", user?.id);
+    setPosts(data);
+  }
 
   function onChange(e) {
     setTitle(() => ({ [e.target.name]: e.target.value }));
@@ -32,6 +51,20 @@ function ArticleTypeItem() {
           <h3>架空文春</h3>
         </div>
       </div>
+
+      {posts.map((post, index) => {
+        return (
+          <div className={styles.scraplist} key={index}>
+            <div className={styles.scrapelist__count}>
+              <p>{`0${index + 1}`}</p>
+            </div>
+            <div>
+              <h3>{post.title}</h3>
+            </div>
+          </div>
+        );
+      })}
+
       <div className={styles.addscrap}>
         <div className={styles.addscrapicon} onClick={() => createNewTitle()}>
           <IconContext.Provider

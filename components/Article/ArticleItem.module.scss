@@ -1,12 +1,17 @@
 .wrapper {
   height: 100vh;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  height: 100vh;
   width: 50%;
+  border-right: solid black 1px;
 
-  .articleitem {
-    flex: 1;
-    border-right: solid 1px black;
-    border-bottom: solid 1px black;
+  .content_wrapper {
+    overflow-y: scroll;
+    height: 100vh;
+
+    .articleitem {
+      flex: 1;
+      border-bottom: solid 1px black;
+    }
   }
 }

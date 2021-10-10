@@ -31,16 +31,18 @@ function ArticleItem({ newsArticle }) {
 
   return (
     <div className={styles.wrapper}>
-      {posts.map((item, index) => {
-        return (
-          <div className={styles.articleitem} key={index}>
-            <a href={item.link} target="_blank" rel="noopener noreferrer">
-              <p>{item.headline}</p>
-              <p>{item.insertat.slice(0, 10)}</p>
-            </a>
-          </div>
-        );
-      })}
+      <div className={styles.content_wrapper}>
+        {posts.map((item, index) => {
+          return (
+            <div className={styles.articleitem} key={index}>
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <p>{item.headline}</p>
+                <p>{item.insertat.slice(0, 10)}</p>
+              </a>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
