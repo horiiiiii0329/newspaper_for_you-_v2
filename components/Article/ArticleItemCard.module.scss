@@ -1,0 +1,30 @@
+.articleitem {
+  flex: 1;
+  border-bottom: solid 1px black;
+  display: flex;
+  height: 60px;
+
+  .articlemenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 100%;
+    border-right: solid black 1px;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .articlecontent {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+
+    time {
+      font-size: 12px;
+      font-weight: 200;
+    }
+  }
+}
