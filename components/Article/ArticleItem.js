@@ -2,9 +2,12 @@ import Image from "next/image";
 import styles from "./ArticleItem.module.scss";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
+import { HiDotsHorizontal } from "react-icons/hi";
+import { IconContext } from "react-icons";
 
 function ArticleItem({ newsArticle }) {
   const [posts, setPosts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetchPosts();
@@ -35,10 +38,23 @@ function ArticleItem({ newsArticle }) {
         {posts.map((item, index) => {
           return (
             <div className={styles.articleitem} key={index}>
-              <a href={item.link} target="_blank" rel="noopener noreferrer">
-                <p>{item.headline}</p>
-                <p>{item.insertat.slice(0, 10)}</p>
-              </a>
+              <div
+                className={styles.articlemenu}
+                onClick={() => setShowModal(!showModal)}
+              >
+                <IconContext.Provider
+                  value={{ color: "black", size: "15px", cursor: "pointer" }}
+                >
+                  <HiDotsHorizontal />
+                </IconContext.Provider>
+              </div>
+
+              <div className={styles.articlecontent}>
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <p>{item.headline ? item.headline : "null"}</p>
+                  <time>{item.insertat.slice(0, 10)}</time>
+                </a>
+              </div>
             </div>
           );
         })}

@@ -68,7 +68,7 @@ function ArticleTypeItem() {
       <div className={styles.addscrap}>
         <div className={styles.addscrapicon} onClick={() => createNewTitle()}>
           <IconContext.Provider
-            value={{ color: "black", size: "30px", cursor: "pointer" }}
+            value={{ color: "black", size: "20px", cursor: "pointer" }}
           >
             <BsPlus />
           </IconContext.Provider>
