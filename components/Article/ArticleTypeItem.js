@@ -47,8 +47,8 @@ function ArticleTypeItem() {
         <div className={styles.scrapelist__count}>
           <p>00</p>
         </div>
-        <div>
-          <h3>架空文春</h3>
+        <div className={styles.scraplist__title}>
+          <h3>全て</h3>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ function ArticleTypeItem() {
             <div className={styles.scrapelist__count}>
               <p>{`0${index + 1}`}</p>
             </div>
-            <div>
+            <div className={styles.scraplist__title}>
               <h3>{post.title}</h3>
             </div>
           </div>
@@ -73,7 +73,7 @@ function ArticleTypeItem() {
             <BsPlus />
           </IconContext.Provider>
         </div>
-        <div>
+        <div className={styles.input}>
           <input
             type="text"
             placeholder="タイトルを入力してください。。"

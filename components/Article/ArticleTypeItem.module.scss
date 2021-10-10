@@ -9,21 +9,28 @@
 
     .scrapelist__count {
       height: 100%;
-      width: 60px;
+      width: 70px;
       border-right: solid 1px black;
       display: flex;
       align-items: center;
-
-      p {
-        margin: auto;
-        width: 50%;
-        font-size: 18px;
-      }
+      justify-content: center;
     }
 
-    h3 {
-      padding-left: 10px;
-      margin: 0;
+    .scraplist__title {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+
+      h3 {
+        padding-left: 10px;
+        margin: 0;
+      }
     }
   }
 
@@ -34,23 +41,19 @@
     height: 60px;
 
     .addscrapicon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 100%;
-      width: 60px;
+      width: 64px;
       border-right: solid 1px black;
       display: flex;
       align-items: center;
       cursor: pointer;
+
       &:hover {
         background-color: black;
         color: white;
-      }
-
-      :first-child {
-        margin: auto;
-        &:hover {
-          background-color: black;
-          color: white;
-        }
       }
     }
 
