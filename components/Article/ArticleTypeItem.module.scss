@@ -1,4 +1,6 @@
 .wrapper {
+  width: 100%;
+
   .scraplist {
     border-bottom: solid 1px black;
     display: flex;
@@ -38,12 +40,13 @@
       display: flex;
       align-items: center;
       cursor: pointer;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
 
       :first-child {
         margin: auto;
-        width: 100%;
-        height: 100%;
-
         &:hover {
           background-color: black;
           color: white;
@@ -55,7 +58,7 @@
       height: 100%;
       border: none;
       font-size: 24px;
-      width: 100%;
+      width: 600px;
       padding-left: 10px;
 
       &:focus {

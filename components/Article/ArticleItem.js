@@ -20,7 +20,7 @@ function ArticleItem({ newsArticle }) {
     const { data } = await supabase
       .from("save")
       .select("*")
-      .filter("user_id", "eq", user.id);
+      .filter("user_id", "eq", user?.id);
     setPosts(data);
   }
 
