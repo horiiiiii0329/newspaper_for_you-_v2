@@ -1,7 +1,7 @@
 import styles from "./ArticleType.module.scss";
 import ArticleTypeItem from "./ArticleTypeItem";
 
-function ArticleType() {
+function ArticleType({ filterTitleHandler }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>

@@ -5,7 +5,7 @@ import { supabase } from "../../api";
 import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
-function ArticleTypeItem() {
+function ArticleTypeItem({ filterTitleHandler }) {
   const [title, setTitle] = useState({ title: "" });
   const [posts, setPosts] = useState([]);
 
