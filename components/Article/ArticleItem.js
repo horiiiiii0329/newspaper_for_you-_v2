@@ -1,34 +1,29 @@
 import Image from "next/image";
 import styles from "./ArticleItem.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
-
+import AppWrapper from "../../context/state";
 import ArticleItemCard from "./ArticleItemCard";
 
 function ArticleItem({ newsArticle }) {
   const [posts, setPosts] = useState([]);
-  const [filteredTitle, setfilteredTitle] = useState("");
-
-  function filterPost() {
-    const filteredData = posts.filter((post) => posts.title === filteredTitle);
-    setfilteredTitle(filteredData);
-  }
+  const appCtx = useContext(AppWrapper);
 
   useEffect(() => {
     fetchPosts();
     const mySubscription = supabase
       .from("save")
-      .on("*", () => fetchPosts(filteredTitle))
+      .on("*", () => fetchPosts())
       .subscribe();
     return () => supabase.removeSubscription(mySubscription);
-  }, [filteredTitle]);
+  }, [appCtx.selectedTitle]);
 
-  async function fetchPosts(filteredTitle) {
+  async function fetchPosts() {
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("save")
       .select("*")
-      .eq("title", "*")
+      .match({ title: appCtx.selectedTitle })
       .filter("user_id", "eq", user?.id);
 
     setPosts(data);

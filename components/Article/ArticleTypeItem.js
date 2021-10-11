@@ -2,12 +2,15 @@ import { BsPlus } from "react-icons/bs";
 import styles from "./ArticleTypeItem.module.scss";
 import { IconContext } from "react-icons";
 import { supabase } from "../../api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { v4 as uuid } from "uuid";
+import AppWrapper from "../../context/state";
 
 function ArticleTypeItem({ filterTitleHandler }) {
   const [title, setTitle] = useState({ title: "" });
   const [posts, setPosts] = useState([]);
+
+  const appCtx = useContext(AppWrapper);
 
   useEffect(() => {
     fetchList();
@@ -47,8 +50,11 @@ function ArticleTypeItem({ filterTitleHandler }) {
         <div className={styles.scrapelist__count}>
           <p>00</p>
         </div>
-        <div className={styles.scraplist__title}>
-          <h3>全て</h3>
+        <div
+          className={styles.scraplist__title}
+          onClick={() => appCtx.setSelectedTitle("全て")}
+        >
+          <h3>未分類</h3>
         </div>
       </div>
 
@@ -58,7 +64,10 @@ function ArticleTypeItem({ filterTitleHandler }) {
             <div className={styles.scrapelist__count}>
               <p>{`0${index + 1}`}</p>
             </div>
-            <div className={styles.scraplist__title}>
+            <div
+              className={styles.scraplist__title}
+              onClick={() => appCtx.setSelectedTitle(post.title)}
+            >
               <h3>{post.title}</h3>
             </div>
           </div>

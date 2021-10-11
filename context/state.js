@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 
 const AppWrapper = React.createContext({
-  savedTitle: [],
-  name: "",
-  filterData: (token) => {},
-  logout: () => {},
-  setName: (name) => {},
+  selectedTitle: "",
+  setSelectedTitle: () => {},
 });
 
 export const AppWrapperProvider = (props) => {
+  const [selectedTitle, setSelectedTitle] = useState("全て");
+
+  const titleSelectHandler = (title) => {
+    setSelectedTitle(title);
+  };
+
   const contextValue = {
-    savedTitle: [],
-    filterData: (token) => {},
+    selectedTitle: selectedTitle,
+    setSelectedTitle: titleSelectHandler,
   };
 
   return (
@@ -21,4 +24,4 @@ export const AppWrapperProvider = (props) => {
   );
 };
 
-export default AuthContext;
+export default AppWrapper;

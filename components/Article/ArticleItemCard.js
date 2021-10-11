@@ -32,7 +32,7 @@ function ArticleItemCard({ item, key, onDeleteHandler }) {
     const { data, error } = await supabase
       .from("save")
       .update({ title: title })
-      .match(id, id);
+      .match({ id });
 
     setShowAddModal(false);
     setShowModal(false);
@@ -96,7 +96,7 @@ function ArticleItemCard({ item, key, onDeleteHandler }) {
               <div className={styles.articlemenulist}>
                 <div
                   className={styles.addbutton}
-                  onClick={() => addScrapTitle(post.title, post.id)}
+                  onClick={() => addScrapTitle(post.title, item.id)}
                 >
                   <p>{post.title}</p>
                 </div>
