@@ -27,7 +27,7 @@ function ArticleItem({ newsArticle }) {
   }
 
   async function deletePost(id) {
-    await supabase.from("posts").delete().match({ id });
+    await supabase.from("save").delete().match({ id });
     fetchPosts();
   }
 
@@ -35,7 +35,13 @@ function ArticleItem({ newsArticle }) {
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
         {posts.map((item, index) => {
-          return <ArticleItemCard item={item} key={index} />;
+          return (
+            <ArticleItemCard
+              item={item}
+              key={index}
+              onDeleteHandler={deletePost}
+            />
+          );
         })}
       </div>
     </div>

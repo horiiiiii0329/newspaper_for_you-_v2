@@ -2,8 +2,9 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import styles from "./ArticleItemCard.module.scss";
 import { useState } from "react";
+import { supabase } from "../../api";
 
-function ArticleItemCard({ item, key }) {
+function ArticleItemCard({ item, key, onDeleteHandler }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -27,7 +28,17 @@ function ArticleItemCard({ item, key }) {
           </a>
         </div>
       ) : (
-        "aaaaaaaaaa"
+        <div className={styles.articleMenu}>
+          <p>追加</p>
+          <p
+            onClick={() => {
+              onDeleteHandler(item.id);
+              setShowModal(false);
+            }}
+          >
+            除去
+          </p>
+        </div>
       )}
     </div>
   );
