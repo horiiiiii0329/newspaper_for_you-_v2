@@ -2,11 +2,14 @@ import styles from "./AllArticleList.module.scss";
 
 function AllArticleLIst({ title, time, company, key, link }) {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <p>{title ? title : "null"}</p>
-        <p>{company}</p>
-        <time>{time}</time>
+        <p className={styles.title}>
+          {title ? title : "null"}
+          <span className={styles.company}>{company}</span>
+        </p>
+
+        <time className={styles.time}>発行日：{time}</time>
       </a>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./AllArticle.module.scss";
 import { supabase } from "../../api";
-import AllArticleLIst from "./AllArticleLIst";
+import AllArticleList from "./AllArticleList";
 
 function AllArticle() {
   const [posts, setPosts] = useState([]);
@@ -26,18 +26,26 @@ function AllArticle() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
-        <div>
-          {posts.map((post, index) => (
-            <AllArticleLIst
-              title={post.headline}
-              time={post.time}
-              company={post.company}
-              key={index}
-              link={post.link}
-            />
-          ))}
-        </div>
-        <div></div>
+        {posts.map((post, index) => (
+          <AllArticleList
+            title={post.headline}
+            time={post.time}
+            company={post.company}
+            key={index}
+            link={post.link}
+          />
+        ))}
+      </div>
+      <div className={styles.content_wrapper}>
+        {posts.map((post, index) => (
+          <AllArticleList
+            title={post.headline}
+            time={post.time}
+            company={post.company}
+            key={index}
+            link={post.link}
+          />
+        ))}
       </div>
     </div>
   );
