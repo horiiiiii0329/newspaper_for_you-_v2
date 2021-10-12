@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import styles from "./AllArticle.module.scss";
 import { supabase } from "../../api";
 import AllArticleList from "./AllArticleList";
+import AllArticleType from "./AllArticleType";
 
 function AllArticle() {
   const [posts, setPosts] = useState([]);
-  const [title, setTitle] = useState([]);
+  const [titles, setTitle] = useState([]);
 
   useEffect(() => {
     fetchPosts();
+    fetchTitle();
   }, []);
 
   async function fetchPosts() {
@@ -37,14 +39,8 @@ function AllArticle() {
         ))}
       </div>
       <div className={styles.content_wrapper}>
-        {posts.map((post, index) => (
-          <AllArticleList
-            title={post.headline}
-            time={post.time}
-            company={post.company}
-            key={index}
-            link={post.link}
-          />
+        {titles.map((title, index) => (
+          <AllArticleType title={title.title} key={index} />
         ))}
       </div>
     </div>
