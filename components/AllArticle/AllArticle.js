@@ -11,7 +11,7 @@ function AllArticle() {
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
 
-  console.log(company);
+  console.log(posts);
 
   useEffect(() => {
     fetchPosts();
@@ -23,6 +23,26 @@ function AllArticle() {
     const { data } = await supabase.from("save").select("*");
 
     setPosts(data);
+  }
+
+  function fetchFilteredTitlePosts(title) {
+    let unique = [];
+    posts.forEach((item) => {
+      if (item.title === title) {
+        unique.push(item);
+      }
+    });
+    setPosts(unique);
+  }
+
+  async function fetchFilteredCompanyPosts(item) {
+    let unique = [];
+    posts.forEach((item) => {
+      if (item.company === item) {
+        unique.push(item);
+      }
+    });
+    setPosts(unique);
   }
 
   async function fetchCompany() {
@@ -78,13 +98,21 @@ function AllArticle() {
             スクラップブック
           </p>
         </div>
-        {activeContent2 &&
-          titles.map((title, index) => (
-            <AllArticleType title={title.title} key={index} index={index} />
-          ))}
+
         {activeContent1 &&
           company.map((item, index) => (
-            <AllArticleType title={item} key={index} index={index} />
+            <div onClick={() => fetchFilteredCompanyPosts(item)} key={index}>
+              <AllArticleType title={item} index={index} />
+            </div>
+          ))}
+        {activeContent2 &&
+          titles.map((title, index) => (
+            <div
+              key={index}
+              onClick={() => fetchFilteredTitlePosts(title.title)}
+            >
+              <AllArticleType title={title.title} index={index} />
+            </div>
           ))}
       </div>
     </div>
