@@ -11,6 +11,8 @@ function AllArticle() {
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
 
+  console.log(company);
+
   useEffect(() => {
     fetchPosts();
     fetchTitle();
@@ -26,7 +28,14 @@ function AllArticle() {
   async function fetchCompany() {
     const { data } = await supabase.from("save").select("company");
 
-    setCompany(data);
+    let unique = [];
+    data.forEach((item) => {
+      if (!unique.includes(item.company)) {
+        unique.push(item.company);
+      }
+    });
+
+    setCompany(unique);
   }
 
   async function fetchTitle() {
@@ -69,9 +78,14 @@ function AllArticle() {
             スクラップブック
           </p>
         </div>
-        {titles.map((title, index) => (
-          <AllArticleType title={title.title} key={index} />
-        ))}
+        {activeContent2 &&
+          titles.map((title, index) => (
+            <AllArticleType title={title.title} key={index} />
+          ))}
+        {activeContent1 &&
+          company.map((item, index) => (
+            <AllArticleType title={item} key={index} />
+          ))}
       </div>
     </div>
   );

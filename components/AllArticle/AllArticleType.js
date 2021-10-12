@@ -1,7 +1,7 @@
 function AllArticleType({ title, key }) {
   return (
     <div>
-      <div></div>
+      <div>{title}</div>
     </div>
   );
 }
