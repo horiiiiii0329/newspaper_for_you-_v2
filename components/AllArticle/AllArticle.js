@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./AllArticle.module.scss";
+import { supabase } from "../../api";
+import AllArticleLIst from "./AllArticleLIst";
 
 function AllArticle() {
   const [posts, setPosts] = useState([]);
@@ -10,22 +12,25 @@ function AllArticle() {
   }, []);
 
   async function fetchPosts() {
-    const user = supabase.auth.user();
     const { data } = await supabase.from("save").select("*");
 
     setPosts(data);
   }
 
   async function fetchTitle() {
-    const user = supabase.auth.user();
     const { data } = await supabase.from("save-scrap-title").select("*");
 
-    setPosts(data);
+    setTitle(data);
   }
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.content_wrapper}></div>
+      <div className={styles.content_wrapper}>
+        <div>
+          <AllArticleLIst posts={posts} />
+        </div>
+        <div></div>
+      </div>
     </div>
   );
 }
