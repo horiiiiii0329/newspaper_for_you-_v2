@@ -13,6 +13,7 @@ import AuthUser from "../components/Profile/AuthUser";
 import ProfileCard from "../components/Profile/ProfileCard";
 import MyPosts from "../components/Profile/MyPost";
 import MyPost from "../components/Profile/MyPost";
+import AllArticle from "../components/AllArticle/AllArticle";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -153,7 +154,7 @@ export default function Home({
             <SectionHeader title="みんなの記事" number="02" />
           </div>
           <div className={activeContentTwo ? styles.content : styles.opacity}>
-            <Article newsArticle={newsArticle} />
+            <AllArticle />
           </div>
         </section>
 
