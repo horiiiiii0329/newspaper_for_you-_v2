@@ -16,9 +16,24 @@
       height: 300px;
       border-bottom: solid black 1px;
       display: flex;
-      justify-content: space-around;
       align-items: flex-end;
-      padding-bottom: 20px;
+
+      p {
+        width: 100%;
+        text-align: center;
+
+        padding: 15px 0;
+      }
     }
   }
+}
+
+.activecontent {
+  border-top: solid black 1px;
+  border-right: solid black 1px;
+}
+
+.activecontent2 {
+  border-top: solid black 1px;
+  border-left: solid black 1px;
 }
