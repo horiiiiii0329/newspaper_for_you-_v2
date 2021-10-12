@@ -8,4 +8,17 @@
     width: 50%;
     overflow-y: scroll;
   }
+
+  .content_wrapper2 {
+    width: 50%;
+
+    .categories {
+      height: 300px;
+      border-bottom: solid black 1px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding-bottom: 20px;
+    }
+  }
 }

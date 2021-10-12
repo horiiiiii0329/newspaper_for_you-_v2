@@ -38,7 +38,11 @@ function AllArticle() {
           />
         ))}
       </div>
-      <div className={styles.content_wrapper}>
+      <div className={styles.content_wrapper2}>
+        <div className={styles.categories}>
+          <p>媒体</p>
+          <p>スクラップブック</p>
+        </div>
         {titles.map((title, index) => (
           <AllArticleType title={title.title} key={index} />
         ))}
