@@ -1,7 +1,17 @@
-function AllArticleType({ title, key }) {
+import styles from "./AllArticleType.module.scss";
+
+function AllArticleType({ title, index }) {
   return (
-    <div>
-      <div>{title}</div>
+    <div className={styles.scraplist}>
+      <div className={styles.scrapelist__count}>
+        <p>{`0${index + 1}`}</p>
+      </div>
+      <div
+        className={styles.scraplist__title}
+        onClick={() => appCtx.setSelectedTitle(title)}
+      >
+        <h3>{title}</h3>
+      </div>
     </div>
   );
 }

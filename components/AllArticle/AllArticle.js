@@ -80,11 +80,11 @@ function AllArticle() {
         </div>
         {activeContent2 &&
           titles.map((title, index) => (
-            <AllArticleType title={title.title} key={index} />
+            <AllArticleType title={title.title} key={index} index={index} />
           ))}
         {activeContent1 &&
           company.map((item, index) => (
-            <AllArticleType title={item} key={index} />
+            <AllArticleType title={item} key={index} index={index} />
           ))}
       </div>
     </div>
