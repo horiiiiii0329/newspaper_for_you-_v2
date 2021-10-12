@@ -27,7 +27,15 @@ function AllArticle() {
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
         <div>
-          <AllArticleLIst posts={posts} />
+          {posts.map((post, index) => (
+            <AllArticleLIst
+              title={post.headline}
+              time={post.time}
+              company={post.company}
+              key={index}
+              link={post.link}
+            />
+          ))}
         </div>
         <div></div>
       </div>
