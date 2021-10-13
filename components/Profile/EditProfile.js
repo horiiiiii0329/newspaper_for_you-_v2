@@ -15,8 +15,11 @@ export default function EditProfile({ user }) {
 
   async function fetchProfile() {
     const profileData = await supabase.auth.user();
-
-    setProfile(profileData);
+    if (!profileData) {
+      router.push("/sign-in");
+    } else {
+      setProfile(profileData);
+    }
   }
 
   async function getProfile() {
