@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import Link from "next/link";
 import styles from "./MyPost.module.scss";
+import EditProfile from "./EditProfile";
 
 export default function MyPosts() {
   const [posts, setPosts] = useState([]);
@@ -24,7 +25,7 @@ export default function MyPosts() {
   }
   return (
     <>
-      {posts.map((post, index) => (
+      {/* {posts.map((post, index) => (
         <>
           <div key={index} className={styles.container}>
             <h2>{post.title}</h2>
@@ -40,7 +41,9 @@ export default function MyPosts() {
             <button onClick={() => deletePost(post.id)}>消去</button>
           </div>
         </>
-      ))}
+      ))} */}
+
+      <EditProfile />
     </>
   );
 }
