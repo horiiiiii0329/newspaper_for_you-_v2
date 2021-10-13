@@ -58,21 +58,22 @@ function ArticleTypeItem({ filterTitleHandler }) {
         </div>
       </div>
 
-      {posts.map((post, index) => {
-        return (
-          <div className={styles.scraplist} key={index}>
-            <div className={styles.scrapelist__count}>
-              <p>{`0${index + 1}`}</p>
+      {posts &&
+        posts.map((post, index) => {
+          return (
+            <div className={styles.scraplist} key={index}>
+              <div className={styles.scrapelist__count}>
+                <p>{`0${index + 1}`}</p>
+              </div>
+              <div
+                className={styles.scraplist__title}
+                onClick={() => appCtx.setSelectedTitle(post.title)}
+              >
+                <h3>{post.title}</h3>
+              </div>
             </div>
-            <div
-              className={styles.scraplist__title}
-              onClick={() => appCtx.setSelectedTitle(post.title)}
-            >
-              <h3>{post.title}</h3>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
 
       <div className={styles.addscrap}>
         <div className={styles.addscrapicon} onClick={() => createNewTitle()}>

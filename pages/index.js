@@ -14,6 +14,7 @@ import ProfileCard from "../components/Profile/ProfileCard";
 import MyPosts from "../components/Profile/MyPost";
 import MyPost from "../components/Profile/MyPost";
 import AllArticle from "../components/AllArticle/AllArticle";
+import EditProfile from "../components/Profile/EditProfile";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -211,6 +212,7 @@ export default function Home({
               <>
                 <ProfileCard />
                 <MyPost />
+                <EditProfile user={user} />
               </>
             )}
           </div>

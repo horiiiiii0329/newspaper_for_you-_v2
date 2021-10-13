@@ -25,7 +25,7 @@ export default function MyPosts() {
   }
   return (
     <>
-      {/* {posts.map((post, index) => (
+      {posts.map((post, index) => (
         <>
           <div key={index} className={styles.container}>
             <h2>{post.title}</h2>
@@ -41,9 +41,7 @@ export default function MyPosts() {
             <button onClick={() => deletePost(post.id)}>消去</button>
           </div>
         </>
-      ))} */}
-
-      <EditProfile />
+      ))}
     </>
   );
 }

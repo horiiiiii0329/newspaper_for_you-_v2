@@ -1,15 +1,23 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 
-export default function EditProfile({ session }) {
+export default function EditProfile({ user }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     getProfile();
-  }, [session]);
+    fetchProfile();
+  }, []);
+
+  async function fetchProfile() {
+    const profileData = await supabase.auth.user();
+
+    setProfile(profileData);
+  }
 
   async function getProfile() {
     try {
@@ -69,7 +77,7 @@ export default function EditProfile({ session }) {
     <div className="form-widget">
       <div>
         <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
+        <input id="email" type="text" value={profile.email} disabled />
       </div>
       <div>
         <label htmlFor="username">Name</label>
