@@ -29,7 +29,7 @@ function ProfileCard() {
   if (!profile) return null;
   return (
     <div className={styles.container}>
-      <h2>こんにちわ</h2>
+      <h2>こんにちわ{profile.email}</h2>
 
       <button onClick={signOut}>サインアウト</button>
     </div>

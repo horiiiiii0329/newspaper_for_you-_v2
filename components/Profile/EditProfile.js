@@ -9,8 +9,20 @@ export default function EditProfile({ user }) {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    getProfile();
     fetchProfile();
+  }, []);
+
+  async function fetchProfile() {
+    const profileData = await supabase.auth.user();
+    if (!profileData) {
+      router.push("/");
+    } else {
+      setProfile(profileData);
+    }
+  }
+
+  useEffect(() => {
+    getProfile();
   }, []);
 
   async function fetchProfile() {
@@ -80,7 +92,7 @@ export default function EditProfile({ user }) {
     <div className="form-widget">
       <div>
         <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={profile.email} disabled />
+        <input id="email" type="text" value={profile?.email} disabled />
       </div>
       <div>
         <label htmlFor="username">Name</label>

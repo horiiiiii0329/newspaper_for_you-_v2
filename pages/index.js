@@ -131,7 +131,11 @@ export default function Home({
             <SectionHeader title="クリップした記事" number="01" />
           </div>
           <div className={activeContentOne ? styles.content : styles.opacity}>
-            <Article newsArticle={newsArticle} />
+            {authenticatedState === "not-authenticated" ? (
+              <AuthUser />
+            ) : (
+              <Article newsArticle={newsArticle} />
+            )}
           </div>
         </section>
         <section
@@ -211,8 +215,8 @@ export default function Home({
             ) : (
               <>
                 <ProfileCard />
+                <EditProfile />
                 <MyPost />
-                <EditProfile user={user} />
               </>
             )}
           </div>
