@@ -34,6 +34,8 @@ function ArticleItem({ newsArticle }) {
     fetchPosts();
   }
 
+  console.log(posts);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
@@ -46,6 +48,12 @@ function ArticleItem({ newsArticle }) {
             />
           );
         })}
+
+        {posts.length === 0 && (
+          <div className={styles.articlecontent}>
+            <p>見出しを追加してください</p>
+          </div>
+        )}
       </div>
     </div>
   );

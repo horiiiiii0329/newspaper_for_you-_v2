@@ -10,5 +10,13 @@
     overflow-y: scroll;
     height: 100vh;
     position: relative;
+
+    .articlecontent {
+      border-bottom: solid 1px black;
+      display: flex;
+      height: 60px;
+      align-items: center;
+      padding-left: 5px;
+    }
   }
 }
