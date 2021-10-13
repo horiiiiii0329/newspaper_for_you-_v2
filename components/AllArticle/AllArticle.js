@@ -25,24 +25,22 @@ function AllArticle() {
     setPosts(data);
   }
 
-  function fetchFilteredTitlePosts(title) {
-    let unique = [];
-    posts.forEach((item) => {
-      if (item.title === title) {
-        unique.push(item);
-      }
-    });
-    setPosts(unique);
+  async function fetchFilteredTitlePosts(title) {
+    const { data } = await supabase
+      .from("save")
+      .select("*")
+      .filter("title", "eq", title);
+
+    setPosts(data);
   }
 
   async function fetchFilteredCompanyPosts(item) {
-    let unique = [];
-    posts.forEach((item) => {
-      if (item.company === item) {
-        unique.push(item);
-      }
-    });
-    setPosts(unique);
+    const { data } = await supabase
+      .from("save")
+      .select("*")
+      .filter("company", "eq", item);
+
+    setPosts(data);
   }
 
   async function fetchCompany() {
