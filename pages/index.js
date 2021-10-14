@@ -22,11 +22,11 @@ export default function Home({
   user,
   weatherNews,
   newsArticle,
-  asahiData,
-  yomiuriData,
-  sankeiData,
-  mainichiData,
-  nihonData,
+  // asahiData,
+  // yomiuriData,
+  // sankeiData,
+  // mainichiData,
+  // nihonData,
 }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
@@ -36,6 +36,39 @@ export default function Home({
     "not-authenticated"
   );
   const [login, setLogin] = useState(false);
+  const [asahiData, setAsahiData] = useState([]);
+  const [yomiuriData, setYomiuriData] = useState([]);
+  const [sankeiData, setSankeiData] = useState([]);
+  const [mainichiData, setMainichiData] = useState([]);
+  const [nihonData, setNihonData] = useState([]);
+
+  useEffect(() => {
+    fetchNewsList;
+  }, []);
+
+  async function fetchNewsList() {
+    const sankei = await fetch("http://localhost:3000/api/getsankei");
+    const sankeiData = await sankei.json();
+    setSankeiData(sankeiData);
+
+    const asahi = await fetch("http://localhost:3000/api/getasahi");
+    const asahiData = await asahi.json();
+    setAsahiData(asahiData);
+
+    const mainichi = await fetch("http://localhost:3000/api/getmainichi");
+    const mainichiData = await mainichi.json();
+    setMainichiData(mainichiData);
+
+    const nihon = await fetch("http://localhost:3000/api/getnihonkeizai");
+    const nihonData = await nihon.json();
+    setNihonData(nihonData);
+
+    const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+    const yomiuriData = await yomiuri.json();
+    setYomiuriData(yomiuriData);
+  }
+
+  useEffect(() => {});
 
   const mySubscription = supabase
     .from("*")
@@ -248,31 +281,31 @@ export const getStaticProps = async ({ req }) => {
   const newsArticle = newsData?.articles;
 
   //get a newsheadline
-  const sankei = await fetch("http://localhost:3000/api/getsankei");
-  const sankeiData = await sankei.json();
+  // const sankei = await fetch("http://localhost:3000/api/getsankei");
+  // const sankeiData = await sankei.json();
 
-  const asahi = await fetch("http://localhost:3000/api/getasahi");
-  const asahiData = await asahi.json();
+  // const asahi = await fetch("http://localhost:3000/api/getasahi");
+  // const asahiData = await asahi.json();
 
-  const mainichi = await fetch("http://localhost:3000/api/getmainichi");
-  const mainichiData = await mainichi.json();
+  // const mainichi = await fetch("http://localhost:3000/api/getmainichi");
+  // const mainichiData = await mainichi.json();
 
-  const nihon = await fetch("http://localhost:3000/api/getnihonkeizai");
-  const nihonData = await nihon.json();
+  // const nihon = await fetch("http://localhost:3000/api/getnihonkeizai");
+  // const nihonData = await nihon.json();
 
-  const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
-  const yomiuriData = await yomiuri.json();
+  // const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+  // const yomiuriData = await yomiuri.json();
 
   if (!user) {
     return {
       props: {
         weatherNews,
         newsArticle,
-        asahiData,
-        yomiuriData,
-        sankeiData,
-        mainichiData,
-        nihonData,
+        // asahiData,
+        // yomiuriData,
+        // sankeiData,
+        // mainichiData,
+        // nihonData,
       },
     };
   }
@@ -282,11 +315,11 @@ export const getStaticProps = async ({ req }) => {
       user,
       weatherNews,
       newsArticle,
-      asahiData,
-      yomiuriData,
-      sankeiData,
-      mainichiData,
-      nihonData,
+      // asahiData,
+      // yomiuriData,
+      // sankeiData,
+      // mainichiData,
+      // nihonData,
     },
   };
 };
