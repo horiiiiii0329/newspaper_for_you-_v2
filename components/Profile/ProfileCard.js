@@ -5,9 +5,15 @@ import styles from "./ProfileCard.module.scss";
 
 function ProfileCard() {
   const [userName, setUserName] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getProfile();
+    const mySubscription = supabase
+      .from("profiles")
+      .on("*", () => getProfile())
+      .subscribe();
+    return () => supabase.removeSubscription(mySubscription);
   }, []);
 
   async function getProfile() {
@@ -26,7 +32,7 @@ function ProfileCard() {
       }
 
       if (data) {
-        setUsername(data.username);
+        setUserName(data.username);
       }
     } catch (error) {
       alert(error.message);
@@ -38,11 +44,13 @@ function ProfileCard() {
   async function signOut() {
     await supabase.auth.signOut();
   }
-  if (!profile) return null;
+
   return (
     <>
       <div className={styles.container}>
-        <h2>こんにちわ{username ? username : "名無し"}さん</h2>
+        <h2>
+          こんにちわ : {userName ? userName : "名無し"} <span>さん</span>
+        </h2>
 
         <button onClick={signOut}>プロフィール</button>
       </div>

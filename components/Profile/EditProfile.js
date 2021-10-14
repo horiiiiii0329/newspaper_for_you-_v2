@@ -95,7 +95,7 @@ export default function EditProfile({ user }) {
         <input
           id="username"
           type="text"
-          value={username || "名無し"}
+          value={username || ""}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
