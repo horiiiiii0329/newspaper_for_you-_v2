@@ -215,7 +215,6 @@ export default function Home({
             ) : (
               <>
                 <ProfileCard />
-                <EditProfile />
                 <MyPost />
               </>
             )}

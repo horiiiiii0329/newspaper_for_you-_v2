@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
-import 
+import styles from "./EditProfile.module.scss";
 
 export default function EditProfile({ user }) {
   const [loading, setLoading] = useState(true);
@@ -28,11 +28,8 @@ export default function EditProfile({ user }) {
 
   async function fetchProfile() {
     const profileData = await supabase.auth.user();
-    if (!profileData) {
-      router.push("/sign-in");
-    } else {
-      setProfile(profileData);
-    }
+
+    setProfile(profileData);
   }
 
   async function getProfile() {
@@ -88,33 +85,33 @@ export default function EditProfile({ user }) {
   }
 
   return (
-    <div className="form-widget">
+    <div className={styles.form}>
       <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={profile?.email} disabled />
       </div>
       <div>
-        <label htmlFor="username">Name</label>
+        <label htmlFor="username">名前</label>
         <input
           id="username"
           type="text"
-          value={username || ""}
+          value={username || "名無し"}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div>
         <button
-          className="button block primary"
+          className={styles.button}
           onClick={() => updateProfile({ username, website, avatar_url })}
           disabled={loading}
         >
-          {loading ? "Loading ..." : "Update"}
+          {loading ? "ローディング中。。。" : "更新"}
         </button>
       </div>
 
       <div>
         <button
-          className="button block"
+          className={styles.button}
           onClick={() => supabase.auth.signOut()}
         >
           Sign Out
