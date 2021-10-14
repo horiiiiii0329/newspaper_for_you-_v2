@@ -82,7 +82,7 @@ function AllArticle() {
               setActiveContent1(true);
               setActiveContent2(false);
             }}
-            className={activeContent1 && styles.activecontent}
+            className={activeContent1 ? styles.activecontent : undefined}
           >
             媒体
           </p>
@@ -91,7 +91,7 @@ function AllArticle() {
               setActiveContent1(false);
               setActiveContent2(true);
             }}
-            className={activeContent2 && styles.activecontent2}
+            className={activeContent2 ? styles.activecontent2 : undefined}
           >
             スクラップブック
           </p>

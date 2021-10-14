@@ -1,4 +1,16 @@
-const puppeteer = require("puppeteer");
+let chrome = {};
+let puppeteer = {};
+
+if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+  //Vercel
+  chrome = require("chrome-aws-lambda");
+  puppeteer = require("puppeteer-core");
+} else {
+  //Local Test
+  puppeteer = require("puppeteer");
+
+  const URL = `https://protoout.studio`;
+}
 
 const url = "https://www.yomiuri.co.jp/news/";
 
