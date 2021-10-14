@@ -6,7 +6,7 @@ export default function getYomiuri(req, res) {
   async function getData(url) {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
-    await page.goto(url);
+    await page.goto(url, { waitUntil: "load", timeout: 0 });
     const news = await page.evaluate(() => {
       const topNews = [];
       const listOfAllNews = Array.from(
