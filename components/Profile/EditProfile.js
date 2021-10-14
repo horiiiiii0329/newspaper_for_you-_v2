@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
+import 
 
 export default function EditProfile({ user }) {
   const [loading, setLoading] = useState(true);
@@ -69,13 +70,11 @@ export default function EditProfile({ user }) {
       const updates = {
         id: user.id,
         username,
-        website,
-        avatar_url,
         updated_at: new Date(),
       };
 
       let { error } = await supabase.from("profiles").upsert(updates, {
-        returning: "minimal", // Don't return the value after inserting
+        returning: "minimal",
       });
 
       if (error) {
@@ -103,16 +102,6 @@ export default function EditProfile({ user }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="website"
-          value={website || ""}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-      </div>
-
       <div>
         <button
           className="button block primary"
