@@ -44,31 +44,29 @@ export default function Home({
 
   useEffect(() => {
     fetchNewsList;
-  }, []);
+  });
 
   async function fetchNewsList() {
-    const sankei = await fetch("http://localhost:3000/api/getsankei");
+    const sankei = await fetch("/api/getsankei");
     const sankeiData = await sankei.json();
     setSankeiData(sankeiData);
 
-    const asahi = await fetch("http://localhost:3000/api/getasahi");
+    const asahi = await fetch("/api/getasahi");
     const asahiData = await asahi.json();
     setAsahiData(asahiData);
 
-    const mainichi = await fetch("http://localhost:3000/api/getmainichi");
+    const mainichi = await fetch("/api/getmainichi");
     const mainichiData = await mainichi.json();
     setMainichiData(mainichiData);
 
-    const nihon = await fetch("http://localhost:3000/api/getnihonkeizai");
+    const nihon = await fetch("/api/getnihonkeizai");
     const nihonData = await nihon.json();
     setNihonData(nihonData);
 
-    const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+    const yomiuri = await fetch("/api/getyomiuri");
     const yomiuriData = await yomiuri.json();
     setYomiuriData(yomiuriData);
   }
-
-  useEffect(() => {});
 
   const mySubscription = supabase
     .from("*")
