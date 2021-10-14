@@ -86,11 +86,11 @@ export default function EditProfile({ user }) {
 
   return (
     <div className={styles.form}>
-      <div>
+      <div className={styles.email}>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={profile?.email} disabled />
       </div>
-      <div>
+      <div className={styles.username}>
         <label htmlFor="username">名前</label>
         <input
           id="username"
@@ -99,23 +99,15 @@ export default function EditProfile({ user }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div>
+      <div className={styles.button}>
         <button
-          className={styles.button}
           onClick={() => updateProfile({ username, website, avatar_url })}
           disabled={loading}
         >
           {loading ? "ローディング中。。。" : "更新"}
         </button>
-      </div>
 
-      <div>
-        <button
-          className={styles.button}
-          onClick={() => supabase.auth.signOut()}
-        >
-          Sign Out
-        </button>
+        <button onClick={() => supabase.auth.signOut()}>サインアウト</button>
       </div>
     </div>
   );

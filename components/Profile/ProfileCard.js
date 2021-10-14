@@ -6,6 +6,7 @@ import styles from "./ProfileCard.module.scss";
 function ProfileCard() {
   const [userName, setUserName] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getProfile();
@@ -41,10 +42,6 @@ function ProfileCard() {
     }
   }
 
-  async function signOut() {
-    await supabase.auth.signOut();
-  }
-
   return (
     <>
       <div className={styles.container}>
@@ -52,9 +49,9 @@ function ProfileCard() {
           こんにちわ : {userName ? userName : "名無し"} <span>さん</span>
         </h2>
 
-        <button onClick={signOut}>プロフィール</button>
+        <button onClick={() => setShowModal(!showModal)}>プロフィール</button>
       </div>
-      <EditProfile />
+      <div className={styles.modal}>{showModal && <EditProfile />}</div>
     </>
   );
 }
