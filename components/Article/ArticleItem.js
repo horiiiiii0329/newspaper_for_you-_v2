@@ -16,7 +16,7 @@ function ArticleItem({ newsArticle }) {
       .on("*", () => fetchPosts())
       .subscribe();
     return () => supabase.removeSubscription(mySubscription);
-  }, [appCtx.selectedTitle]);
+  });
 
   async function fetchPosts() {
     const user = supabase.auth.user();
