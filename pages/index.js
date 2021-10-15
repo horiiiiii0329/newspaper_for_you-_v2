@@ -279,19 +279,29 @@ export async function getServerSideProps(context) {
   const newsArticle = newsData?.articles;
 
   // get a newsheadline
-  const sankei = await fetch("http://localhost:3000/api/getsankei");
+  const sankei = await fetch(
+    "https://newspaper-for-you-v2.vercel.app/api/getsankei"
+  );
   const sankeiData = await sankei.json();
 
-  const asahi = await fetch("http://localhost:3000/api/getasahi");
+  const asahi = await fetch(
+    "https://newspaper-for-you-v2.vercel.app/api/getasahi"
+  );
   const asahiData = await asahi.json();
 
-  const mainichi = await fetch("http://localhost:3000/api/getmainichi");
+  const mainichi = await fetch(
+    "https://newspaper-for-you-v2.vercel.app/api/getmainichi"
+  );
   const mainichiData = await mainichi.json();
 
-  const nihon = await fetch("http://localhost:3000/api/getnihonkeizai");
+  const nihon = await fetch(
+    "https://newspaper-for-you-v2.vercel.app/api/getnihonkeizai"
+  );
   const nihonData = await nihon.json();
 
-  const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+  const yomiuri = await fetch(
+    "https://newspaper-for-you-v2.vercel.app/api/getyomiuri"
+  );
   const yomiuriData = await yomiuri.json();
 
   if (!user) {
