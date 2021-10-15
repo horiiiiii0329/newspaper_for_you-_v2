@@ -46,7 +46,7 @@ export default function getYomiuri(req, res) {
 
     console.log(news);
 
-    res.send(news);
+    res.status(200).json(news);
     browser.close();
   }
   getData(url);
