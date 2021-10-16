@@ -9,8 +9,6 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
 } else {
   //Local Test
   puppeteer = require("puppeteer");
-
-  const URL = `https://protoout.studio`;
 }
 
 const url = "https://news.yahoo.co.jp/media/asahi";
@@ -24,6 +22,8 @@ export default function getYomiuri(req, res) {
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "load", timeout: 0 });
+
+    var $ = cheerio.load(content);
     const news = await page.evaluate(() => {
       const topNews = [];
       const listOfAllNews = Array.from(

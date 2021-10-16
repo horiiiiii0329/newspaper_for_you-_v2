@@ -8,8 +8,6 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
 } else {
   //Local Test
   puppeteer = require("puppeteer");
-
-  const URL = `https://protoout.studio`;
 }
 
 const url = "https://news.yahoo.co.jp/media/nikkeisty";

@@ -9,8 +9,6 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   //Local Test
   puppeteer = require("puppeteer");
 
-  const URL = `https://protoout.studio`;
-}
 
 const url = "https://www.yomiuri.co.jp/news/";
 
