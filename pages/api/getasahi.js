@@ -1,5 +1,6 @@
 let chrome = {};
 let puppeteer = {};
+const cheerio = require("cheerio");
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   //Vercel
