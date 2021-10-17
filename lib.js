@@ -194,6 +194,7 @@ export function getYomiuri() {
     console.log(news);
 
     browser.close();
+    return news;
   }
   getData();
 }
