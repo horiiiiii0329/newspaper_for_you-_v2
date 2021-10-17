@@ -22,7 +22,6 @@ export default function getYomiuri(req, res) {
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "load", timeout: 0 });
 
-    var $ = cheerio.load(content);
     const news = await page.evaluate(() => {
       const topNews = [];
       const listOfAllNews = Array.from(

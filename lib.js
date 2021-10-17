@@ -120,8 +120,6 @@ export function getNikkei() {
   getData();
 }
 
-const url = "https://news.yahoo.co.jp/media/san";
-
 export function getSankei() {
   async function getData(url) {
     const browser = await puppeteer.launch({
