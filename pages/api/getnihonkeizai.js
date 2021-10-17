@@ -20,6 +20,16 @@ export default function getYomiuri(req, res) {
       headless: chrome.headless,
     });
     const page = await browser.newPage();
+    await page.setRequestInterception(true);
+    page.on("request", (request) => {
+      if (
+        ["image", "stylesheet", "font"].indexOf(request.resourceType()) !== -1
+      ) {
+        request.abort();
+      } else {
+        request.continue();
+      }
+    });
     await page.goto(url, { waitUntil: "load", timeout: 0 });
     const news = await page.evaluate(() => {
       const topNews = [];
