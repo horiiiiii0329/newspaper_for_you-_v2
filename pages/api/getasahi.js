@@ -1,6 +1,5 @@
 let chrome = {};
 let puppeteer = {};
-const cheerio = require("cheerio");
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   //Vercel
@@ -21,9 +20,18 @@ export default function getYomiuri(req, res) {
       headless: chrome.headless,
     });
     const page = await browser.newPage();
+    await page.setRequestInterception(true);
+    page.on("request", (request) => {
+      if (
+        ["image", "stylesheet", "font"].indexOf(request.resourceType()) !== -1
+      ) {
+        request.abort();
+      } else {
+        request.continue();
+      }
+    });
     await page.goto(url, { waitUntil: "load", timeout: 0 });
 
-    var $ = cheerio.load(content);
     const news = await page.evaluate(() => {
       const topNews = [];
       const listOfAllNews = Array.from(
