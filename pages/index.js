@@ -280,27 +280,27 @@ export async function getServerSideProps(context) {
 
   // get a newsheadline
   const sankei = await fetch(
-    "https://master.dhhveqgccu8gc.amplifyapp.com/api/getsankei"
+    "https://newspaper-for-you-v2.vercel.app/api/getsankei"
   );
   const sankeiData = await sankei.json();
 
   const asahi = await fetch(
-    "https://master.dhhveqgccu8gc.amplifyapp.com/api/getasahi"
+    "https://newspaper-for-you-v2.vercel.app/api/getasahi"
   );
   const asahiData = await asahi.json();
 
   const mainichi = await fetch(
-    "https://master.dhhveqgccu8gc.amplifyapp.com/api/getmainichi"
+    "https://newspaper-for-you-v2.vercel.app/api/getmainichi"
   );
   const mainichiData = await mainichi.json();
 
   const nihon = await fetch(
-    "https://master.dhhveqgccu8gc.amplifyapp.com/api/getnihonkeizai"
+    "https://newspaper-for-you-v2.vercel.app/api/getnihonkeizai"
   );
   const nihonData = await nihon.json();
 
   const yomiuri = await fetch(
-    "https://master.dhhveqgccu8gc.amplifyapp.com/api/getyomiuri"
+    "https://newspaper-for-you-v2.vercel.app/api/getyomiuri"
   );
   const yomiuriData = await yomiuri.json();
 
