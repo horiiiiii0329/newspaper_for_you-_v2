@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-newspaperforyoufa461-dev-222729-authRole",
+      "UnauthRoleArn": "arn:aws:iam::477017881058:role/amplify-newspaperforyoufa461-dev-222729-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::477017881058:role/amplify-newspaperforyoufa461-dev-222729-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-newspaperforyoufa461-dev-222729-deployment",
+      "UnauthRoleName": "amplify-newspaperforyoufa461-dev-222729-unauthRole",
+      "StackName": "amplify-newspaperforyoufa461-dev-222729",
+      "StackId": "arn:aws:cloudformation:us-east-1:477017881058:stack/amplify-newspaperforyoufa461-dev-222729/25b17290-3017-11ec-9bc0-129b0ebd9c57",
+      "AmplifyAppId": "dwglg6xlixcu4"
+    }
+  }
+}
