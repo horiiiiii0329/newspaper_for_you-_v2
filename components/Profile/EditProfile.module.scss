@@ -13,6 +13,10 @@
   .email {
     border-bottom: solid black 1px;
     font-size: 25px;
+    padding: 10px 0;
+    @media screen and (max-width: 1280px) {
+      font-size: 20px;
+    }
 
     input {
       border: none;
@@ -29,6 +33,11 @@
   .username {
     border-bottom: solid black 1px;
     font-size: 25px;
+    padding: 10px 0;
+
+    @media screen and (max-width: 1280px) {
+      font-size: 20px;
+    }
     input {
       border: none;
       border-top: solid black 1px;

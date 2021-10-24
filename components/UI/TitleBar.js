@@ -100,6 +100,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
+                appCtx.setActiveContent("profile");
                 setShowModal(false);
               }}
             >
