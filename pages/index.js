@@ -128,7 +128,8 @@ export default function Home({
           )} */}
 
           {/* <Article newsArticle={newsArticle} /> */}
-          <AllArticle />
+          <ProfileCard />
+          <MyPost />
 
           {appCtx.selectedContent === "feed" && <AllArticle />}
           {appCtx.selectedContent === "create" && <Post />}

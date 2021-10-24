@@ -6,6 +6,10 @@
   right: 0;
   height: calc(100vh - 80px);
 
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
+
   .email {
     border-bottom: solid black 1px;
     font-size: 25px;
