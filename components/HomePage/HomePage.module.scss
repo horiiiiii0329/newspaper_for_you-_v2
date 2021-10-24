@@ -32,6 +32,13 @@
   border-top: 1px solid black;
   display: flex;
   height: 20vh;
+  align-items: center;
+
+  @media screen and (max-width: 1280px) {
+    display: block;
+    height: 200px;
+    align-items: center;
+  }
 }
 
 .bottom_left {
@@ -40,6 +47,11 @@
   border-left: 1px solid black;
   padding: 20px;
   align-items: flex-end;
+
+  @media screen and (max-width: 1280px) {
+    display: none;
+    align-items: center;
+  }
 }
 
 .bottom_right {
