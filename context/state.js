@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../api";
 
 const AppWrapper = React.createContext({
-  activeHomepege: true,
-  activeContent1: false,
-  activeContent2: false,
-  activeContent3: false,
-  activeContent4: false,
+  activeHomepage: null,
+  activeContent1: null,
+  activeContent2: null,
+  activeContent3: null,
+  activeContent4: null,
   posts: [],
   selectedTitle: "",
   setSelectedTitle: () => {},
@@ -15,6 +15,7 @@ const AppWrapper = React.createContext({
   setActiveContentTwoHandler: () => {},
   setActiveContentThreeHandler: () => {},
   setActiveContentFourHandler: () => {},
+  setActiveHomePageHandler: () => {},
 });
 
 export const AppWrapperProvider = (props) => {
@@ -41,24 +42,45 @@ export const AppWrapperProvider = (props) => {
   };
 
   const setActiveHomePageHandler = () => {
-    setActiveHomePage(!activeHomePage);
+    setActiveHomePage(true);
+    setActiveContentOne(false);
+    setActiveContentTwo(false);
+    setActiveContentThree(false);
+    setActiveContentFour(false);
   };
 
   const setActiveContentOneHandler = () => {
-    setActiveContentOne(!activeContentOne);
+    setActiveHomePage(false);
+    setActiveContentOne(true);
+    setActiveContentTwo(false);
+    setActiveContentThree(false);
+    setActiveContentFour(false);
   };
 
   const setActiveContentTwoHandler = () => {
-    setActiveContentTwo(!activeContentTwo);
+    setActiveHomePage(false);
+    setActiveContentOne(false);
+    setActiveContentTwo(true);
+    setActiveContentThree(false);
+    setActiveContentFour(false);
   };
 
   const setActiveContentThreeHandler = () => {
-    setActiveContentThree(!activeContentThree);
+    setActiveHomePage(false);
+    setActiveContentOne(false);
+    setActiveContentTwo(false);
+    setActiveContentThree(true);
+    setActiveContentFour(false);
   };
 
   const setActiveContentFourHandler = () => {
-    setActiveContentFour(!activeContentFour);
+    setActiveHomePage(false);
+    setActiveContentOne(false);
+    setActiveContentTwo(false);
+    setActiveContentThree(false);
+    setActiveContentFour(true);
   };
+
   async function fetchPosts() {
     const user = supabase.auth.user();
     const { data } = await supabase
@@ -72,7 +94,7 @@ export const AppWrapperProvider = (props) => {
 
   const contextValue = {
     posts,
-    activeHomepage,
+    activeHomepage: activeHomepage,
     activeContent1: activeContentOne,
     activeContent2: activeContentTwo,
     activeContent3: activeContentThree,

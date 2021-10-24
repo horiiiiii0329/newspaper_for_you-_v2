@@ -83,6 +83,7 @@ export default function Home({
     });
   }
 
+  console.log(appCtx.activeContent1);
   return (
     <div>
       <Head>
@@ -102,7 +103,7 @@ export default function Home({
               : styles.content
           }
         >
-          <HomePage
+          {/* <HomePage
             weatherNews={weatherNews}
             newsArticle={newsArticle}
             asahiData={asahiData}
@@ -111,8 +112,28 @@ export default function Home({
             mainichiData={mainichiData}
             nihonData={nihonData}
             user={user}
-          />
-          {appCtx.activeContentOne && <HomePage />}
+          /> */}
+          {appCtx.activeHomepage && (
+            <HomePage
+              weatherNews={weatherNews}
+              newsArticle={newsArticle}
+              asahiData={asahiData}
+              yomiuriData={yomiuriData}
+              sankeiData={sankeiData}
+              mainichiData={mainichiData}
+              nihonData={nihonData}
+              user={user}
+            />
+          )}
+          {appCtx.activeContent1 && <Article newsArticle={newsArticle} />}
+          {appCtx.activeContent2 && <AllArticle />}
+          {appCtx.activeContent3 && <Post />}
+          {appCtx.activeContent4 && (
+            <>
+              <ProfileCard />
+              <MyPost />
+            </>
+          )}
         </section>
         <section
           className={styles.content_wrapper}

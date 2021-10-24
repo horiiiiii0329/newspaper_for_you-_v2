@@ -50,6 +50,7 @@
   @media screen and (max-width: 1280px) {
     width: 100%;
     border: none;
+    position: static;
   }
 }
 
@@ -73,6 +74,8 @@
   transition: all 1s ease-in-out;
 
   @media screen and (max-width: 1280px) {
+    width: 100%;
+    border: none;
     position: static;
   }
 }
