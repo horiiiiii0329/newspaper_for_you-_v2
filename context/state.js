@@ -6,9 +6,17 @@ const AppWrapper = React.createContext({
   selectedTitle: "",
   setSelectedTitle: () => {},
   fetchSelectedTitle: () => {},
+  setActiveContentOneHandler: () => {},
+  setActiveContentTwoHandler: () => {},
+  setActiveContentThreeHandler: () => {},
+  setActiveContentFourHandler: () => {},
 });
 
 export const AppWrapperProvider = (props) => {
+  const [activeContentOne, setActiveContentOne] = useState(false);
+  const [activeContentTwo, setActiveContentTwo] = useState(false);
+  const [activeContentThree, setActiveContentThree] = useState(false);
+  const [activeContentFour, setActiveContentFour] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState("全て");
   const [posts, setPosts] = useState([]);
 
@@ -25,6 +33,21 @@ export const AppWrapperProvider = (props) => {
     setSelectedTitle(title);
   };
 
+  const setActiveContentOneHandler = () => {
+    setActiveContentOne(!activeContentOne);
+  };
+
+  const setActiveContentTwoHandler = () => {
+    setActiveContentTwo(!activeContentTwo);
+  };
+
+  const setActiveContentThreeHandler = () => {
+    setActiveContentThree(!activeContentThree);
+  };
+
+  const setActiveContentFourHandler = () => {
+    setActiveContentFour(!activeContentFour);
+  };
   async function fetchPosts() {
     const user = supabase.auth.user();
     const { data } = await supabase
@@ -38,9 +61,17 @@ export const AppWrapperProvider = (props) => {
 
   const contextValue = {
     posts,
+    activeContent1: activeContentOne,
+    activeContent2: activeContentTwo,
+    activeContent3: activeContentThree,
+    activeContent4: activeContentFour,
     selectedTitle: selectedTitle,
     setSelectedTitle: titleSelectHandler,
     fetchSelectedTitle: fetchPosts,
+    setActiveContentOneHandler,
+    setActiveContentTwoHandler,
+    setActiveContentThreeHandler,
+    setActiveContentFourHandler,
   };
 
   return (

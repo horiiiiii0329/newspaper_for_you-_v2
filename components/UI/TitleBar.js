@@ -1,10 +1,41 @@
 import { LightBulbIcon, XIcon } from "@heroicons/react/outline";
 import { MenuIcon } from "@heroicons/react/outline";
 import styles from "./TitleBar.module.scss";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { supabase } from "../../api";
+import AppWrapper from "../../context/state";
 
 function TitleBar() {
   const [showModal, setShowModal] = useState(false);
+  const [authState, setAuthenticatedState] = useState("");
+  const [login, setLogin] = useState("");
+  const appCtx = useContext(AppWrapper);
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        handleAuthChange(event, session);
+        if (event === "SIGNED_IN") {
+          setAuthenticatedState("authenticated");
+        }
+        if (event === "SIGNED_OUT") {
+          setAuthenticatedState("not-authenticated");
+        }
+      }
+    );
+    checkUser();
+    return () => {
+      authListener.unsubscribe();
+    };
+  }, []);
+
+  async function checkUser() {
+    const user = await supabase.auth.user();
+    if (user) {
+      setAuthenticatedState("authenticated");
+      setLogin(true);
+    }
+  }
 
   return (
     <>
@@ -30,13 +61,38 @@ function TitleBar() {
       {showModal && (
         <div className={styles.menu}>
           <ul>
-            <ul>
-              <li>サインイン</li>
-            </ul>
-            <li>クリップした記事</li>
-            <li>みんなの記事</li>
-            <li>作成</li>
-            <li>個人</li>
+            <li
+              onClick={() => {
+                appCtx.setActiveContentOneHandler();
+                setShowModal(false);
+              }}
+            >
+              クリップした記事
+            </li>
+            <li
+              onClick={() => {
+                appCtx.setActiveContentTwoHandler();
+                setShowModal(false);
+              }}
+            >
+              みんなの記事
+            </li>
+            <li
+              onClick={() => {
+                appCtx.setActiveContentThreeHandler();
+                setShowModal(false);
+              }}
+            >
+              作成
+            </li>
+            <li
+              onClick={() => {
+                appCtx.setActiveContentFourHandler();
+                setShowModal(false);
+              }}
+            >
+              {authState === "authenticated" ? "個人" : "サインイン"}
+            </li>
           </ul>
         </div>
       )}

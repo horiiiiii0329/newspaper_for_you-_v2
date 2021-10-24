@@ -37,6 +37,7 @@ export default function Home({
     "not-authenticated"
   );
   const [login, setLogin] = useState(false);
+  const [activeData, setActiveData] = useState("Home");
 
   const mySubscription = supabase
     .from("*")
