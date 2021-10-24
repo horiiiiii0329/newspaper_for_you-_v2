@@ -24,7 +24,8 @@
 
   @media screen and (max-width: 1280px) {
     display: none;
-    position: relative;
+    position: static;
+    transform: none;
   }
 }
 
@@ -70,4 +71,8 @@
   overflow-x: hidden;
   border-left: solid 1px black;
   transition: all 1s ease-in-out;
+
+  @media screen and (max-width: 1280px) {
+    position: static;
+  }
 }

@@ -6,7 +6,7 @@ import HomePage from "../components/HomePage/HomePage";
 import Post from "../components/Post/Post";
 import Profile from "../components/Profile/Profile";
 import styles from "../styles/Home.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { supabase } from "../api";
 import SectionHeader from "../components/UI/SectionHeader";
 import AuthUser from "../components/Profile/AuthUser";
@@ -16,6 +16,7 @@ import MyPost from "../components/Profile/MyPost";
 import AllArticle from "../components/AllArticle/AllArticle";
 import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
+import AppWrapper from "../context/state";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -38,6 +39,7 @@ export default function Home({
   );
   const [login, setLogin] = useState(false);
   const [activeData, setActiveData] = useState("Home");
+  const appCtx = useContext(AppWrapper);
 
   const mySubscription = supabase
     .from("*")
@@ -110,6 +112,7 @@ export default function Home({
             nihonData={nihonData}
             user={user}
           />
+          {appCtx.activeContentOne && <HomePage />}
         </section>
         <section
           className={styles.content_wrapper}

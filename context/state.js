@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../api";
 
 const AppWrapper = React.createContext({
+  activeHomepege: true,
+  activeContent1: false,
+  activeContent2: false,
+  activeContent3: false,
+  activeContent4: false,
   posts: [],
   selectedTitle: "",
   setSelectedTitle: () => {},
@@ -17,6 +22,8 @@ export const AppWrapperProvider = (props) => {
   const [activeContentTwo, setActiveContentTwo] = useState(false);
   const [activeContentThree, setActiveContentThree] = useState(false);
   const [activeContentFour, setActiveContentFour] = useState(false);
+  const [activeHomepage, setActiveHomePage] = useState(true);
+
   const [selectedTitle, setSelectedTitle] = useState("全て");
   const [posts, setPosts] = useState([]);
 
@@ -31,6 +38,10 @@ export const AppWrapperProvider = (props) => {
 
   const titleSelectHandler = (title) => {
     setSelectedTitle(title);
+  };
+
+  const setActiveHomePageHandler = () => {
+    setActiveHomePage(!activeHomePage);
   };
 
   const setActiveContentOneHandler = () => {
@@ -61,6 +72,7 @@ export const AppWrapperProvider = (props) => {
 
   const contextValue = {
     posts,
+    activeHomepage,
     activeContent1: activeContentOne,
     activeContent2: activeContentTwo,
     activeContent3: activeContentThree,
@@ -72,6 +84,7 @@ export const AppWrapperProvider = (props) => {
     setActiveContentTwoHandler,
     setActiveContentThreeHandler,
     setActiveContentFourHandler,
+    setActiveHomePageHandler,
   };
 
   return (

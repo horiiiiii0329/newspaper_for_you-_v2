@@ -63,6 +63,14 @@ function TitleBar() {
           <ul>
             <li
               onClick={() => {
+                appCtx.setActiveHomepage();
+                setShowModal(false);
+              }}
+            >
+              ホーム
+            </li>
+            <li
+              onClick={() => {
                 appCtx.setActiveContentOneHandler();
                 setShowModal(false);
               }}
