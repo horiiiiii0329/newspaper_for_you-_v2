@@ -1,13 +1,13 @@
 import React from "react";
 
-import ArcticleItemType from "./ArcticleItemType";
+import ArticleTypeItem from "./ArticleTypeItem";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: "Components/ArcticleItemType",
+  title: "Components/ArticleTypeItem",
   component: ArcticleItemType,
 };
 
-const Template = () => <ArcticleItemType />;
+const Template = () => <ArticleTypeItem />;
 
 export const Default = Template.bind({});
