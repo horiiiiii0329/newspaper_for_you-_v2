@@ -1,14 +1,16 @@
 import { HiDotsHorizontal } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import styles from "./ArticleItemCard.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
+import AppWrapper from "../../context/state";
 
 function ArticleItemCard({ item, key, onDeleteHandler }) {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
-
   const [posts, setPosts] = useState([]);
+
+  const appCtx = useContext(AppWrapper);
 
   useEffect(() => {
     fetchList();
@@ -36,6 +38,7 @@ function ArticleItemCard({ item, key, onDeleteHandler }) {
 
     setShowAddModal(false);
     setShowModal(false);
+    appCtx.fetchSelectedTitle();
   }
 
   return (

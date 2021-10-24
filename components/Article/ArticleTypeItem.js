@@ -53,7 +53,10 @@ function ArticleTypeItem({ filterTitleHandler }) {
         </div>
         <div
           className={styles.scraplist__title}
-          onClick={() => appCtx.setSelectedTitle("全て")}
+          onClick={() => {
+            appCtx.setSelectedTitle("全て");
+            appCtx.fetchSelectedTitle();
+          }}
         >
           <h3>未分類</h3>
         </div>
