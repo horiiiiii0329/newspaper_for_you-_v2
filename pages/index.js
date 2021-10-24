@@ -83,8 +83,6 @@ export default function Home({
     });
   }
 
-  console.log(appCtx.selectedContent);
-
   return (
     <div>
       <Head>
@@ -104,17 +102,7 @@ export default function Home({
               : styles.content
           }
         >
-          {/* <HomePage
-            weatherNews={weatherNews}
-            newsArticle={newsArticle}
-            asahiData={asahiData}
-            yomiuriData={yomiuriData}
-            sankeiData={sankeiData}
-            mainichiData={mainichiData}
-            nihonData={nihonData}
-            user={user}
-          /> */}
-          {appCtx.selectedContent === "Homepage" && (
+          {!appCtx.selectedContent && (
             <HomePage
               weatherNews={weatherNews}
               newsArticle={newsArticle}
@@ -126,10 +114,24 @@ export default function Home({
               user={user}
             />
           )}
-          {appCtx.activeContent1 && <Article newsArticle={newsArticle} />}
-          {appCtx.activeContent2 && <AllArticle />}
-          {appCtx.activeContent3 && <Post />}
-          {appCtx.activeContent4 && (
+          {/* {appCtx.selectedContent === "Homepage" && (
+            <HomePage
+              weatherNews={weatherNews}
+              newsArticle={newsArticle}
+              asahiData={asahiData}
+              yomiuriData={yomiuriData}
+              sankeiData={sankeiData}
+              mainichiData={mainichiData}
+              nihonData={nihonData}
+              user={user}
+            />
+          )} */}
+
+          <Article newsArticle={newsArticle} />
+
+          {appCtx.selectedContent === "feed" && <AllArticle />}
+          {appCtx.selectedContent === "create" && <Post />}
+          {appCtx.selectedContent === "profile" && (
             <>
               <ProfileCard />
               <MyPost />

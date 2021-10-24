@@ -1,9 +1,10 @@
 import styles from "./NewsList.module.scss";
 import { AiOutlineSave } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 as uuid } from "uuid";
 import { supabase } from "../../api";
+import AppWrapper from "../../context/state";
 
 const initialState = { company: "", headline: "", link: "", time: "" };
 
@@ -17,6 +18,7 @@ function NewsList({ newsData }) {
     size: "15px",
     cursor: "pointer",
   });
+  const appCtx = useContext(AppWrapper);
 
   const user = supabase.auth.user();
 
@@ -26,6 +28,8 @@ function NewsList({ newsData }) {
       .from("save")
       .insert([{ company, headline, user_id: user?.id, link, time }])
       .single();
+
+    appCtx.fetchSelectedTitle("");
   }
 
   return (

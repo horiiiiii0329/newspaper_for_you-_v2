@@ -43,8 +43,6 @@ export const AppWrapperProvider = (props) => {
     setPosts(data);
   }
 
-  console.log(activeContent);
-
   const contextValue = {
     posts,
     selectedTitle: selectedTitle,
@@ -53,6 +51,8 @@ export const AppWrapperProvider = (props) => {
     fetchSelectedTitle: fetchPosts,
     setActiveContent: contentHandler,
   };
+
+  console.log(activeContent);
 
   return (
     <AppWrapper.Provider value={contextValue}>

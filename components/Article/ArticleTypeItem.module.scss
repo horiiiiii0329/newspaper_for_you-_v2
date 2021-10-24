@@ -35,20 +35,19 @@
   }
 
   .addscrap {
+    border-bottom: solid 1px black;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid black;
     height: 60px;
 
     .addscrapicon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       height: 100%;
-      width: 64px;
+      width: 59px;
       border-right: solid 1px black;
       display: flex;
       align-items: center;
+      justify-content: center;
+      border-right: solid 1px black;
       cursor: pointer;
 
       &:hover {
@@ -58,11 +57,12 @@
     }
 
     input {
-      height: 100%;
       border: none;
       font-size: 24px;
-      width: 600px;
+      width: 100%;
       padding-left: 10px;
+      height: 50px;
+      align-items: center;
 
       &:focus {
         outline: none;

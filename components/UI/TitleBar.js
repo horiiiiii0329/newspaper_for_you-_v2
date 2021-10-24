@@ -11,6 +11,10 @@ function TitleBar() {
   const [login, setLogin] = useState("");
   const appCtx = useContext(AppWrapper);
 
+  const setContentHandler = (title) => {
+    appCtx.setSelectedTitle(title);
+  };
+
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
@@ -63,7 +67,7 @@ function TitleBar() {
           <ul>
             <li
               onClick={() => {
-                appCtx.setActiveHomePage();
+                setContentHandler("Homepage");
 
                 setShowModal(false);
               }}
@@ -72,7 +76,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentOne();
+                setContentHandler("Article");
 
                 setShowModal(false);
               }}
@@ -81,7 +85,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentTwo();
+                appCtx.setActiveContent("feed");
 
                 setShowModal(false);
               }}
@@ -90,7 +94,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentThree();
+                appCtx.setActiveContent("create");
 
                 setShowModal(false);
               }}
@@ -99,7 +103,6 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentFour();
                 setShowModal(false);
               }}
             >
