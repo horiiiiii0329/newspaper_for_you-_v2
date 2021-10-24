@@ -5,6 +5,10 @@
   bottom: 0;
   right: 0;
   overflow: hidden;
+
+  @media screen and (max-width: 1280px) {
+    position: static;
+  }
 }
 
 .content_wrapper {
@@ -17,6 +21,11 @@
   padding-top: 0;
   transition: all 1s ease-in-out;
   transform: translateX(100%);
+
+  @media screen and (max-width: 1280px) {
+    display: none;
+    position: relative;
+  }
 }
 
 .content {
@@ -36,6 +45,11 @@
   overflow-x: hidden;
   border-left: solid 1px black;
   transition: all 1s ease-in-out;
+
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+    border: none;
+  }
 }
 
 .opacity {

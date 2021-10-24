@@ -7,10 +7,8 @@
   width: 85px;
   box-sizing: border-box;
   z-index: 1;
-}
 
-@media screen and (max-width: 1280px) {
-  .Header {
+  @media screen and (max-width: 1280px) {
     display: none;
   }
 }
