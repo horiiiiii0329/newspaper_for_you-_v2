@@ -36,37 +36,6 @@ export default function Home({
     "not-authenticated"
   );
   const [login, setLogin] = useState(false);
-  // const [asahiData, setAsahiData] = useState([]);
-  // const [yomiuriData, setYomiuriData] = useState([]);
-  // const [sankeiData, setSankeiData] = useState([]);
-  // const [mainichiData, setMainichiData] = useState([]);
-  // const [nihonData, setNihonData] = useState([]);
-
-  // useEffect(() => {
-  //   fetchNewsList;
-  // });
-
-  // async function fetchNewsList() {
-  //   const sankei = await fetch("/api/getsankei");
-  //   const sankeiData = await sankei.json();
-  //   setSankeiData(sankeiData);
-
-  //   const asahi = await fetch("/api/getasahi");
-  //   const asahiData = await asahi.json();
-  //   setAsahiData(asahiData);
-
-  //   const mainichi = await fetch("/api/getmainichi");
-  //   const mainichiData = await mainichi.json();
-  //   setMainichiData(mainichiData);
-
-  //   const nihon = await fetch("/api/getnihonkeizai");
-  //   const nihonData = await nihon.json();
-  //   setNihonData(nihonData);
-
-  //   const yomiuri = await fetch("/api/getyomiuri");
-  //   const yomiuriData = await yomiuri.json();
-  //   setYomiuriData(yomiuriData);
-  // }
 
   const mySubscription = supabase
     .from("*")
