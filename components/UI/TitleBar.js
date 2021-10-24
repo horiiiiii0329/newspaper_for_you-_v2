@@ -63,7 +63,7 @@ function TitleBar() {
           <ul>
             <li
               onClick={() => {
-                appCtx.setActiveHomePageHandler();
+                appCtx.setActiveHomePage();
 
                 setShowModal(false);
               }}
@@ -72,7 +72,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentOneHandler();
+                appCtx.setActiveContentOne();
 
                 setShowModal(false);
               }}
@@ -81,7 +81,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentTwoHandler();
+                appCtx.setActiveContentTwo();
 
                 setShowModal(false);
               }}
@@ -90,7 +90,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentThreeHandler();
+                appCtx.setActiveContentThree();
 
                 setShowModal(false);
               }}
@@ -99,7 +99,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContentFourHandler();
+                appCtx.setActiveContentFour();
                 setShowModal(false);
               }}
             >

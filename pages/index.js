@@ -83,7 +83,8 @@ export default function Home({
     });
   }
 
-  console.log(appCtx.activeContent1);
+  console.log(appCtx.selectedContent);
+
   return (
     <div>
       <Head>
@@ -113,7 +114,7 @@ export default function Home({
             nihonData={nihonData}
             user={user}
           /> */}
-          {appCtx.activeHomepage && (
+          {appCtx.selectedContent === "Homepage" && (
             <HomePage
               weatherNews={weatherNews}
               newsArticle={newsArticle}

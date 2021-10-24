@@ -23,7 +23,6 @@
   transform: translateX(100%);
 
   @media screen and (max-width: 1280px) {
-    display: none;
     position: static;
     transform: none;
   }
