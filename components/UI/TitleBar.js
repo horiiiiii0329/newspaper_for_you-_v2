@@ -8,8 +8,35 @@ import AppWrapper from "../../context/state";
 function TitleBar() {
   const [showModal, setShowModal] = useState(false);
   const [authState, setAuthenticatedState] = useState("");
+  const [login, setLogin] = useState("");
 
   const appCtx = useContext(AppWrapper);
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        handleAuthChange(event, session);
+        if (event === "SIGNED_IN") {
+          setAuthenticatedState("authenticated");
+        }
+        if (event === "SIGNED_OUT") {
+          setAuthenticatedState("not-authenticated");
+        }
+      }
+    );
+    checkUser();
+    return () => {
+      authListener.unsubscribe();
+    };
+  }, []);
+
+  async function checkUser() {
+    const user = await supabase.auth.user();
+    if (user) {
+      setAuthenticatedState("authenticated");
+      setLogin(true);
+    }
+  }
 
   return (
     <>

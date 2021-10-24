@@ -9,10 +9,9 @@ import TitleBar from "../components/UI/TitleBar";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <TitleBar />
-      <Header />
-
       <AppWrapperProvider>
+        <TitleBar />
+        <Header />
         <Component {...pageProps} />
       </AppWrapperProvider>
     </>
