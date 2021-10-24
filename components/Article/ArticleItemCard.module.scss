@@ -6,6 +6,10 @@
   position: relative;
   position: 0;
 
+  @media screen and (max-width: 1280px) {
+    height: 85px;
+  }
+
   .articlemenu {
     display: flex;
     align-items: center;
