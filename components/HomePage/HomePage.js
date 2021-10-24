@@ -37,18 +37,6 @@ function HomePage({
 
   return (
     <>
-      {/* {asahiData.length === 0 ? (
-        <div
-          className={styles.main}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Spinner />
-        </div>
-      ) : ( */}
       <div className={styles.main}>
         <div className={styles.main_left}>
           <div>
@@ -143,7 +131,7 @@ function HomePage({
           </div>
         </div>
       </div>
-      )
+
       <div className={styles.bottom}>
         <div className={styles.bottom_right}>
           <Weather weatherNews={weatherNews} />
