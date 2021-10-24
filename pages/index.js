@@ -102,7 +102,8 @@ export default function Home({
               : styles.content
           }
         >
-          {!appCtx.selectedContent && (
+          {appCtx.selectedContent ===
+          (
             <HomePage
               weatherNews={weatherNews}
               newsArticle={newsArticle}

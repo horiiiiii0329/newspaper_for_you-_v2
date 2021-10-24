@@ -8,12 +8,18 @@
 
   @media screen and (max-width: 1280px) {
     width: 100%;
+    height: auto;
   }
 
   .content_wrapper {
     overflow-y: scroll;
     height: 100vh;
     position: relative;
+
+    @media screen and (max-width: 1280px) {
+      width: 100%;
+      height: auto;
+    }
 
     .articlecontent {
       border-bottom: solid 1px black;
