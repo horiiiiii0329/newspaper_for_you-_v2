@@ -114,7 +114,7 @@ export default function Home({
               user={user}
             />
           )}
-          {/* {appCtx.selectedContent === "Homepage" && (
+          {appCtx.selectedContent === "Homepage" && (
             <HomePage
               weatherNews={weatherNews}
               newsArticle={newsArticle}
@@ -125,12 +125,8 @@ export default function Home({
               nihonData={nihonData}
               user={user}
             />
-          )} */}
-
-          {/* <Article newsArticle={newsArticle} /> */}
-          <ProfileCard />
-          <MyPost />
-
+          )}
+          {appCtx.selectedContent === "article" && <Article />}
           {appCtx.selectedContent === "feed" && <AllArticle />}
           {appCtx.selectedContent === "create" && <Post />}
           {appCtx.selectedContent === "profile" && (

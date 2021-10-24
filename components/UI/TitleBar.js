@@ -73,7 +73,7 @@ function TitleBar() {
             </li>
             <li
               onClick={() => {
-                appCtx.setActiveContent("Article");
+                appCtx.setActiveContent("article");
 
                 setShowModal(false);
               }}
