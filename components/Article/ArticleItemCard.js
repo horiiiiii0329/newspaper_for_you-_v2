@@ -86,13 +86,7 @@ function ArticleItemCard({ item, key, onDeleteHandler }) {
         posts.map((post, index) => {
           return (
             <div className={styles.articlemodal} key={key}>
-              <div className={styles.articlemenu}>
-                {/* <IconContext.Provider
-                  value={{ color: "black", size: "15px", cursor: "pointer" }}
-                >
-                  <HiDotsHorizontal />
-                </IconContext.Provider> */}
-              </div>
+              <div className={styles.articlemenu}></div>
               <div className={styles.articlemenulist}>
                 <div
                   className={styles.addbutton}

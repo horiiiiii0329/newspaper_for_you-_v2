@@ -42,6 +42,7 @@ function ArticleTypeItem({ filterTitleHandler }) {
       .insert([{ title: title.title, user_id: user.id }])
       .single();
     setTitle({ title: "" });
+    fetchList();
   }
 
   return (
@@ -67,7 +68,10 @@ function ArticleTypeItem({ filterTitleHandler }) {
               </div>
               <div
                 className={styles.scraplist__title}
-                onClick={() => appCtx.setSelectedTitle(post.title)}
+                onClick={() => {
+                  appCtx.setSelectedTitle(post.title);
+                  appCtx.fetchSelectedTitle();
+                }}
               >
                 <h3>{post.title}</h3>
               </div>
