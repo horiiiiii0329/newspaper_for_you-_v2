@@ -44,13 +44,15 @@ export const AppWrapperProvider = (props) => {
   }
 
   const contextValue = {
+    selectedContent: activeContent,
     posts,
     selectedTitle: selectedTitle,
-    selectedContent: activeContent,
     setSelectedTitle: titleSelectHandler,
     fetchSelectedTitle: fetchPosts,
     setActiveContent: contentHandler,
   };
+
+  console.log(activeContent);
 
   console.log(activeContent);
 
