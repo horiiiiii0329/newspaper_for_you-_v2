@@ -257,9 +257,9 @@ export default function Home({
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ req }) {
   //setUserCookie
-  const { user } = await supabase.auth.api.getUserByCookie();
+  const { user } = await supabase.auth.api.getUserByCookie(req);
 
   //getWeatherData
 
