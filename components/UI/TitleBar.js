@@ -1,4 +1,4 @@
-import { LightBulbIcon } from "@heroicons/react/outline";
+import { LightBulbIcon, XIcon } from "@heroicons/react/outline";
 import { MenuIcon } from "@heroicons/react/outline";
 import styles from "./TitleBar.module.scss";
 import { useState } from "react";
@@ -16,9 +16,15 @@ function TitleBar() {
           />
         </div>
         <div onClick={() => setShowModal(!showModal)}>
-          <MenuIcon
-            style={{ width: "40px", height: "40px", cursor: "pointer" }}
-          />
+          {showModal ? (
+            <XIcon
+              style={{ width: "40px", height: "40px", cursor: "pointer" }}
+            />
+          ) : (
+            <MenuIcon
+              style={{ width: "40px", height: "40px", cursor: "pointer" }}
+            />
+          )}
         </div>
       </header>
       {showModal && (
