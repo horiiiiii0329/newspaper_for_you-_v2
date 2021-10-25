@@ -277,19 +277,19 @@ export async function getServerSideProps({ req }) {
   const newsArticle = newsData?.articles;
 
   // get a newsheadline
-  const sankei = await fetch("http://localhost:3000/api/getsankei");
+  const sankei = await fetch(process.env.GET_SANKEI_URL);
   const sankeiData = await sankei.json();
 
-  const asahi = await fetch("http://localhost:3000/api/getasahi");
+  const asahi = await fetch(process.env.GET_ASAHI_URL);
   const asahiData = await asahi.json();
 
-  const mainichi = await fetch("http://localhost:3000/api/getmainichi");
+  const mainichi = await fetch(process.env.GET_MAINICHI_URL);
   const mainichiData = await mainichi.json();
 
-  const nihon = await fetch("http://localhost:3000/api/getnihonkeizai");
+  const nihon = await fetch(process.env.GET_NIKKEI_URL);
   const nihonData = await nihon.json();
 
-  const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+  const yomiuri = await fetch(process.env.GET_YOMIURI_URL);
   const yomiuriData = await yomiuri.json();
 
   if (!user) {
