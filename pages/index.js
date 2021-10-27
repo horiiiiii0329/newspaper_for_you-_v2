@@ -26,9 +26,9 @@ export default function Home({
   newsArticle,
   asahiData,
   yomiuriData,
-  sankeiData,
-  mainichiData,
-  nihonData,
+  // sankeiData,
+  // mainichiData,
+  // nihonData,
 }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
@@ -296,12 +296,12 @@ export async function getServerSideProps({ req }) {
     return {
       props: {
         weatherNews,
-        newsArticle,
+        // newsArticle,
         asahiData,
         yomiuriData,
         sankeiData,
-        mainichiData,
-        nihonData,
+        // mainichiData,
+        // nihonData,
       },
     };
   }
@@ -313,9 +313,9 @@ export async function getServerSideProps({ req }) {
       newsArticle,
       asahiData,
       yomiuriData,
-      sankeiData,
-      mainichiData,
-      nihonData,
+      // sankeiData,
+      // mainichiData,
+      // nihonData,
     },
   };
 }
