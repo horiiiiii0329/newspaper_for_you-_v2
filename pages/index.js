@@ -17,6 +17,7 @@ import AllArticle from "../components/AllArticle/AllArticle";
 import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
+const AWS = require("aws-sdk");
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -289,7 +290,16 @@ export async function getServerSideProps({ req }) {
   const nihon = await fetch(process.env.GET_NIKKEI_URL);
   const nihonData = await nihon.json();
 
-  const yomiuri = await fetch(process.env.GET_YOMIURI_URL);
+  const yomiuri = await fetch(
+    "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "x-api-key": process.env.API_GATEWAY_APIKEY,
+      },
+    }
+  );
   const yomiuriData = await yomiuri.json();
 
   if (!user) {
