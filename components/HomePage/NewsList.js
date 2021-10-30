@@ -39,7 +39,6 @@ function NewsList({ newsData }) {
           <div key={index}>
             <a href={item.href} target="_blank" rel="noopener noreferrer">
               <p>{item.title}</p>
-              <p>{item.time}</p>
             </a>
             {user && (
               <p

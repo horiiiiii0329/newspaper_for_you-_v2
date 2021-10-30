@@ -35,6 +35,8 @@ function HomePage({
     setInterval(() => setDateState(moment().format()), 1000);
   }, []);
 
+  console.log(yomiuriData.Items);
+
   return (
     <>
       <div className={styles.main}>
@@ -51,11 +53,11 @@ function HomePage({
             {/* {leftOpen && ( */}
             <div onClick={() => setLeftOpen(!leftOpen)}>
               <h3
-                onClick={() => {
-                  setAsahi(!asahi);
-                  setLeftPickedNews("朝日新聞");
-                  setLeftPickedNewsData(asahiData);
-                }}
+              // onClick={() => {
+              //   setAsahi(!asahi);
+              //   setLeftPickedNews("朝日新聞");
+              //   setLeftPickedNewsData(asahiData);
+              // }}
               >
                 朝日新聞
               </h3>
@@ -82,7 +84,8 @@ function HomePage({
           </div>
 
           <div>
-            {!leftOpen && <NewsList newsData={asahiData} user={user} />}
+            {/* {!leftOpen && <NewsList newsData={asahiData} user={user} />} */}
+            <NewsList newsData={asahiData.Items} user={user} />
           </div>
         </div>
         <div className={styles.main_right}>
@@ -97,10 +100,10 @@ function HomePage({
           {/* {rightOpen && ( */}
           <div onClick={() => setRightOpen(!rightOpen)}>
             <h3
-              onClick={() => {
-                setRightPickedNews("読売新聞");
-                setRightPickedNewsData(yomiuriData);
-              }}
+            // onClick={() => {
+            //   setRightPickedNews("読売新聞");
+            //   setRightPickedNewsData(yomiuriData);
+            // }}
             >
               読売新聞
             </h3>
@@ -123,7 +126,7 @@ function HomePage({
           </div>
           {/* )} */}
           <div>
-            {!rightOpen && <NewsList newsData={yomiuriData} user={user} />}
+            <NewsList newsData={yomiuriData.Items} user={user} />
           </div>
         </div>
       </div>

@@ -41,6 +41,8 @@ export default function Home({
   const [activeData, setActiveData] = useState("Home");
   const appCtx = useContext(AppWrapper);
 
+  console.log(yomiuriData);
+
   const mySubscription = supabase
     .from("*")
     .on("*", (payload) => {
@@ -312,6 +314,8 @@ export async function getServerSideProps({ req }) {
     }
   );
   const asahiData = await asahi.json();
+
+  console.log(asahiData);
 
   if (!user) {
     return {
