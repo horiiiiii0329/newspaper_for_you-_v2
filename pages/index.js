@@ -17,7 +17,6 @@ import AllArticle from "../components/AllArticle/AllArticle";
 import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
-const AWS = require("aws-sdk");
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -309,7 +308,7 @@ export async function getServerSideProps({ req }) {
         // newsArticle,
         asahiData,
         yomiuriData,
-        sankeiData,
+        // sankeiData,
         // mainichiData,
         // nihonData,
       },
