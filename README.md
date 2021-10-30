@@ -1,34 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NewsPaper for You - SNS like newscompare app
 
-## Getting Started
+News app based on multiple real world news resources created with  
+Next.js, Supabase.io and AWS
 
-First, run the development server:
+> Live demo [_here_](https://newspaper-for-you-v2.vercel.app/).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+<!-- * [License](#license) -->
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## General Information
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- User can compare news of two biggest news company in japan, while be able to
+  interact with other user by basic CRUD function
+- Information is overloaded these days. Though, picking a right tool update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Technologies Used
 
-## Learn More
+- Tech 1 - version 1.0
+- Tech 2 - version 2.0
+- Tech 3 - version 3.0
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+List the ready features here:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Awesome feature 1
+- Awesome feature 2
+- Awesome feature 3
 
-## Deploy on Vercel
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Example screenshot](./img/screenshot.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- If you have screenshots you'd like to share, include them here. -->
+
+## Setup
+
+What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+
+Proceed to describe how to install / setup one's local environment / get started with the project.
+
+## Usage
+
+How does one go about using it?
+Provide various use cases and code examples here.
+
+`write-your-code-here`
+
+## Project Status
+
+Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+
+## Room for Improvement
+
+Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+
+Room for improvement:
+
+- Improvement to be done 1
+- Improvement to be done 2
+
+To do:
+
+- Feature to be added 1
+- Feature to be added 2
+
+## Acknowledgements
+
+Give credit here.
+
+- This project was inspired by...
+- This project was based on [this tutorial](https://www.example.com).
+- Many thanks to...
+
+## Contact
+
+Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+
+<!-- Optional -->
+<!-- ## License -->
+<!-- This project is open source and available under the [... License](). -->
+
+<!-- You don't have to include all sections - just the one's relevant to your project -->
