@@ -29,18 +29,24 @@ export default function getYomiuri(req, res) {
     const news = await page.evaluate(() => {
       const topNews = [];
       const listOfAllNews = Array.from(
-        document.querySelectorAll("ul.List li a")
+        document.querySelectorAll(
+          "#MainInner > div.Section.SectionFst > ul > li > a"
+        )
       );
       const hrefOfAllNews = Array.from(
-        document.querySelectorAll("ul.List li a")
+        document.querySelectorAll(
+          "#MainInner > div.Section.SectionFst > ul > li > a"
+        )
       );
       const timeOfAllNews = Array.from(
-        document.querySelectorAll("ul.List li a span.Time")
+        document.querySelectorAll(
+          "#MainInner > div.Section.SectionFst > ul > li > a > span.Time"
+        )
       );
       for (var i = 1; i < listOfAllNews.length; i++) {
         const title = listOfAllNews[i].textContent;
         const href = hrefOfAllNews[i].href;
-        const time = timeOfAllNews[i].textContent;
+        const time = timeOfAllNews[i].outerText;
 
         topNews.push({ title, href, time, company: "朝日新聞" });
       }
