@@ -46,7 +46,7 @@ export default function getYomiuri(req, res) {
       for (var i = 1; i < listOfAllNews.length; i++) {
         const title = listOfAllNews[i].textContent.slice(-7);
         const href = hrefOfAllNews[i].href;
-        const time = timeOfAllNews[i].outerText;
+        const time = timeOfAllNews[i].outerText.slice(1, 5);
 
         topNews.push({ title, href, time, company: "朝日新聞" });
       }
