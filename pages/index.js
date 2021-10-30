@@ -109,9 +109,9 @@ export default function Home({
               newsArticle={newsArticle}
               asahiData={asahiData}
               yomiuriData={yomiuriData}
-              sankeiData={sankeiData}
-              mainichiData={mainichiData}
-              nihonData={nihonData}
+              // sankeiData={sankeiData}
+              // mainichiData={mainichiData}
+              // nihonData={nihonData}
               user={user}
             />
           )}
@@ -121,9 +121,9 @@ export default function Home({
               newsArticle={newsArticle}
               asahiData={asahiData}
               yomiuriData={yomiuriData}
-              sankeiData={sankeiData}
-              mainichiData={mainichiData}
-              nihonData={nihonData}
+              // sankeiData={sankeiData}
+              // mainichiData={mainichiData}
+              // nihonData={nihonData}
               user={user}
             />
           )}
@@ -277,17 +277,17 @@ export async function getServerSideProps({ req }) {
   const newsArticle = newsData?.articles;
 
   // get a newsheadline
-  const sankei = await fetch(process.env.GET_SANKEI_URL);
-  const sankeiData = await sankei.json();
+  // const sankei = await fetch(process.env.GET_SANKEI_URL);
+  // const sankeiData = await sankei.json();
 
-  const asahi = await fetch(process.env.GET_ASAHI_URL);
-  const asahiData = await asahi.json();
+  // const asahi = await fetch(process.env.GET_ASAHI_URL);
+  // const asahiData = await asahi.json();
 
-  const mainichi = await fetch(process.env.GET_MAINICHI_URL);
-  const mainichiData = await mainichi.json();
+  // const mainichi = await fetch(process.env.GET_MAINICHI_URL);
+  // const mainichiData = await mainichi.json();
 
-  const nihon = await fetch(process.env.GET_NIKKEI_URL);
-  const nihonData = await nihon.json();
+  // const nihon = await fetch(process.env.GET_NIKKEI_URL);
+  // const nihonData = await nihon.json();
 
   const yomiuri = await fetch(
     "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
@@ -300,6 +300,18 @@ export async function getServerSideProps({ req }) {
     }
   );
   const yomiuriData = await yomiuri.json();
+
+  const asahi = await fetch(
+    "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        "x-api-key": process.env.API_GATEWAY_APIKEY2,
+      },
+    }
+  );
+  const asahiData = await asahi.json();
 
   if (!user) {
     return {
