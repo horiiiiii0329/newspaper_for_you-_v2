@@ -44,7 +44,10 @@ export default function getYomiuri(req, res) {
         )
       );
       for (var i = 1; i < listOfAllNews.length; i++) {
-        const title = listOfAllNews[i].textContent.slice(-7);
+        const title = listOfAllNews[i].textContent.slice(
+          0,
+          textContent.length - 7
+        );
         const href = hrefOfAllNews[i].href;
         const time = timeOfAllNews[i].outerText.slice(1, 5);
 
