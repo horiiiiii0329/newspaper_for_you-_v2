@@ -69,7 +69,10 @@ function ArticleItemCard({ item, onDeleteHandler }) {
           <div className={styles.articlemenulist}>
             <div
               className={styles.addbutton}
-              onClick={() => setShowAddModal(!showAddModal)}
+              onClick={() => {
+                setShowAddModal(!showAddModal);
+                fetchList();
+              }}
             >
               <p>追加</p>
             </div>
@@ -88,7 +91,7 @@ function ArticleItemCard({ item, onDeleteHandler }) {
       {showAddModal &&
         posts.map((post, index) => {
           return (
-            <div className={styles.articlemodal} key={key}>
+            <div className={styles.articlemodal} key={index}>
               <div className={styles.articlemenu}></div>
               <div className={styles.articlemenulist}>
                 <div

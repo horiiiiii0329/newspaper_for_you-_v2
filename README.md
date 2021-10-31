@@ -44,7 +44,11 @@ Next.js, Supabase.io and AWS
 
 ## GIF
 
-![Example screenshot](./img/screenshot.png)
+- Overview
+  ![Example screenshot](./preview.gif)
+
+- Saving, viewing, and adding to scrap book
+  ![Example screenshot](./adding.gif)
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 
