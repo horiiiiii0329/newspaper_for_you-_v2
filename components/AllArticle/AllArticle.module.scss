@@ -55,3 +55,36 @@
   border-top: solid black 1px;
   border-left: solid black 1px;
 }
+
+.scraplist {
+  border-bottom: solid 1px black;
+  display: flex;
+  align-items: center;
+  height: 60px;
+
+  .scrapelist__count {
+    height: 100%;
+    width: 70px;
+    border-right: solid 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scraplist__title {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+
+    h3 {
+      padding-left: 10px;
+      margin: 0;
+    }
+  }
+}

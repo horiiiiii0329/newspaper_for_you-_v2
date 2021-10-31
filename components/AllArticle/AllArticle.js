@@ -6,6 +6,7 @@ import AllArticleType from "./AllArticleType";
 
 function AllArticle() {
   const [posts, setPosts] = useState([]);
+  const [blog, setBlog] = useState([]);
   const [titles, setTitle] = useState([]);
   const [company, setCompany] = useState([]);
   const [activeContent1, setActiveContent1] = useState(true);
@@ -17,10 +18,17 @@ function AllArticle() {
     fetchPosts();
     fetchTitle();
     fetchCompany();
+    fetchFilteredPosts();
   }, []);
 
   async function fetchPosts() {
     const { data } = await supabase.from("save").select("*");
+
+    setBlog(data);
+  }
+
+  async function fetchFilteredPosts() {
+    const { data } = await supabase.from("posts").select("*");
 
     setPosts(data);
   }
@@ -97,12 +105,27 @@ function AllArticle() {
           </p>
         </div>
 
-        {activeContent1 &&
-          company.map((item, index) => (
-            <div onClick={() => fetchFilteredCompanyPosts(item)} key={index}>
-              <AllArticleType title={item} index={index} />
+        {activeContent1 && (
+          <>
+            <div onClick={() => fetchFilteredPosts()}>
+              <div className={styles.scraplist}>
+                <div className={styles.scrapelist__count}>
+                  <p>00</p>
+                </div>
+                <div className={styles.scraplist__title}>
+                  <h3>投稿</h3>
+                </div>
+              </div>
             </div>
-          ))}
+
+            {company.map((item, index) => (
+              <div onClick={() => fetchFilteredCompanyPosts(item)} key={index}>
+                <AllArticleType title={item} index={index} />
+              </div>
+            ))}
+          </>
+        )}
+
         {activeContent2 &&
           titles.map((title, index) => (
             <div
