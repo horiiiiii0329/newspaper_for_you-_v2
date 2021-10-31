@@ -36,7 +36,7 @@ function NewsList({ newsData }) {
     <div className={styles.item__title}>
       {newsData.map((item, index) => {
         return (
-          <div key={index}>
+          <div key={index} className={styles.item__item}>
             <a href={item.href} target="_blank" rel="noopener noreferrer">
               <p>{item.title}</p>
             </a>
