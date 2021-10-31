@@ -15,7 +15,7 @@ export default function getYomiuri(req, res) {
     const browser = await puppeteer.launch({
       args: chrome.args,
       executablePath: await chrome.executablePath,
-      headless: false,
+      headless: chrome.headless,
     });
     const page = await browser.newPage();
     await page.goto(

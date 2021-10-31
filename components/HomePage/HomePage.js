@@ -85,7 +85,7 @@ function HomePage({
 
           <div>
             {/* {!leftOpen && <NewsList newsData={asahiData} user={user} />} */}
-            <NewsList newsData={asahiData.Items} user={user} />
+            <NewsList newsData={asahiData} user={user} />
           </div>
         </div>
         <div className={styles.main_right}>
@@ -126,7 +126,7 @@ function HomePage({
           </div>
           {/* )} */}
           <div>
-            <NewsList newsData={yomiuriData.Items} user={user} />
+            <NewsList newsData={yomiuriData} user={user} />
           </div>
         </div>
       </div>

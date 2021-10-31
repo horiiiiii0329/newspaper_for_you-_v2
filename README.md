@@ -11,13 +11,10 @@ Next.js, Supabase.io and AWS
 - [Architecture](#architecture)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
-- [Screenshots](#screenshots)
+- [GIF](#gif)
 - [Setup](#setup)
-- [Usage](#usage)
 - [Project Status](#project-status)
 - [Room for Improvement](#room-for-improvement)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
 <!-- * [License](#license) -->
 
 ## General Information
@@ -45,7 +42,7 @@ Next.js, Supabase.io and AWS
 - User can read news title which other user saved
 - User can write a blog by using react simple mde editor
 
-## Screenshots
+## GIF
 
 ![Example screenshot](./img/screenshot.png)
 
@@ -53,20 +50,15 @@ Next.js, Supabase.io and AWS
 
 ## Setup
 
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+- Use the package manager [yarn](https://yarnpkg.com/) to install package.
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-## Usage
-
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+```bash
+yarn install
+```
 
 ## Project Status
 
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project is in progress...
 
 ## Room for Improvement
 
@@ -81,18 +73,6 @@ To do:
 
 - Feature to be added 1
 - Feature to be added 2
-
-## Acknowledgements
-
-Give credit here.
-
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
-## Contact
-
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 
 <!-- Optional -->
 <!-- ## License -->

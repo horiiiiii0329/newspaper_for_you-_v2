@@ -20,16 +20,7 @@ import AppWrapper from "../context/state";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export default function Home({
-  user,
-  weatherNews,
-  newsArticle,
-  asahiData,
-  yomiuriData,
-  // sankeiData,
-  // mainichiData,
-  // nihonData,
-}) {
+export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
   const [activeContentThree, setActiveContentThree] = useState(false);
@@ -41,21 +32,14 @@ export default function Home({
   const [activeData, setActiveData] = useState("Home");
   const appCtx = useContext(AppWrapper);
 
-  console.log(yomiuriData);
-
-  const mySubscription = supabase
-    .from("*")
-    .on("*", (payload) => {
-      console.log("Change received!", payload);
-    })
-    .subscribe();
-
   useEffect(() => {
+    /* fires when a user signs in or out */
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         handleAuthChange(event, session);
         if (event === "SIGNED_IN") {
           setAuthenticatedState("authenticated");
+          router.push("/profile");
         }
         if (event === "SIGNED_OUT") {
           setAuthenticatedState("not-authenticated");
@@ -69,14 +53,15 @@ export default function Home({
   }, []);
 
   async function checkUser() {
+    /* when the component loads, checks user to show or hide Sign In link */
     const user = await supabase.auth.user();
     if (user) {
       setAuthenticatedState("authenticated");
-      setLogin(true);
     }
   }
 
   async function handleAuthChange(event, session) {
+    /* sets and removes the Supabase cookie */
     await fetch("/api/auth", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
@@ -108,24 +93,16 @@ export default function Home({
           (
             <HomePage
               weatherNews={weatherNews}
-              newsArticle={newsArticle}
               asahiData={asahiData}
               yomiuriData={yomiuriData}
-              // sankeiData={sankeiData}
-              // mainichiData={mainichiData}
-              // nihonData={nihonData}
               user={user}
             />
           )}
           {appCtx.selectedContent === "Homepage" && (
             <HomePage
               weatherNews={weatherNews}
-              newsArticle={newsArticle}
               asahiData={asahiData}
               yomiuriData={yomiuriData}
-              // sankeiData={sankeiData}
-              // mainichiData={mainichiData}
-              // nihonData={nihonData}
               user={user}
             />
           )}
@@ -165,7 +142,7 @@ export default function Home({
             {authenticatedState === "not-authenticated" ? (
               <AuthUser />
             ) : (
-              <Article newsArticle={newsArticle} />
+              <Article />
             )}
           </div>
         </section>
@@ -272,61 +249,45 @@ export async function getServerSideProps({ req }) {
   const weatherJson = await weatherRes.json();
   const weatherNews = weatherJson;
 
-  const news = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=jp&pageSize=50&apiKey=4d54bfed526d4c3cb6f11ca35ba80191`
-  );
-  const newsData = await news.json();
-  const newsArticle = newsData?.articles;
-
   // get a newsheadline
-  // const sankei = await fetch(process.env.GET_SANKEI_URL);
-  // const sankeiData = await sankei.json();
 
-  // const asahi = await fetch(process.env.GET_ASAHI_URL);
-  // const asahiData = await asahi.json();
-
-  // const mainichi = await fetch(process.env.GET_MAINICHI_URL);
-  // const mainichiData = await mainichi.json();
-
-  // const nihon = await fetch(process.env.GET_NIKKEI_URL);
-  // const nihonData = await nihon.json();
-
-  const yomiuri = await fetch(
-    "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY,
-      },
-    }
-  );
-  const yomiuriData = await yomiuri.json();
-
-  const asahi = await fetch(
-    "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY2,
-      },
-    }
-  );
+  const asahi = await fetch("http://localhost:3000/api/getasahi");
   const asahiData = await asahi.json();
 
-  console.log(asahiData);
+  const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+  const yomiuriData = await yomiuri.json();
+
+  // const yomiuri = await fetch(
+  //   "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY,
+  //     },
+  //   }
+  // );
+  // const yomiuriData = await yomiuri.json();
+
+  // const asahi = await fetch(
+  //   "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY2,
+  //     },
+  //   }
+  // );
+  // const asahiData = await asahi.json();
 
   if (!user) {
     return {
       props: {
         weatherNews,
-        // newsArticle,
+
         asahiData,
         yomiuriData,
-        // sankeiData,
-        // mainichiData,
-        // nihonData,
       },
     };
   }
@@ -335,12 +296,9 @@ export async function getServerSideProps({ req }) {
     props: {
       user,
       weatherNews,
-      newsArticle,
+
       asahiData,
       yomiuriData,
-      // sankeiData,
-      // mainichiData,
-      // nihonData,
     },
   };
 }
