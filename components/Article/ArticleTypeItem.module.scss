@@ -42,7 +42,7 @@
 
     .addscrapicon {
       height: 100%;
-      width: 63.5 px;
+      width: 62.1px;
       border-right: solid 1px black;
       display: flex;
       align-items: center;
@@ -60,10 +60,10 @@
     input {
       border: none;
       font-size: 24px;
-      width: 100%;
       padding-left: 10px;
       height: 50px;
       align-items: center;
+      width: 400px;
 
       &:focus {
         outline: none;
