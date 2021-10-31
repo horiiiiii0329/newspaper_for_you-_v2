@@ -42,13 +42,14 @@
 
     .addscrapicon {
       height: 100%;
-      width: 59px;
+      width: 63.5 px;
       border-right: solid 1px black;
       display: flex;
       align-items: center;
       justify-content: center;
       border-right: solid 1px black;
       cursor: pointer;
+      justify-content: center;
 
       &:hover {
         background-color: black;

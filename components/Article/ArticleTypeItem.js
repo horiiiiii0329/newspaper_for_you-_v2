@@ -1,6 +1,6 @@
-import { BsPlus } from "react-icons/bs";
 import styles from "./ArticleTypeItem.module.scss";
-import { IconContext } from "react-icons";
+import { PlusIcon } from "@heroicons/react/outline";
+
 import { supabase } from "../../api";
 import { useState, useEffect, useContext } from "react";
 import { v4 as uuid } from "uuid";
@@ -84,13 +84,9 @@ function ArticleTypeItem({ filterTitleHandler }) {
 
       <div className={styles.addscrap}>
         <div className={styles.addscrapicon} onClick={() => createNewTitle()}>
-          <p>
-            <IconContext.Provider
-              value={{ color: "black", size: "20px", cursor: "pointer" }}
-            >
-              <BsPlus />
-            </IconContext.Provider>
-          </p>
+          <PlusIcon
+            style={{ width: "30px", height: "30px", cursor: "pointer" }}
+          />
         </div>
         <div className={styles.input}>
           <input
