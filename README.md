@@ -68,7 +68,7 @@ Project is in progress...
 
 ## Room for Improvement
 
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+<!-- Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
 Room for improvement:
 
@@ -78,7 +78,7 @@ Room for improvement:
 To do:
 
 - Feature to be added 1
-- Feature to be added 2
+- Feature to be added 2 -->
 
 <!-- Optional -->
 <!-- ## License -->
