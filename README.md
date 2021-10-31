@@ -1,4 +1,4 @@
-# NewsPaper for You - SNS like newscompare app
+# NewsPaper for You - SNS like news compare app
 
 News app based on multiple real world news resources created with  
 Next.js, Supabase.io and AWS
@@ -8,6 +8,7 @@ Next.js, Supabase.io and AWS
 ## Table of Contents
 
 - [General Info](#general-information)
+- [Architecture](#architecture)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
 - [Screenshots](#screenshots)
@@ -25,19 +26,24 @@ Next.js, Supabase.io and AWS
   interact with other user by basic CRUD function
 - Information is overloaded these days. Though, picking a right tool update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
 
+## Architecture
+
+![Example screenshot](./a.drawio.png)
+
 ## Technologies Used
 
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- Next.js - version 11.1.2
+- SASS - version 1.39
+- storybook - version 6.3.8
+- puppeteer - 10.4.0
+- supabase - 1.22.6
 
 ## Features
 
-List the ready features here:
-
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- User can compare newswebsite side by side which update every 6 hours
+- User can save news title and link after logged in
+- User can read news title which other user saved
+- User can write a blog by using react simple mde editor
 
 ## Screenshots
 
