@@ -2,8 +2,8 @@
   overflow-y: scroll;
   height: calc(80vh - 59px);
 
-  div {
-    padding: 16px 10px;
+  .item__item {
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;

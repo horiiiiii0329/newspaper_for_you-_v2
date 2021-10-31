@@ -5,12 +5,13 @@ import { useState, useContext } from "react";
 import { v4 as uuid } from "uuid";
 import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
+import { CheckIcon, ScissorsIcon } from "@heroicons/react/outline";
 
 const initialState = { company: "", headline: "", link: "", time: "" };
 
 function NewsList({ newsData }) {
   const [sending, setIsSending] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(false);
   const [savedData, setSavedData] = useState(initialState);
   const { company, headline, link, time } = savedData;
   const [iconColor, setIconColor] = useState({
@@ -23,14 +24,25 @@ function NewsList({ newsData }) {
   const user = supabase.auth.user();
 
   async function savePost() {
+    setStatus(false);
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("save")
       .insert([{ company, headline, user_id: user?.id, link, time }])
       .single();
-
+    setStatus(true);
     appCtx.fetchSelectedTitle("");
   }
+
+  const scissors = (
+    <ScissorsIcon
+      style={{ width: "35px", height: "35px", cursor: "pointer" }}
+    />
+  );
+
+  const done = (
+    <CheckIcon style={{ width: "35px", height: "35px", cursor: "pointer" }} />
+  );
 
   return (
     <div className={styles.item__title}>
@@ -41,7 +53,7 @@ function NewsList({ newsData }) {
               <p>{item.title}</p>
             </a>
             {user && (
-              <p
+              <div
                 onClick={() => {
                   setSavedData({
                     company: item.company,
@@ -52,10 +64,8 @@ function NewsList({ newsData }) {
                   savePost();
                 }}
               >
-                <IconContext.Provider value={iconColor}>
-                  <AiOutlineSave />
-                </IconContext.Provider>
-              </p>
+                {status ? done : scissors}
+              </div>
             )}
           </div>
         );
