@@ -1,10 +1,8 @@
 .item__title {
-  border-bottom: solid 1px black;
   overflow-y: scroll;
   height: calc(80vh - 59px);
 
   div {
-    border-bottom: solid 1px black;
     padding: 15px 10px;
     display: flex;
     justify-content: space-between;
