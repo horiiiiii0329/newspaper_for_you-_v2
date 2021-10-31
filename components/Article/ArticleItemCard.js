@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
 
-function ArticleItemCard({ item, key, onDeleteHandler }) {
+function ArticleItemCard({ item, onDeleteHandler }) {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -43,7 +43,7 @@ function ArticleItemCard({ item, key, onDeleteHandler }) {
 
   return (
     <>
-      <div className={styles.articleitem} key={key}>
+      <div className={styles.articleitem}>
         <div
           className={styles.articlemenu}
           onClick={() => {

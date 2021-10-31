@@ -17,11 +17,6 @@ export const AppWrapperProvider = (props) => {
 
   useEffect(() => {
     fetchPosts();
-    const mySubscription = supabase
-      .from("posts")
-      .on("*", () => fetchPosts())
-      .subscribe();
-    return () => supabase.removeSubscription(mySubscription);
   }, []);
 
   const titleSelectHandler = (title) => {

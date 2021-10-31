@@ -35,8 +35,6 @@ function HomePage({
     setInterval(() => setDateState(moment().format()), 1000);
   }, []);
 
-  console.log(yomiuriData.Items);
-
   return (
     <>
       <div className={styles.main}>
