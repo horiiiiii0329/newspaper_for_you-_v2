@@ -4,17 +4,14 @@ import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
 import { CheckIcon, ScissorsIcon } from "@heroicons/react/outline";
 
-const initialState = { company: "", headline: "", link: "", time: "" };
-
 function NewsListItem({ item }) {
   const [status, setStatus] = useState(false);
-  const [savedData, setSavedData] = useState(initialState);
-  const { company, headline, link, time } = savedData;
+
   const appCtx = useContext(AppWrapper);
 
   const user = supabase.auth.user();
 
-  async function savePost() {
+  async function savePost({ company, headline, link, time }) {
     try {
       setStatus(false);
       const user = supabase.auth.user();
@@ -26,17 +23,18 @@ function NewsListItem({ item }) {
       alert(error.message);
     } finally {
       setStatus(true);
+      appCtx.fetchSelectedTitle("");
     }
   }
 
   const scissors = (
     <ScissorsIcon
-      style={{ width: "35px", height: "35px", cursor: "pointer" }}
+      style={{ width: "30px", height: "30px", cursor: "pointer" }}
     />
   );
 
   const done = (
-    <CheckIcon style={{ width: "35px", height: "35px", cursor: "pointer" }} />
+    <CheckIcon style={{ width: "30px", height: "30px", cursor: "pointer" }} />
   );
   return (
     <div className={styles.item__item}>
@@ -46,13 +44,12 @@ function NewsListItem({ item }) {
       {user && (
         <div
           onClick={() => {
-            setSavedData({
+            savePost({
               company: item.company,
               headline: item.title,
               link: item.href,
               time: item.time,
             });
-            savePost();
           }}
         >
           {status ? done : scissors}
