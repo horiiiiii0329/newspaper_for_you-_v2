@@ -18,8 +18,6 @@ import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
 export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
@@ -28,7 +26,7 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
   const [authenticatedState, setAuthenticatedState] = useState(
     "not-authenticated"
   );
-  const [login, setLogin] = useState(false);
+
   const [activeData, setActiveData] = useState("Home");
   const appCtx = useContext(AppWrapper);
 
@@ -39,7 +37,6 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
         handleAuthChange(event, session);
         if (event === "SIGNED_IN") {
           setAuthenticatedState("authenticated");
-          router.push("/profile");
         }
         if (event === "SIGNED_OUT") {
           setAuthenticatedState("not-authenticated");
@@ -53,7 +50,6 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
   }, []);
 
   async function checkUser() {
-    /* when the component loads, checks user to show or hide Sign In link */
     const user = await supabase.auth.user();
     if (user) {
       setAuthenticatedState("authenticated");
@@ -61,7 +57,6 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
   }
 
   async function handleAuthChange(event, session) {
-    /* sets and removes the Supabase cookie */
     await fetch("/api/auth", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),

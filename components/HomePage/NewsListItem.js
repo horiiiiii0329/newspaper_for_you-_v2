@@ -10,9 +10,7 @@ function NewsListItem({ item }) {
   const appCtx = useContext(AppWrapper);
   const user = supabase.auth.user();
 
-  useEffect(() => {
-    return;
-  }, []);
+  useEffect(() => {});
 
   async function fetchSavedTitle() {
     const user = supabase.auth.user();
@@ -21,24 +19,6 @@ function NewsListItem({ item }) {
       .select("*")
       .match({ headline: item.title })
       .filter("user_id", "eq", user?.id);
-
-    setPosts(data);
-  }
-
-  async function savePost({ company, headline, link, time }) {
-    try {
-      setStatus(false);
-      const user = supabase.auth.user();
-
-      const { error } = await supabase
-        .from("save")
-        .insert([{ company, headline, user_id: user.id, link, time }]);
-    } catch {
-      alert(error.message);
-    } finally {
-      setStatus(true);
-      appCtx.fetchSelectedTitle("");
-    }
   }
 
   async function savePost({ company, headline, link, time }) {

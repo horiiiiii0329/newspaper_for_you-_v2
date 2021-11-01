@@ -17,7 +17,7 @@ export const AppWrapperProvider = (props) => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  });
 
   const titleSelectHandler = (title) => {
     setSelectedTitle(title);
@@ -46,10 +46,6 @@ export const AppWrapperProvider = (props) => {
     fetchSelectedTitle: fetchPosts,
     setActiveContent: contentHandler,
   };
-
-  console.log(activeContent);
-
-  console.log(activeContent);
 
   return (
     <AppWrapper.Provider value={contextValue}>
