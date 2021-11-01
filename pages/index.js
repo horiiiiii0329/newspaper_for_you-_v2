@@ -267,7 +267,7 @@ export async function getServerSideProps({ req }) {
       }
     );
     ydata = await yomiuri.json();
-    yomiuriData = ydata.Items;
+    yomiuriData = ydata.Item;
 
     const asahi = await fetch(
       "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
@@ -280,7 +280,7 @@ export async function getServerSideProps({ req }) {
       }
     );
     aData = await asahi.json();
-    asahiData = aData.Items;
+    asahiData = aData.Item;
   } else {
     //Local Test
     const asahi = await fetch("http://localhost:3000/api/getasahi");
