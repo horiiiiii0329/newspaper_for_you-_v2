@@ -37,6 +37,7 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
         handleAuthChange(event, session);
         if (event === "SIGNED_IN") {
           setAuthenticatedState("authenticated");
+          router.push("/profile");
         }
         if (event === "SIGNED_OUT") {
           setAuthenticatedState("not-authenticated");
@@ -48,15 +49,15 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
       authListener.unsubscribe();
     };
   }, []);
-
   async function checkUser() {
+    /* when the component loads, checks user to show or hide Sign In link */
     const user = await supabase.auth.user();
     if (user) {
       setAuthenticatedState("authenticated");
     }
   }
-
   async function handleAuthChange(event, session) {
+    /* sets and removes the Supabase cookie */
     await fetch("/api/auth", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
@@ -284,7 +285,6 @@ export async function getServerSideProps({ req }) {
     return {
       props: {
         weatherNews,
-
         asahiData,
         yomiuriData,
       },
@@ -295,7 +295,6 @@ export async function getServerSideProps({ req }) {
     props: {
       user,
       weatherNews,
-
       asahiData,
       yomiuriData,
     },

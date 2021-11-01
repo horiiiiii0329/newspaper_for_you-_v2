@@ -15,10 +15,6 @@ export const AppWrapperProvider = (props) => {
   const [selectedTitle, setSelectedTitle] = useState("全て");
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetchPosts();
-  });
-
   const titleSelectHandler = (title) => {
     setSelectedTitle(title);
   };

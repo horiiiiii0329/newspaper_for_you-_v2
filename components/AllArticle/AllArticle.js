@@ -12,19 +12,16 @@ function AllArticle() {
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
 
-  console.log(posts);
-
   useEffect(() => {
     fetchPosts();
     fetchTitle();
     fetchCompany();
-    fetchFilteredPosts();
   }, []);
 
   async function fetchPosts() {
     const { data } = await supabase.from("save").select("*");
 
-    setBlog(data);
+    setPosts(data);
   }
 
   async function fetchFilteredPosts() {
@@ -112,7 +109,10 @@ function AllArticle() {
                 <div className={styles.scrapelist__count}>
                   <p>00</p>
                 </div>
-                <div className={styles.scraplist__title}>
+                <div
+                  className={styles.scraplist__title}
+                  onClick={() => fetchPosts()}
+                >
                   <h3>投稿</h3>
                 </div>
               </div>

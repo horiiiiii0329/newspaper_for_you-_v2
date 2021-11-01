@@ -1,9 +1,0 @@
-{
-  "function": {
-    "newspaperforyoufa461dfc5b7e6": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  }
-}
