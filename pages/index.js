@@ -18,7 +18,7 @@ import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
 
-export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
+export default function Home({ weatherNews, asahiData, yomiuriData }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
   const [activeContentThree, setActiveContentThree] = useState(false);
@@ -65,6 +65,8 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
       body: JSON.stringify({ event, session }),
     });
   }
+
+  const user = supabase.auth.user();
 
   return (
     <div>
@@ -135,7 +137,7 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
             <SectionHeader title="クリップした記事" number="01" />
           </div>
           <div className={activeContentOne ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" ? (
+            {authenticatedState === "not-authenticated" || user ? (
               <AuthUser />
             ) : (
               <Article />
@@ -189,7 +191,7 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
             <SectionHeader title="作成" number="03" />
           </div>
           <div className={activeContentThree ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" ? (
+            {authenticatedState === "not-authenticated" || user ? (
               <AuthUser />
             ) : (
               <Post />
@@ -214,7 +216,7 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
             <SectionHeader title="個人" number="04" />
           </div>
           <div className={activeContentFour ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" ? (
+            {authenticatedState === "not-authenticated" || user ? (
               <AuthUser />
             ) : (
               <>
