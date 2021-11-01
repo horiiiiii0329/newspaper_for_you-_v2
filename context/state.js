@@ -8,6 +8,7 @@ const AppWrapper = React.createContext({
   setSelectedTitle: () => {},
   fetchSelectedTitle: () => {},
   setActiveContent: () => {},
+  fetchPosts: () => {},
 });
 
 export const AppWrapperProvider = (props) => {
@@ -41,6 +42,7 @@ export const AppWrapperProvider = (props) => {
     setSelectedTitle: titleSelectHandler,
     fetchSelectedTitle: fetchPosts,
     setActiveContent: contentHandler,
+    fetchPosts,
   };
 
   return (
