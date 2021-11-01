@@ -68,17 +68,17 @@ Project is in progress...
 
 ## Room for Improvement
 
-<!-- Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
 Room for improvement:
 
-- Improvement to be done 1
-- Improvement to be done 2
+- UI design for smartphone
+- Logic for improving UX
 
 To do:
 
-- Feature to be added 1
-- Feature to be added 2 -->
+- like future which stored in database
+- refactor code to typescrtipt
 
 <!-- Optional -->
 <!-- ## License -->
