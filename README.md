@@ -21,7 +21,7 @@ Next.js, Supabase.io and AWS
 
 - User can compare news of two biggest news company in japan, while be able to
   interact with other user by basic CRUD function
-- Information is overloaded these days. Though, picking a right tool update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
+- Information is overloaded these days. Though, picking a right tool to update your information is a matter of life and death. To make you choose a right channel to get information, I decide to make this app which could make user to choose resources while preventing from obtaining biased information. Also, user could know what other user saved and read.
 
 ## Architecture
 
@@ -77,8 +77,8 @@ Room for improvement:
 
 To do:
 
-- like future which stored in database
-- refactor code to typescrtipt
+- Like future which stored in database
+- Refactor code to typescrtipt
 
 <!-- Optional -->
 <!-- ## License -->
