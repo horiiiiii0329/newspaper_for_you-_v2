@@ -37,7 +37,7 @@ export default function Home({ user, weatherNews, asahiData, yomiuriData }) {
         handleAuthChange(event, session);
         if (event === "SIGNED_IN") {
           setAuthenticatedState("authenticated");
-          router.push("/profile");
+          router.push("*");
         }
         if (event === "SIGNED_OUT") {
           setAuthenticatedState("not-authenticated");
