@@ -75,10 +75,10 @@ function NewsListItem({ item }) {
         <div
           onClick={() => {
             savePost({
-              company: item.company,
-              headline: item.title,
-              link: item.href,
-              time: item.time,
+              company: company,
+              headline: title,
+              link: href,
+              time: time,
             });
           }}
         >
