@@ -266,7 +266,7 @@ export async function getServerSideProps({ req }) {
         },
       }
     );
-    ydata = await yomiuri.json();
+    const ydata = await yomiuri.json();
     yomiuriData = ydata.Item;
 
     const asahi = await fetch(
@@ -279,7 +279,7 @@ export async function getServerSideProps({ req }) {
         },
       }
     );
-    aData = await asahi.json();
+    const aData = await asahi.json();
     asahiData = aData.Item;
   } else {
     //Local Test
