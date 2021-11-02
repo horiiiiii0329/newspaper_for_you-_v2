@@ -27,8 +27,6 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
   const appCtx = useContext(AppWrapper);
 
   const [session, setSession] = useState(null);
-
-  const router = useRouter();
   const [authenticatedState, setAuthenticatedState] = useState(
     "not-authenticated"
   );
