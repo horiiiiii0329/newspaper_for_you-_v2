@@ -10,8 +10,6 @@ function NewsListItem({ item }) {
   const appCtx = useContext(AppWrapper);
   const user = supabase.auth.user();
 
-  useEffect(() => {});
-
   async function fetchSavedTitle() {
     const user = supabase.auth.user();
     const { data } = await supabase

@@ -134,7 +134,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
             <SectionHeader title="クリップした記事" number="01" />
           </div>
           <div className={activeContentOne ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" ? (
+            {authenticatedState === "not-authenticated" || !user ? (
               <AuthUser />
             ) : (
               <Article />
@@ -188,7 +188,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
             <SectionHeader title="作成" number="03" />
           </div>
           <div className={activeContentThree ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" ? (
+            {authenticatedState === "not-authenticated" || !user ? (
               <AuthUser />
             ) : (
               <Post />
@@ -213,7 +213,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
             <SectionHeader title="個人" number="04" />
           </div>
           <div className={activeContentFour ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" ? (
+            {authenticatedState === "not-authenticated" || !user ? (
               <AuthUser />
             ) : (
               <>
