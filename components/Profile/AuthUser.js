@@ -1,7 +1,6 @@
 import { supabase } from "../../api";
 import { useState } from "react";
 import styles from "./AuthUser.module.scss";
-import { AuthSession } from "@supabase/supabase-js";
 
 function AuthUser() {
   const [email, setEmail] = useState("");

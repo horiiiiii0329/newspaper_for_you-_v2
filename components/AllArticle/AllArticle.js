@@ -13,9 +13,17 @@ function AllArticle() {
   const [activeContent2, setActiveContent2] = useState(false);
 
   useEffect(() => {
-    fetchPosts();
     fetchTitle();
     fetchCompany();
+  }, []);
+
+  useEffect(() => {
+    fetchPosts();
+    const mySubscription = supabase
+      .from("save")
+      .on("*", () => fetchPosts())
+      .subscribe();
+    return () => supabase.removeSubscription(mySubscription);
   }, []);
 
   async function fetchPosts() {

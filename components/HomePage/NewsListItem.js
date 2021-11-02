@@ -46,26 +46,34 @@ function NewsListItem({ item }) {
   const done = (
     <CheckIcon style={{ width: "30px", height: "30px", cursor: "pointer" }} />
   );
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <div className={styles.item__item}>
-      <a href={item.href} target="_blank" rel="noopener noreferrer">
-        <p>{item.title}</p>
-      </a>
-      {user && (
-        <div
-          onClick={() => {
-            savePost({
-              company: item.company,
-              headline: item.title,
-              link: item.href,
-              time: item.time,
-            });
-          }}
-        >
-          {status ? done : scissors}
-        </div>
-      )}
-    </div>
+    mounted && (
+      <div className={styles.item__item}>
+        <a href={item.href} target="_blank" rel="noopener noreferrer">
+          <p>{item.title}</p>
+        </a>
+        {user && (
+          <div
+            onClick={() => {
+              savePost({
+                company: item.company,
+                headline: item.title,
+                link: item.href,
+                time: item.time,
+              });
+            }}
+          >
+            {status ? done : scissors}
+          </div>
+        )}
+      </div>
+    )
   );
 }
 

@@ -18,55 +18,23 @@ import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
 
-export default function Home({ weatherNews, asahiData, yomiuriData }) {
+export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
   const [activeContentThree, setActiveContentThree] = useState(false);
   const [activeContentFour, setActiveContentFour] = useState(false);
-  const [authenticatedState, setAuthenticatedState] = useState(
-    "not-authenticated"
-  );
 
-  const [activeData, setActiveData] = useState("Home");
   const appCtx = useContext(AppWrapper);
 
-  useEffect(() => {
-    /* fires when a user signs in or out */
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        handleAuthChange(event, session);
-        if (event === "SIGNED_IN") {
-          setAuthenticatedState("authenticated");
-          router.push("*");
-        }
-        if (event === "SIGNED_OUT") {
-          setAuthenticatedState("not-authenticated");
-        }
-      }
-    );
-    checkUser();
-    return () => {
-      authListener.unsubscribe();
-    };
-  }, []);
-  async function checkUser() {
-    /* when the component loads, checks user to show or hide Sign In link */
-    const user = await supabase.auth.user();
-    if (user) {
-      setAuthenticatedState("authenticated");
-    }
-  }
-  async function handleAuthChange(event, session) {
-    /* sets and removes the Supabase cookie */
-    await fetch("/api/auth", {
-      method: "POST",
-      headers: new Headers({ "Content-Type": "application/json" }),
-      credentials: "same-origin",
-      body: JSON.stringify({ event, session }),
-    });
-  }
+  const [session, setSession] = useState(null);
 
-  const user = supabase.auth.user();
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
 
   return (
     <div>
@@ -137,11 +105,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData }) {
             <SectionHeader title="クリップした記事" number="01" />
           </div>
           <div className={activeContentOne ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" || user ? (
-              <AuthUser />
-            ) : (
-              <Article />
-            )}
+            {!session ? <AuthUser /> : <Article />}
           </div>
         </section>
         <section
@@ -191,11 +155,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData }) {
             <SectionHeader title="作成" number="03" />
           </div>
           <div className={activeContentThree ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" || user ? (
-              <AuthUser />
-            ) : (
-              <Post />
-            )}
+            {!session ? <AuthUser /> : <Post />}
           </div>
         </section>
         <section
@@ -216,7 +176,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData }) {
             <SectionHeader title="個人" number="04" />
           </div>
           <div className={activeContentFour ? styles.content : styles.opacity}>
-            {authenticatedState === "not-authenticated" || user ? (
+            {!session ? (
               <AuthUser />
             ) : (
               <>
@@ -252,36 +212,36 @@ export async function getServerSideProps({ req }) {
   let asahiData;
   let yomiuriData;
 
-  const yomiuri = await fetch(
-    "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY,
-      },
-    }
-  );
-  const ydata = await yomiuri.json();
-  yomiuriData = ydata.Items;
+  // const yomiuri = await fetch(
+  //   "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY,
+  //     },
+  //   }
+  // );
+  // const ydata = await yomiuri.json();
+  // yomiuriData = ydata.Items;
 
-  const asahi = await fetch(
-    "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY2,
-      },
-    }
-  );
-  const aData = await asahi.json();
-  asahiData = aData.Items;
+  // const asahi = await fetch(
+  //   "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY2,
+  //     },
+  //   }
+  // );
+  // const aData = await asahi.json();
+  // asahiData = aData.Items;
 
-  // const asahi = await fetch("http://localhost:3000/api/getasahi");
-  // asahiData = await asahi.json();
-  // const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
-  // yomiuriData = await yomiuri.json();
+  const asahi = await fetch("http://localhost:3000/api/getasahi");
+  asahiData = await asahi.json();
+  const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+  yomiuriData = await yomiuri.json();
 
   if (!user) {
     return {
