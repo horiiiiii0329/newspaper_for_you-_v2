@@ -31,7 +31,6 @@ export default function EditProfile({ session }) {
 
       if (data) {
         setUsername(data.username);
-        setWebsite(data.website);
       }
     } catch (error) {
       alert(error.message);
@@ -91,7 +90,7 @@ export default function EditProfile({ session }) {
         <button
           onClick={() => {
             supabase.auth.signOut();
-            router.push();
+            router.reload();
           }}
         >
           サインアウト
