@@ -1,36 +1,18 @@
+import router from "next/router";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import styles from "./EditProfile.module.scss";
+import { useRouter } from "next/router";
 
-export default function EditProfile({ user }) {
+export default function EditProfile({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
   const [profile, setProfile] = useState(null);
-
-  useEffect(() => {
-    fetchProfile();
-  }, []);
-
-  async function fetchProfile() {
-    const profileData = await supabase.auth.user();
-    if (!profileData) {
-      router.push("/");
-    } else {
-      setProfile(profileData);
-    }
-  }
+  const router = useRouter();
 
   useEffect(() => {
     getProfile();
   }, []);
-
-  async function fetchProfile() {
-    const profileData = await supabase.auth.user();
-
-    setProfile(profileData);
-  }
 
   async function getProfile() {
     try {
@@ -50,7 +32,6 @@ export default function EditProfile({ user }) {
       if (data) {
         setUsername(data.username);
         setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
       alert(error.message);
@@ -59,7 +40,7 @@ export default function EditProfile({ user }) {
     }
   }
 
-  async function updateProfile({ username, website, avatar_url }) {
+  async function updateProfile({ username }) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
@@ -107,7 +88,14 @@ export default function EditProfile({ user }) {
           {loading ? "ローディング中。。。" : "更新"}
         </button>
 
-        <button onClick={() => supabase.auth.signOut()}>サインアウト</button>
+        <button
+          onClick={() => {
+            supabase.auth.signOut();
+            router.push();
+          }}
+        >
+          サインアウト
+        </button>
       </div>
     </div>
   );

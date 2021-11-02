@@ -8,7 +8,9 @@ import ArticleItemCard from "./ArticleItemCard";
 function ArticleItem({ newsArticle }) {
   const appCtx = useContext(AppWrapper);
 
-  appCtx.fetchPosts();
+  useEffect(() => {
+    appCtx.fetchPosts();
+  }, [appCtx]);
 
   async function deletePost(id) {
     await supabase.from("save").delete().match({ id });
