@@ -28,13 +28,44 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
 
   const [session, setSession] = useState(null);
 
+  const router = useRouter();
+  const [authenticatedState, setAuthenticatedState] = useState(
+    "not-authenticated"
+  );
   useEffect(() => {
-    setSession(supabase.auth.session());
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
+    /* fires when a user signs in or out */
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        handleAuthChange(event, session);
+        if (event === "SIGNED_IN") {
+          setAuthenticatedState("authenticated");
+        }
+        if (event === "SIGNED_OUT") {
+          setAuthenticatedState("not-authenticated");
+        }
+      }
+    );
+    checkUser();
+    return () => {
+      authListener.unsubscribe();
+    };
   }, []);
+  async function checkUser() {
+    /* when the component loads, checks user to show or hide Sign In link */
+    const user = await supabase.auth.user();
+    if (user) {
+      setAuthenticatedState("authenticated");
+    }
+  }
+  async function handleAuthChange(event, session) {
+    /* sets and removes the Supabase cookie */
+    await fetch("/api/auth", {
+      method: "POST",
+      headers: new Headers({ "Content-Type": "application/json" }),
+      credentials: "same-origin",
+      body: JSON.stringify({ event, session }),
+    });
+  }
 
   return (
     <div>
@@ -105,7 +136,11 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
             <SectionHeader title="クリップした記事" number="01" />
           </div>
           <div className={activeContentOne ? styles.content : styles.opacity}>
-            {!session ? <AuthUser /> : <Article />}
+            {authenticatedState === "not-authenticated" ? (
+              <AuthUser />
+            ) : (
+              <Article />
+            )}
           </div>
         </section>
         <section
@@ -155,7 +190,11 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
             <SectionHeader title="作成" number="03" />
           </div>
           <div className={activeContentThree ? styles.content : styles.opacity}>
-            {!session ? <AuthUser /> : <Post />}
+            {authenticatedState === "not-authenticated" ? (
+              <AuthUser />
+            ) : (
+              <Post />
+            )}
           </div>
         </section>
         <section
@@ -176,7 +215,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
             <SectionHeader title="個人" number="04" />
           </div>
           <div className={activeContentFour ? styles.content : styles.opacity}>
-            {!session ? (
+            {authenticatedState === "not-authenticated" ? (
               <AuthUser />
             ) : (
               <>
