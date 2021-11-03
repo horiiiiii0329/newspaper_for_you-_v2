@@ -18,14 +18,13 @@ import EditProfile from "../components/Profile/EditProfile";
 import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
 
-export default function Home({ weatherNews, asahiData, yomiuriData }) {
+export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
   const [activeContentThree, setActiveContentThree] = useState(false);
   const [activeContentFour, setActiveContentFour] = useState(false);
 
   const appCtx = useContext(AppWrapper);
-  const user = supabase.auth.user();
 
   const [authenticatedState, setAuthenticatedState] = useState(
     "not-authenticated"
@@ -137,7 +136,11 @@ export default function Home({ weatherNews, asahiData, yomiuriData }) {
               <SectionHeader title="クリップした記事" number="01" />
             </div>
             <div className={activeContentOne ? styles.content : styles.opacity}>
-              {user ? <AuthUser /> : <Article />}
+              {authenticatedState === "not-authenticated" ? (
+                <AuthUser />
+              ) : (
+                <Article />
+              )}
             </div>
           </section>
           <section
@@ -189,7 +192,11 @@ export default function Home({ weatherNews, asahiData, yomiuriData }) {
             <div
               className={activeContentThree ? styles.content : styles.opacity}
             >
-              {user ? <AuthUser /> : <Post />}
+              {authenticatedState === "not-authenticated" ? (
+                <AuthUser />
+              ) : (
+                <Post />
+              )}
             </div>
           </section>
           <section
@@ -212,7 +219,7 @@ export default function Home({ weatherNews, asahiData, yomiuriData }) {
             <div
               className={activeContentFour ? styles.content : styles.opacity}
             >
-              {user ? (
+              {authenticatedState === "not-authenticated" ? (
                 <AuthUser />
               ) : (
                 <>
