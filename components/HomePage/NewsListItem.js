@@ -10,15 +10,6 @@ function NewsListItem({ item }) {
   const appCtx = useContext(AppWrapper);
   const user = supabase.auth.user();
 
-  async function fetchSavedTitle() {
-    const user = supabase.auth.user();
-    const { data } = await supabase
-      .from("save")
-      .select("*")
-      .match({ headline: item.title })
-      .filter("user_id", "eq", user?.id);
-  }
-
   async function savePost({ company, headline, link, time }) {
     try {
       setStatus(false);
