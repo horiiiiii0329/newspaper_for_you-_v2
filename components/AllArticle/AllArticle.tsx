@@ -4,9 +4,20 @@ import { supabase } from "../../api";
 import AllArticleList from "./AllArticleList";
 import AllArticleType from "./AllArticleType";
 
+interface NewsList {
+  headline: string;
+  time: string;
+  company: string;
+  link: string;
+}
+
+interface CompanyList {
+  title: string;
+}
+
 function AllArticle() {
-  const [posts, setPosts] = useState([]);
-  const [titles, setTitle] = useState([]);
+  const [posts, setPosts] = useState([] as any);
+  const [titles, setTitle] = useState([] as any);
   const [company, setCompany] = useState([]);
   const [activeContent1, setActiveContent1] = useState(true);
   const [activeContent2, setActiveContent2] = useState(false);
@@ -39,7 +50,7 @@ function AllArticle() {
     setPosts(data);
   }
 
-  async function fetchFilteredTitlePosts(title) {
+  async function fetchFilteredTitlePosts(title: string) {
     const { data } = await supabase
       .from("save")
       .select("*")
@@ -48,7 +59,7 @@ function AllArticle() {
     setPosts(data);
   }
 
-  async function fetchFilteredCompanyPosts(item) {
+  async function fetchFilteredCompanyPosts(item: string) {
     const { data } = await supabase
       .from("save")
       .select("*")
@@ -60,8 +71,8 @@ function AllArticle() {
   async function fetchCompany() {
     const { data } = await supabase.from("save").select("company");
 
-    let unique = [];
-    data.forEach((item) => {
+    let unique = [] as any;
+    data?.forEach((item) => {
       if (!unique.includes(item.company)) {
         unique.push(item.company);
       }
@@ -79,7 +90,7 @@ function AllArticle() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content_wrapper}>
-        {posts.map((post, index) => (
+        {posts.map((post: NewsList, index: number) => (
           <AllArticleList
             title={post.headline}
             time={post.time}
@@ -127,7 +138,7 @@ function AllArticle() {
               </div>
             </div>
 
-            {company.map((item, index) => (
+            {company.map((item: string, index: number) => (
               <div onClick={() => fetchFilteredCompanyPosts(item)} key={index}>
                 <AllArticleType title={item} index={index} />
               </div>
@@ -136,7 +147,7 @@ function AllArticle() {
         )}
 
         {activeContent2 &&
-          titles.map((title, index) => (
+          titles.map((title: CompanyList, index: number) => (
             <div
               key={index}
               onClick={() => fetchFilteredTitlePosts(title.title)}

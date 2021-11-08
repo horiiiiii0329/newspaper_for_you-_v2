@@ -1,6 +1,6 @@
 import styles from "./AllArticleType.module.scss";
 
-function AllArticleType({ title, index }) {
+function AllArticleType({ title, index }: { title: string; index: number }) {
   return (
     <div className={styles.scraplist}>
       <div className={styles.scrapelist__count}>

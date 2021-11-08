@@ -1,6 +1,16 @@
 import styles from "./AllArticleList.module.scss";
 
-function AllArticleLIst({ title, time, company, link }) {
+function AllArticleLIst({
+  title,
+  time,
+  company,
+  link,
+}: {
+  title: string;
+  time: string;
+  company: string;
+  link: string;
+}) {
   return (
     <div className={styles.wrapper}>
       <a href={link} target="_blank" rel="noopener noreferrer">
