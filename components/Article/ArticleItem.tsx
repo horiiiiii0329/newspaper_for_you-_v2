@@ -9,10 +9,13 @@ function ArticleItem() {
   const appCtx = useContext(AppWrapper);
 
   useEffect(() => {
-    appCtx.fetchPosts();
-  }, []);
+    const user = supabase.auth.user();
+    if (user?.id) {
+      appCtx.fetchPosts();
+    }
+  }, [appCtx]);
 
-  async function deletePost(id) {
+  async function deletePost(id: string) {
     await supabase.from("save").delete().match({ id });
     appCtx.fetchSelectedTitle();
   }

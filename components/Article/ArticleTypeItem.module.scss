@@ -10,6 +10,7 @@
     .scrapelist__count {
       height: 100%;
       width: 70px;
+      flex: 1;
       border-right: solid 1px black;
       display: flex;
       align-items: center;
@@ -21,6 +22,7 @@
       display: flex;
       align-items: center;
       width: 100%;
+      flex: 9;
 
       &:hover {
         background-color: black;
@@ -42,13 +44,11 @@
 
     .addscrapicon {
       height: 100%;
-      width: 62.1px;
+      width: 70px;
       border-right: solid 1px black;
       display: flex;
+      flex: 1;
       align-items: center;
-      justify-content: center;
-      border-right: solid 1px black;
-      cursor: pointer;
       justify-content: center;
 
       &:hover {
@@ -64,6 +64,8 @@
       height: 50px;
       align-items: center;
       width: 400px;
+      flex: 9;
+      display: block;
 
       &:focus {
         outline: none;

@@ -29,7 +29,7 @@ function ArticleTypeItem() {
   }
 
   async function createNewTitle() {
-    if (!title) return;
+    if (!title.title) return;
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("save-scrap-title")
@@ -92,15 +92,14 @@ function ArticleTypeItem() {
             style={{ width: "30px", height: "30px", cursor: "pointer" }}
           />
         </div>
-        <div className={styles.input}>
-          <input
-            type="text"
-            placeholder="タイトルを入力してください。。"
-            onChange={onChangeHandler}
-            name="title"
-            value={title.title}
-          />
-        </div>
+
+        <input
+          type="text"
+          placeholder="タイトルを入力してください。。"
+          onChange={onChangeHandler}
+          name="title"
+          value={title.title}
+        />
       </div>
     </div>
   );
