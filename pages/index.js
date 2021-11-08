@@ -1,21 +1,15 @@
 import Head from "next/head";
-import AboutUs from "../components/AboutUs/AboutUs";
 import Article from "../components/Article/Article";
-import Header from "../components/Header/Header";
 import HomePage from "../components/HomePage/HomePage";
 import Post from "../components/Post/Post";
-import Profile from "../components/Profile/Profile";
 import styles from "../styles/Home.module.scss";
 import { useState, useEffect, useContext } from "react";
 import { supabase } from "../api";
 import SectionHeader from "../components/UI/SectionHeader";
 import AuthUser from "../components/Profile/AuthUser";
 import ProfileCard from "../components/Profile/ProfileCard";
-import MyPosts from "../components/Profile/MyPost";
 import MyPost from "../components/Profile/MyPost";
 import AllArticle from "../components/AllArticle/AllArticle";
-import EditProfile from "../components/Profile/EditProfile";
-import TitleBar from "../components/UI/TitleBar";
 import AppWrapper from "../context/state";
 
 export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
