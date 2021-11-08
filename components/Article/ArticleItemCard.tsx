@@ -4,11 +4,26 @@ import styles from "./ArticleItemCard.module.scss";
 import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
+import { DotsHorizontalIcon } from "@heroicons/react/solid";
 
-function ArticleItemCard({ item, onDeleteHandler }) {
+interface NewsList {
+  id: string;
+  insertat: string;
+  headline: string;
+  link: string;
+  title: string;
+}
+
+function ArticleItemCard({
+  item,
+  onDeleteHandler,
+}: {
+  item: NewsList;
+  onDeleteHandler: (id: string) => void;
+}) {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([] as any);
 
   const appCtx = useContext(AppWrapper);
 
@@ -18,7 +33,9 @@ function ArticleItemCard({ item, onDeleteHandler }) {
       .from("save-scrap-title")
       .on("*", () => fetchList())
       .subscribe();
-    return () => supabase.removeSubscription(mySubscription);
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
   }, []);
 
   async function fetchList() {
@@ -30,7 +47,7 @@ function ArticleItemCard({ item, onDeleteHandler }) {
     setPosts(data);
   }
 
-  async function addScrapTitle(title, id) {
+  async function addScrapTitle(title: string, id: string) {
     const { data, error } = await supabase
       .from("save")
       .update({ title: title })
@@ -51,11 +68,9 @@ function ArticleItemCard({ item, onDeleteHandler }) {
             setShowAddModal(false);
           }}
         >
-          <IconContext.Provider
-            value={{ color: "black", size: "15px", cursor: "pointer" }}
-          >
-            <HiDotsHorizontal />
-          </IconContext.Provider>
+          <DotsHorizontalIcon
+            style={{ width: "30px", height: "30px", cursor: "pointer" }}
+          />
         </div>
 
         {!showModal ? (
@@ -89,7 +104,7 @@ function ArticleItemCard({ item, onDeleteHandler }) {
         )}
       </div>
       {showAddModal &&
-        posts?.map((post, index) => {
+        posts?.map((post: NewsList, index: number) => {
           return (
             <div className={styles.articlemodal} key={index}>
               <div className={styles.articlemenu}></div>

@@ -5,7 +5,7 @@ import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
 import ArticleItemCard from "./ArticleItemCard";
 
-function ArticleItem({ newsArticle }) {
+function ArticleItem() {
   const appCtx = useContext(AppWrapper);
 
   useEffect(() => {
