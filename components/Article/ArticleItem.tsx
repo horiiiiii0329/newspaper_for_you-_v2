@@ -1,6 +1,5 @@
-import Image from "next/image";
 import styles from "./ArticleItem.module.scss";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
 import ArticleItemCard from "./ArticleItemCard";
@@ -10,10 +9,14 @@ function ArticleItem() {
 
   useEffect(() => {
     const user = supabase.auth.user();
+    const fetchData = async () => {
+      const data = await appCtx.fetchPosts();
+    };
     if (user?.id) {
-      appCtx.fetchPosts();
+      fetchData();
     }
-  }, [appCtx]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function deletePost(id: string) {
     await supabase.from("save").delete().match({ id });
