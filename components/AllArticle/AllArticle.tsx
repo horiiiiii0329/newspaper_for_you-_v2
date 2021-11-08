@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import styles from "./AllArticle.module.scss";
 import { supabase } from "../../api";
+
+import styles from "./AllArticle.module.scss";
+
 import AllArticleList from "./AllArticleList";
 import AllArticleType from "./AllArticleType";
 

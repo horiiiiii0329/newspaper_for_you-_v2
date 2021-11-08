@@ -3,12 +3,15 @@ import { PlusIcon } from "@heroicons/react/outline";
 
 import { supabase } from "../../api";
 import { useState, useEffect, useContext } from "react";
-import { v4 as uuid } from "uuid";
 import AppWrapper from "../../context/state";
 
-function ArticleTypeItem({ filterTitleHandler }) {
-  const [title, setTitle] = useState({ title: "" });
-  const [posts, setPosts] = useState([]);
+interface Title {
+  title: string;
+}
+
+function ArticleTypeItem() {
+  const [title, setTitle] = useState<Title>({ title: "" });
+  const [posts, setPosts] = useState([] as any);
 
   const appCtx = useContext(AppWrapper);
 
@@ -25,19 +28,19 @@ function ArticleTypeItem({ filterTitleHandler }) {
     setPosts(data);
   }
 
-  function onChange(e) {
-    setTitle(() => ({ [e.target.name]: e.target.value }));
-  }
-
   async function createNewTitle() {
     if (!title) return;
     const user = supabase.auth.user();
     const { data } = await supabase
       .from("save-scrap-title")
-      .insert([{ title: title.title, user_id: user.id }])
+      .insert([{ title: title.title, user_id: user?.id }])
       .single();
     setTitle({ title: "" });
     fetchList();
+  }
+
+  function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>): void {
+    setTitle({ title: e.target.value });
   }
 
   return (
@@ -58,7 +61,7 @@ function ArticleTypeItem({ filterTitleHandler }) {
       </div>
 
       {posts &&
-        posts.map((post, index) => {
+        posts.map((post: Title, index: number) => {
           return (
             <div className={styles.scraplist} key={index}>
               <div className={styles.scrapelist__count}>
@@ -93,7 +96,7 @@ function ArticleTypeItem({ filterTitleHandler }) {
           <input
             type="text"
             placeholder="タイトルを入力してください。。"
-            onChange={onChange}
+            onChange={onChangeHandler}
             name="title"
             value={title.title}
           />
