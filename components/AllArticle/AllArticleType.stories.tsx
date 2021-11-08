@@ -8,6 +8,6 @@ export default {
   component: AllArticleType,
 };
 
-const Template = () => <AllArticleType />;
+const Template = () => <AllArticleType title="琉球新聞" index="1" />;
 
 export const Default = Template.bind({});

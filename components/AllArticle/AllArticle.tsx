@@ -3,10 +3,10 @@ import styles from "./AllArticle.module.scss";
 import { supabase } from "../../api";
 import AllArticleList from "./AllArticleList";
 import AllArticleType from "./AllArticleType";
+import { RealtimeSubscription } from "@supabase/realtime-js";
 
 function AllArticle() {
   const [posts, setPosts] = useState([]);
-  const [blog, setBlog] = useState([]);
   const [titles, setTitle] = useState([]);
   const [company, setCompany] = useState([]);
   const [activeContent1, setActiveContent1] = useState(true);
@@ -23,7 +23,9 @@ function AllArticle() {
       .from("save")
       .on("*", () => fetchPosts())
       .subscribe();
-    return () => supabase.removeSubscription(mySubscription);
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
   }, []);
 
   async function fetchPosts() {

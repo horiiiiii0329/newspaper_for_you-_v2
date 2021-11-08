@@ -250,36 +250,36 @@ export async function getServerSideProps({ req }) {
   let asahiData;
   let yomiuriData;
 
-  const yomiuri = await fetch(
-    "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY,
-      },
-    }
-  );
-  const ydata = await yomiuri.json();
-  yomiuriData = ydata.Items;
+  // const yomiuri = await fetch(
+  //   "https://erzss0zhpd.execute-api.us-east-1.amazonaws.com/default/fetchYomiuriData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY,
+  //     },
+  //   }
+  // );
+  // const ydata = await yomiuri.json();
+  // yomiuriData = ydata.Items;
 
-  const asahi = await fetch(
-    "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
-    {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        "x-api-key": process.env.API_GATEWAY_APIKEY2,
-      },
-    }
-  );
-  const aData = await asahi.json();
-  asahiData = aData.Items;
+  // const asahi = await fetch(
+  //   "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY2,
+  //     },
+  //   }
+  // );
+  // const aData = await asahi.json();
+  // asahiData = aData.Items;
 
-  // const asahi = await fetch("http://localhost:3000/api/getasahi");
-  // asahiData = await asahi.json();
-  // const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
-  // yomiuriData = await yomiuri.json();
+  const asahi = await fetch("http://localhost:3000/api/getasahi");
+  asahiData = await asahi.json();
+  const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
+  yomiuriData = await yomiuri.json();
 
   if (!user) {
     return {

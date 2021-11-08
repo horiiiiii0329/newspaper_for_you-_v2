@@ -8,6 +8,13 @@ export default {
   component: AllArticleList,
 };
 
-const Template = () => <AllArticleList />;
+const Template = () => (
+  <AllArticleList
+    title="京王線でジョーカー男"
+    time="18：26"
+    company="琉球新聞"
+    link="/"
+  />
+);
 
 export const Default = Template.bind({});
