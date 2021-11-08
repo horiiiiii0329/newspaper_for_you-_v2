@@ -3,7 +3,6 @@ import styles from "./AllArticle.module.scss";
 import { supabase } from "../../api";
 import AllArticleList from "./AllArticleList";
 import AllArticleType from "./AllArticleType";
-import { RealtimeSubscription } from "@supabase/realtime-js";
 
 function AllArticle() {
   const [posts, setPosts] = useState([]);

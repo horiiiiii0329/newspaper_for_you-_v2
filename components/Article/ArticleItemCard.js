@@ -89,7 +89,7 @@ function ArticleItemCard({ item, onDeleteHandler }) {
         )}
       </div>
       {showAddModal &&
-        posts.map((post, index) => {
+        posts?.map((post, index) => {
           return (
             <div className={styles.articlemodal} key={index}>
               <div className={styles.articlemenu}></div>

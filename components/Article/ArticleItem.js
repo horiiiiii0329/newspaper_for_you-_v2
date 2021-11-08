@@ -10,7 +10,7 @@ function ArticleItem({ newsArticle }) {
 
   useEffect(() => {
     appCtx.fetchPosts();
-  }, [appCtx]);
+  }, []);
 
   async function deletePost(id) {
     await supabase.from("save").delete().match({ id });

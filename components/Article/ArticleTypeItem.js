@@ -14,11 +14,6 @@ function ArticleTypeItem({ filterTitleHandler }) {
 
   useEffect(() => {
     fetchList();
-    const mySubscription = supabase
-      .from("save-scrap-title")
-      .on("*", () => fetchList())
-      .subscribe();
-    return () => supabase.removeSubscription(mySubscription);
   }, []);
 
   async function fetchList() {
@@ -83,7 +78,13 @@ function ArticleTypeItem({ filterTitleHandler }) {
         })}
 
       <div className={styles.addscrap}>
-        <div className={styles.addscrapicon} onClick={() => createNewTitle()}>
+        <div
+          className={styles.addscrapicon}
+          onClick={() => {
+            createNewTitle();
+            fetchList();
+          }}
+        >
           <PlusIcon
             style={{ width: "30px", height: "30px", cursor: "pointer" }}
           />
