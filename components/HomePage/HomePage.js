@@ -10,9 +10,9 @@ function HomePage({
   weatherNews,
   asahiData,
   yomiuriData,
-  // sankeiData,
-  // mainichiData,
-  // nihonData,
+  sankeiData,
+  mainichiData,
+  nikkeiData,
 }) {
   const [dateState, setDateState] = useState(moment().format());
 
@@ -24,12 +24,12 @@ function HomePage({
   const [asahi, setAsahi] = useState(true);
   const [mainichi, setMainichi] = useState(false);
   const [tokyo, setTokyo] = useState(false);
-  // const [leftPickedNews, setLeftPickedNews] = useState("新聞紙を選ぶ");
-  // const [leftPickedNewsData, setLeftPickedNewsData] = useState([]);
+  const [leftPickedNews, setLeftPickedNews] = useState("新聞紙を選ぶ");
+  const [leftPickedNewsData, setLeftPickedNewsData] = useState([]);
 
-  // const [rightOpen, setRightOpen] = useState(true);
-  // const [rightPickedNews, setRightPickedNews] = useState("新聞紙を選ぶ");
-  // const [rightPickedNewsData, setRightPickedNewsData] = useState([]);
+  const [rightOpen, setRightOpen] = useState(true);
+  const [rightPickedNews, setRightPickedNews] = useState("新聞紙を選ぶ");
+  const [rightPickedNewsData, setRightPickedNewsData] = useState([]);
 
   useEffect(() => {
     setInterval(() => setDateState(moment().format()), 1000);
@@ -40,26 +40,26 @@ function HomePage({
       <div className={styles.main}>
         <div className={styles.main_left}>
           <div>
-            {/* <h3
+            <h3
               onClick={() => {
                 setLeftOpen(!leftOpen);
                 setLeftPickedNews("新聞紙を選ぶ");
               }}
             >
               {leftPickedNews}
-            </h3> */}
-            {/* {leftOpen && ( */}
-            <div onClick={() => setLeftOpen(!leftOpen)}>
-              <h3
-              // onClick={() => {
-              //   setAsahi(!asahi);
-              //   setLeftPickedNews("朝日新聞");
-              //   setLeftPickedNewsData(asahiData);
-              // }}
-              >
-                朝日新聞
-              </h3>
-              {/* <h3
+            </h3>
+            {leftOpen && (
+              <div onClick={() => setLeftOpen(!leftOpen)}>
+                <h3
+                  onClick={() => {
+                    setAsahi(!asahi);
+                    setLeftPickedNews("朝日新聞");
+                    setLeftPickedNewsData(asahiData);
+                  }}
+                >
+                  朝日新聞
+                </h3>
+                <h3
                   onClick={() => {
                     setMainichi(!mainichi);
                     setLeftPickedNews("毎日新聞");
@@ -76,36 +76,36 @@ function HomePage({
                   }}
                 >
                   東京新聞
-                </h3> */}
-            </div>
-            {/* )} */}
+                </h3>
+              </div>
+            )}
           </div>
 
           <div>
-            {/* {!leftOpen && <NewsList newsData={asahiData} user={user} />} */}
+            {!leftOpen && <NewsList newsData={leftPickedNews} user={user} />}
             <NewsList newsData={asahiData} user={user} />
           </div>
         </div>
         <div className={styles.main_right}>
-          {/* <h3
+          <h3
             onClick={() => {
               setRightOpen(!rightOpen);
               setRightPickedNews("新聞紙を選ぶ");
             }}
           >
             {rightPickedNews}
-          </h3> */}
-          {/* {rightOpen && ( */}
-          <div onClick={() => setRightOpen(!rightOpen)}>
-            <h3
-            // onClick={() => {
-            //   setRightPickedNews("読売新聞");
-            //   setRightPickedNewsData(yomiuriData);
-            // }}
-            >
-              読売新聞
-            </h3>
-            {/* <h3
+          </h3>
+          {rightOpen && (
+            <div onClick={() => setRightOpen(!rightOpen)}>
+              <h3
+                onClick={() => {
+                  setRightPickedNews("読売新聞");
+                  setRightPickedNewsData(yomiuriData);
+                }}
+              >
+                読売新聞
+              </h3>
+              <h3
                 onClick={() => {
                   setRightPickedNews("産経新聞新聞");
                   setRightPickedNewsData(sankeiData);
@@ -116,15 +116,15 @@ function HomePage({
               <h3
                 onClick={() => {
                   setRightPickedNews("日経新聞");
-                  setRightPickedNewsData(nihonData);
+                  setRightPickedNewsData(nikkeiData);
                 }}
               >
                 日経新聞
-              </h3> */}
-          </div>
-          {/* )} */}
+              </h3>
+            </div>
+          )}
           <div>
-            <NewsList newsData={yomiuriData} user={user} />
+            <NewsList newsData={rightPickedNews} user={user} />
           </div>
         </div>
       </div>

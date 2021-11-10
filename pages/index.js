@@ -12,7 +12,15 @@ import MyPost from "../components/Profile/MyPost";
 import AllArticle from "../components/AllArticle/AllArticle";
 import AppWrapper from "../context/state";
 
-export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
+export default function Home({
+  weatherNews,
+  asahiData,
+  yomiuriData,
+  user,
+  mainichiData,
+  nikkeiData,
+  sankeiData,
+}) {
   const [activeContentOne, setActiveContentOne] = useState(false);
   const [activeContentTwo, setActiveContentTwo] = useState(false);
   const [activeContentThree, setActiveContentThree] = useState(false);
@@ -24,7 +32,6 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
     "not-authenticated"
   );
   useEffect(() => {
-    /* fires when a user signs in or out */
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         handleAuthChange(event, session);
@@ -87,6 +94,9 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
                 asahiData={asahiData}
                 yomiuriData={yomiuriData}
                 user={user}
+                mainichiData={mainichiData}
+                nikkeiData={nikkeiData}
+                sankeiData={sankeiData}
               />
             )}
             {appCtx.selectedContent === "Homepage" && (
@@ -95,6 +105,9 @@ export default function Home({ weatherNews, asahiData, yomiuriData, user }) {
                 asahiData={asahiData}
                 yomiuriData={yomiuriData}
                 user={user}
+                mainichiData={mainichiData}
+                nikkeiData={nikkeiData}
+                sankeiData={sankeiData}
               />
             )}
             {appCtx.selectedContent === "article" && <Article />}
@@ -280,6 +293,12 @@ export async function getServerSideProps({ req }) {
   asahiData = await asahi.json();
   const yomiuri = await fetch("http://localhost:3000/api/getyomiuri");
   yomiuriData = await yomiuri.json();
+  const mainichi = await fetch("http://localhost:3000/api/getmainichi");
+  mainichiData = await mainichi.json();
+  const nikkei = await fetch("http://localhost:3000/api/getnihonkeizai");
+  nikkeiData = await nikkei.json();
+  const sankei = await fetch("http://localhost:3000/api/getsankei");
+  sankeiData = await sankei.json();
 
   if (!user) {
     return {
@@ -287,6 +306,9 @@ export async function getServerSideProps({ req }) {
         weatherNews,
         asahiData,
         yomiuriData,
+        mainichiData,
+        nikkeiData,
+        sankeiData,
       },
     };
   }
@@ -297,6 +319,9 @@ export async function getServerSideProps({ req }) {
       weatherNews,
       asahiData,
       yomiuriData,
+      mainichiData,
+      nikkeiData,
+      sankeiData,
     },
   };
 }
