@@ -292,19 +292,6 @@ export async function getServerSideProps({ req }) {
   // const aData = await asahi.json();
   // asahiData = aData.Items;
 
-  // const asahi = await fetch(
-  //   "https://lm8gbiweyk.execute-api.us-east-1.amazonaws.com/default/fetchAsahiData",
-  //   {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //       "x-api-key": process.env.API_GATEWAY_APIKEY2,
-  //     },
-  //   }
-  // );
-  // const aData = await asahi.json();
-  // asahiData = aData.Items;
-
   // const sankei = await fetch(
   //   "https://729w81osh5.execute-api.us-east-1.amazonaws.com/default/fetchSankei",
   //   {
@@ -330,6 +317,19 @@ export async function getServerSideProps({ req }) {
   // );
   // const mData = await mainichi.json();
   // mainichiData = mData.Items;
+
+  // const nikkei = await fetch(
+  //   " https://ljmgodfzp8.execute-api.us-east-1.amazonaws.com/default/nikkeiData",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY5,
+  //     },
+  //   }
+  // );
+  // const nData = await nikkei.json();
+  // nikkeiData = nData.Items;
 
   const asahi = await fetch("http://localhost:3000/api/getasahi");
   asahiData = await asahi.json();
