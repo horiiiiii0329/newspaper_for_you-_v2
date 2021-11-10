@@ -311,12 +311,25 @@ export async function getServerSideProps({ req }) {
   //     method: "GET",
   //     headers: {
   //       "Content-type": "application/json",
-  //       "x-api-key": process.env.API_GATEWAY_APIKEY2,
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY3,
   //     },
   //   }
   // );
   // const sData = await sankei.json();
   // sankeiData = sData.Items;
+
+  // const mainichi = await fetch(
+  //   "https://tyuz1jflm6.execute-api.us-east-1.amazonaws.com/default/fetchMainichi",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       "x-api-key": process.env.API_GATEWAY_APIKEY4,
+  //     },
+  //   }
+  // );
+  // const mData = await mainichi.json();
+  // mainichiData = mData.Items;
 
   const asahi = await fetch("http://localhost:3000/api/getasahi");
   asahiData = await asahi.json();
