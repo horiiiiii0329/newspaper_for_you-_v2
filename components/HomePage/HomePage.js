@@ -71,19 +71,20 @@ function HomePage({
                 <h3
                   onClick={() => {
                     setTokyo(!tokyo);
-                    setLeftPickedNews("東京新聞");
-                    setLeftPickedNewsData(mainichiData);
+                    setLeftPickedNews("産経新聞");
+                    setLeftPickedNewsData(sankeiData);
                   }}
                 >
-                  東京新聞
+                  産経新聞
                 </h3>
               </div>
             )}
           </div>
 
           <div>
-            {!leftOpen && <NewsList newsData={leftPickedNews} user={user} />}
-            <NewsList newsData={asahiData} user={user} />
+            {!leftOpen && (
+              <NewsList newsData={leftPickedNewsData} user={user} />
+            )}
           </div>
         </div>
         <div className={styles.main_right}>
@@ -107,14 +108,6 @@ function HomePage({
               </h3>
               <h3
                 onClick={() => {
-                  setRightPickedNews("産経新聞新聞");
-                  setRightPickedNewsData(sankeiData);
-                }}
-              >
-                産経新聞
-              </h3>
-              <h3
-                onClick={() => {
                   setRightPickedNews("日経新聞");
                   setRightPickedNewsData(nikkeiData);
                 }}
@@ -124,7 +117,9 @@ function HomePage({
             </div>
           )}
           <div>
-            <NewsList newsData={rightPickedNews} user={user} />
+            {!rightOpen && (
+              <NewsList newsData={rightPickedNewsData} user={user} />
+            )}
           </div>
         </div>
       </div>
