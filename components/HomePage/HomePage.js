@@ -2,7 +2,6 @@ import styles from "./HomePage.module.scss";
 import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
 import moment from "moment";
-import Spinner from "../UI/Spinner";
 import NewsList from "./NewsList";
 
 function HomePage({
@@ -15,10 +14,6 @@ function HomePage({
   nikkeiData,
 }) {
   const [dateState, setDateState] = useState(moment().format());
-
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [searchedData, setSearchedData] = useState([]);
-  // const [loading, setLoading] = useState(false);
 
   const [leftOpen, setLeftOpen] = useState(true);
   const [asahi, setAsahi] = useState(true);

@@ -6,8 +6,8 @@ const AppWrapper = React.createContext({
   posts: [],
   selectedTitle: "",
   setSelectedTitle: (string) => {},
-  fetchSelectedTitle: () => {},
-  setActiveContent: () => {},
+  fetchSelectedTitle: (string) => {},
+  setActiveContent: (string) => {},
   fetchPosts: () => {},
 });
 

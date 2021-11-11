@@ -18,8 +18,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/HomePage/NewsListItem.stories.js",
-    "components/HomePage/NewsListItem.js"
+    "components/HomePage/NewsListItem.stories.tsx",
+    "components/HomePage/NewsListItem.tsx"
   ],
   "exclude": ["node_modules"]
 }
