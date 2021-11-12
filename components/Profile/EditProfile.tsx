@@ -1,18 +1,16 @@
-import router from "next/router";
 import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import styles from "./EditProfile.module.scss";
 import { useRouter } from "next/router";
 
-export default function EditProfile({ session }) {
+export default function EditProfile({ session }: any) {
   const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [profile, setProfile] = useState(null);
+  const [username, setUsername] = useState<string>("");
   const router = useRouter();
 
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [session]);
 
   async function getProfile() {
     try {
@@ -22,7 +20,7 @@ export default function EditProfile({ session }) {
       let { data, error, status } = await supabase
         .from("profiles")
         .select(`username, website, avatar_url`)
-        .eq("id", user.id)
+        .eq("id", user?.id)
         .single();
 
       if (error && status !== 406) {
@@ -33,19 +31,19 @@ export default function EditProfile({ session }) {
         setUsername(data.username);
       }
     } catch (error) {
-      alert(error.message);
+      alert((error as Error).message);
     } finally {
       setLoading(false);
     }
   }
 
-  async function updateProfile({ username }) {
+  async function updateProfile({ username }: any) {
     try {
       setLoading(true);
       const user = supabase.auth.user();
 
       const updates = {
-        id: user.id,
+        id: user?.id,
         username,
         updated_at: new Date(),
       };
@@ -58,7 +56,7 @@ export default function EditProfile({ session }) {
         throw error;
       }
     } catch (error) {
-      alert(error.message);
+      alert((error as Error).message);
     } finally {
       setLoading(false);
     }
@@ -68,7 +66,7 @@ export default function EditProfile({ session }) {
     <div className={styles.form}>
       <div className={styles.email}>
         <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={profile?.email} disabled />
+        <input id="email" type="text" value={session.user.email} disabled />
       </div>
       <div className={styles.username}>
         <label htmlFor="username">名前</label>
@@ -81,7 +79,9 @@ export default function EditProfile({ session }) {
       </div>
       <div className={styles.button}>
         <button
-          onClick={() => updateProfile({ username, website, avatar_url })}
+          onClick={() => {
+            updateProfile({ username });
+          }}
           disabled={loading}
         >
           {loading ? "ローディング中。。。" : "更新"}

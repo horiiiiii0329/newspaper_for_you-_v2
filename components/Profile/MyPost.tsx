@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../api";
 import Link from "next/link";
 import styles from "./MyPost.module.scss";
-import EditProfile from "./EditProfile";
+
+interface Post {
+  title: string;
+  user_email: string;
+  id: string;
+}
 
 export default function MyPosts() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     fetchPosts();
@@ -13,13 +18,13 @@ export default function MyPosts() {
 
   async function fetchPosts() {
     const user = supabase.auth.user();
-    const { data } = await supabase
+    const { data }: any = await supabase
       .from("posts")
       .select("*")
-      .filter("user_id", "eq", user.id);
+      .filter("user_id", "eq", user?.id);
     setPosts(data);
   }
-  async function deletePost(id) {
+  async function deletePost(id: string) {
     await supabase.from("posts").delete().match({ id });
     fetchPosts();
   }

@@ -5,7 +5,6 @@ import styles from "./ProfileCard.module.scss";
 
 function ProfileCard() {
   const [userName, setUserName] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -14,18 +13,19 @@ function ProfileCard() {
       .from("profiles")
       .on("*", () => getProfile())
       .subscribe();
-    return () => supabase.removeSubscription(mySubscription);
+    return () => {
+      supabase.removeSubscription(mySubscription);
+    };
   }, []);
 
   async function getProfile() {
     try {
-      setLoading(true);
       const user = supabase.auth.user();
 
       let { data, error, status } = await supabase
         .from("profiles")
         .select(`username`)
-        .eq("id", user.id)
+        .eq("id", user?.id)
         .single();
 
       if (error && status !== 406) {
@@ -35,10 +35,9 @@ function ProfileCard() {
       if (data) {
         setUserName(data.username);
       }
-    } catch (error) {
-      alert(error.message);
+    } catch (e) {
+      alert((e as Error).message);
     } finally {
-      setLoading(false);
     }
   }
 
