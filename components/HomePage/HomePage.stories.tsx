@@ -8,6 +8,16 @@ export default {
   component: HomePage,
 };
 
-const Template = () => <HomePage />;
+const Template = () => (
+  <HomePage
+    user="true"
+    weatherNews={[]}
+    asahiData={[]}
+    yomiuriData={[]}
+    sankeiData={[]}
+    mainichiData={[]}
+    nikkeiData={[]}
+  />
+);
 
 export const Default = Template.bind({});

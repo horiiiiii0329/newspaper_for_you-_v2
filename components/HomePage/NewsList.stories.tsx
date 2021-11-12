@@ -8,6 +8,6 @@ export default {
   component: NewsList,
 };
 
-const Template = () => <NewsList />;
+const Template = () => <NewsList newsData />;
 
 export const Default = Template.bind({});

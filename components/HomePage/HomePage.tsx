@@ -12,6 +12,14 @@ function HomePage({
   sankeiData,
   mainichiData,
   nikkeiData,
+}: {
+  user: string;
+  weatherNews: object;
+  asahiData: object;
+  yomiuriData: object;
+  sankeiData: object;
+  mainichiData: object;
+  nikkeiData: object;
 }) {
   const [dateState, setDateState] = useState(moment().format());
 
@@ -20,11 +28,11 @@ function HomePage({
   const [mainichi, setMainichi] = useState(false);
   const [tokyo, setTokyo] = useState(false);
   const [leftPickedNews, setLeftPickedNews] = useState("新聞紙を選ぶ");
-  const [leftPickedNewsData, setLeftPickedNewsData] = useState([]);
+  const [leftPickedNewsData, setLeftPickedNewsData] = useState<object>([]);
 
   const [rightOpen, setRightOpen] = useState(true);
   const [rightPickedNews, setRightPickedNews] = useState("新聞紙を選ぶ");
-  const [rightPickedNewsData, setRightPickedNewsData] = useState([]);
+  const [rightPickedNewsData, setRightPickedNewsData] = useState<object>([]);
 
   useEffect(() => {
     setInterval(() => setDateState(moment().format()), 1000);
