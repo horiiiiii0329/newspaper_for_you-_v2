@@ -1,7 +1,5 @@
-import SectionHeader from "../UI/SectionHeader";
-import SectionLayout from "../Layout/SectionLayout";
 import styles from "./Post.module.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useRouter } from "next/router";
 import { supabase } from "../../api";
@@ -11,13 +9,13 @@ import dynamic from "next/dynamic";
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
-const initialState = { title: "", content: "" };
+const initialState = { title: "", content: "", id: "" };
 
 function Post() {
   const [post, setPost] = useState(initialState);
   const { title, content } = post;
   const router = useRouter();
-  function onChange(e) {
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
   async function createNewPost() {
@@ -27,7 +25,7 @@ function Post() {
     post.id = id;
     const { data } = await supabase
       .from("posts")
-      .insert([{ title, content, user_id: user.id, user_email: user.email }])
+      .insert([{ title, content, user_id: user?.id, user_email: user?.email }])
       .single();
     router.push(`posts/${data.id}`);
   }
