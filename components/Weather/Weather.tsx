@@ -1,13 +1,30 @@
 import Image from "next/image";
 import styles from "./Weather.module.scss";
 
+interface IObjectKeys {
+  [key: string]: string | number;
+}
+
+interface Weather {
+  dt: number;
+  weather: {
+    [key: string]: {
+      icon: string;
+    };
+  };
+  temp: {
+    max: Date;
+    min: Date;
+  };
+}
+
 const week = ["日", "月", "火", "水", "木", "金", "土"];
 
-function Weather({ weatherNews }) {
+function Weather({ weatherNews }: any) {
   return (
     <div className={styles.weather__weekly}>
       <ul className={styles.weather__weekly__list}>
-        {weatherNews.daily.map((date, index) => {
+        {weatherNews.daily.map((date: Weather, index: number) => {
           const time = new Date(date.dt * 1000);
           let day = week[time.getDay()];
           const nowDay = week[new Date().getDay()];
