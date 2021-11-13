@@ -8,6 +8,8 @@ export default {
   component: SectionHeader,
 };
 
-const Template = () => <SectionHeader number="01" title="個人" />;
+const Template = () => (
+  <SectionHeader number="01" title="個人" onClick={() => {}} />
+);
 
 export const Default = Template.bind({});

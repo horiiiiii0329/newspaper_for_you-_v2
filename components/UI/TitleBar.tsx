@@ -4,11 +4,11 @@ import styles from "./TitleBar.module.scss";
 import { useState, useEffect, useContext } from "react";
 import { supabase } from "../../api";
 import AppWrapper from "../../context/state";
+import { Session } from "@supabase/gotrue-js";
 
 function TitleBar() {
   const [showModal, setShowModal] = useState(false);
   const [authState, setAuthenticatedState] = useState("");
-  const [login, setLogin] = useState("");
 
   const appCtx = useContext(AppWrapper);
 
@@ -26,15 +26,23 @@ function TitleBar() {
     );
     checkUser();
     return () => {
-      authListener.unsubscribe();
+      authListener?.unsubscribe();
     };
   }, []);
+
+  async function handleAuthChange(event: string, session: Session | null) {
+    await fetch("/api/auth", {
+      method: "POST",
+      headers: new Headers({ "Content-Type": "application/json" }),
+      credentials: "same-origin",
+      body: JSON.stringify({ event, session }),
+    });
+  }
 
   async function checkUser() {
     const user = await supabase.auth.user();
     if (user) {
       setAuthenticatedState("authenticated");
-      setLogin(true);
     }
   }
 
