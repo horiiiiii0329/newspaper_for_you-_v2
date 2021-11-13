@@ -9,8 +9,10 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 
+const initialState = { title: "", content: "" };
+
 function EditPost() {
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState(initialState);
   const router = useRouter();
   const { id } = router.query;
 
@@ -27,7 +29,7 @@ function EditPost() {
     }
   }, [id]);
   if (!post) return null;
-  function onChange(e) {
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setPost(() => ({ ...post, [e.target.name]: e.target.value }));
   }
   const { title, content } = post;

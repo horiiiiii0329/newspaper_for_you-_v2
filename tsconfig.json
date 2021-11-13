@@ -19,7 +19,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/HomePage/NewsListItem.stories.tsx",
-    "components/HomePage/NewsListItem.tsx"
+    "components/HomePage/NewsListItem.tsx",
+    "pages/api/auth.js"
   ],
   "exclude": ["node_modules"]
 }
