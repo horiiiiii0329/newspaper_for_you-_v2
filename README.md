@@ -3,7 +3,7 @@
 News app based on multiple real world news resources created with  
 Next.js, Supabase.io and AWS
 
-> Live demo [_here_](https://newspaper-for-you-v2.vercel.app/).
+> Live demo [_here_](https://newspaper-for-you-v2-8p5dbur6y-horiiiiii0329.vercel.app/).
 
 ## Table of Contents
 
