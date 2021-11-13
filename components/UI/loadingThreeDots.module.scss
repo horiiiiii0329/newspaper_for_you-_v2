@@ -1,0 +1,14 @@
+.container {
+  width: "2rem";
+  height: "2rem";
+  display: "flex";
+  justify-content: "space-around";
+
+  .circle {
+    display: "block";
+    width: "0.5rem";
+    height: "0.5rem";
+    background-color: "black";
+    border-radius: "0.25rem";
+  }
+}
