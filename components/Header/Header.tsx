@@ -34,7 +34,11 @@ function Header() {
       </div>
       <nav>
         <ul>
-          <li>
+          <li
+            onClick={() => {
+              router.push("/");
+            }}
+          >
             <span>
               <NewspaperIcon style={navBarIconStyle} />
             </span>
@@ -46,7 +50,11 @@ function Header() {
               ホーム
             </span>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              router.push("/clip");
+            }}
+          >
             <span>
               <ScissorsIcon style={navBarIconStyle} />
             </span>
@@ -58,7 +66,11 @@ function Header() {
               クリップした記事
             </span>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              router.push("/feed");
+            }}
+          >
             <span>
               <CloudIcon style={navBarIconStyle} />
             </span>
@@ -70,7 +82,11 @@ function Header() {
               みんなの記事
             </span>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              router.push("/post");
+            }}
+          >
             <span>
               <PencilIcon style={navBarIconStyle} />
             </span>
@@ -82,7 +98,11 @@ function Header() {
               記事の作成
             </span>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              router.push("/profile");
+            }}
+          >
             <span>
               <UserIcon style={navBarIconStyle} />
             </span>
