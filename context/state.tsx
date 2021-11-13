@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { ReactNode } from "react";
 import { supabase } from "../api";
 
 const AppWrapper = React.createContext({
   selectedContent: "",
-  posts: [],
+  posts: [] as any,
   selectedTitle: "",
-  setSelectedTitle: (string) => {},
-  fetchSelectedTitle: (string) => {},
-  setActiveContent: (string) => {},
+  setSelectedTitle: (title: string) => {},
+  fetchSelectedTitle: (title: string) => {},
+  setActiveContent: (content: string) => {},
   fetchPosts: () => {},
 });
 
-export const AppWrapperProvider = (props) => {
+export const AppWrapperProvider = ({ children }: { children: ReactNode }) => {
   const [activeContent, setActiveContent] = useState("Homepage");
   const [selectedTitle, setSelectedTitle] = useState("全て");
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<string[] | null>([]);
 
-  const titleSelectHandler = (title) => {
+  const titleSelectHandler = (title: string) => {
     setSelectedTitle(title);
   };
 
-  const contentHandler = (content) => {
+  const contentHandler = (content: string) => {
     setActiveContent(content);
   };
 
@@ -46,9 +47,7 @@ export const AppWrapperProvider = (props) => {
   };
 
   return (
-    <AppWrapper.Provider value={contextValue}>
-      {props.children}
-    </AppWrapper.Provider>
+    <AppWrapper.Provider value={contextValue}>{children}</AppWrapper.Provider>
   );
 };
 
