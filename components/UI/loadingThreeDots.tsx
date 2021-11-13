@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import styles from "./loadingThreeDots.module.scss";
+import styles from "./LoadingThreeDots.module.scss";
 
 const loadingContainerVariants = {
   start: {

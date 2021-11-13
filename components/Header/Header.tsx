@@ -1,19 +1,30 @@
-import { LightBulbIcon } from "@heroicons/react/outline";
-import styles from "./Header.module.scss";
+import {
+  LightBulbIcon,
+  NewspaperIcon,
+  ScissorsIcon,
+  CloudIcon,
+  PencilIcon,
+  UserIcon,
+} from "@heroicons/react/outline";
 import { useRouter } from "next/router";
+import styles from "./Header.module.scss";
 
 function Header() {
   const router = useRouter();
 
   return (
     <header className={styles.Header}>
-      <LightBulbIcon
-        style={{ width: "80px", height: "80px", cursor: "pointer" }}
-        onClick={() => {
-          router.push("/");
-          router.reload();
-        }}
-      />
+      <div>
+        <LightBulbIcon
+          style={{ width: "50px", height: "50px", cursor: "pointer" }}
+          onClick={() => {
+            router.push("/");
+            router.reload();
+          }}
+        />
+      </div>
+      <nav></nav>
+      <div></div>
     </header>
   );
 }

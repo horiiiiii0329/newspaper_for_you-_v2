@@ -1,6 +1,5 @@
 import React from "react";
-
-import LoadingThreeDots from "./loadingThreeDots";
+import LoadingThreeDots from "./LoadingThreeDots";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
