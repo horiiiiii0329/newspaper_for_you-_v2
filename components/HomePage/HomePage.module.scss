@@ -37,6 +37,7 @@
   .main_left {
     flex: 1;
     border-right: solid black 1px;
+    overflow-y: scroll;
 
     h3 {
       border-bottom: solid 1px black;
@@ -49,6 +50,7 @@
 
   .main_right {
     flex: 1;
+    overflow-y: scroll;
 
     h3 {
       border-bottom: solid 1px black;
