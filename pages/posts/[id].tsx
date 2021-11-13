@@ -3,7 +3,16 @@ import ReactMarkdown from "react-markdown";
 import { supabase } from "../../api";
 import styles from "./posts.module.scss";
 
-export default function Post({ post }) {
+interface Item {
+  post: {
+    title: string;
+    user_email: string;
+    content: string;
+    id: string;
+  };
+}
+
+export default function Post({ post }: Item) {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -21,7 +30,7 @@ export default function Post({ post }) {
 
 export async function getStaticPaths() {
   const { data, error } = await supabase.from("posts").select("id");
-  const paths = data.map((post) => ({
+  const paths = data?.map((post) => ({
     params: { id: JSON.stringify(post.id) },
   }));
   return {
@@ -30,7 +39,13 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+type Params = {
+  params: {
+    id: string;
+  };
+};
+
+export async function getStaticProps({ params }: Params) {
   const { id } = params;
   const { data } = await supabase
     .from("posts")
