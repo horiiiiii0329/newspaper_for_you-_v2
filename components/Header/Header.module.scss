@@ -3,10 +3,38 @@
   align-items: start;
   border-right: 1px solid #000000;
   height: 100vh;
-  padding: 22px 0 0 0;
   width: 80px;
   box-sizing: border-box;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 25px;
+  transition: all 0.5s ease;
+
+  .Icon {
+    margin-left: -9px;
+  }
+
+  nav {
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+
+        span:nth-child(2) {
+          position: absolute;
+          margin-left: 40px;
+          font-size: 11px;
+          white-space: nowrap;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
 
   @media screen and (max-width: 1280px) {
     display: none;
