@@ -1,3 +1,6 @@
+#Currently moving to other repo due to making a lot of change
+
+
 # NewsPaper for You - SNS like news compare app
 
 News app based on multiple real world news resources created with  
