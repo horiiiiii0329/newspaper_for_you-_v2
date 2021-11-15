@@ -1,4 +1,4 @@
-# Currently migrating to other repo due to updating most part
+# Currently migrating to other repo due to refactoring most of the code
 
 
 # NewsPaper for You - SNS like news compare app
