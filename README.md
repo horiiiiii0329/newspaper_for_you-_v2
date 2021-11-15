@@ -57,13 +57,6 @@ Next.js, Supabase.io and AWS
 
 <!-- If you have screenshots you'd like to share, include them here. -->
 
-## Setup
-
-- Use the package manager [yarn](https://yarnpkg.com/) to install package.
-
-```bash
-yarn install
-```
 
 ## Project Status
 
